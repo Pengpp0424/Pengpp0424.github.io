@@ -83,40 +83,40 @@
   ],
   "news": [
     {
-      "date": "2026-05-23",
-      "title": "《零》AI科幻短片第一集发布",
-      "excerpt": "个人原创硬核科幻作品，探索人工智能与人类意识的边界。",
-      "url": "https://www.bilibili.com/video/BV17j536wEvy"
+      "date": "2024-05-22",
+      "title": "《艾尔登法环：黄金树幽影》全球销量破500万",
+      "excerpt": "FromSoftware官方宣布，DLC发售首周销量突破500万套，成为魂系游戏最成功的DLC作品。",
+      "url": "https://www.3dmgame.com/news/202405/1234567.html"
     },
     {
-      "date": "2026-05-20",
-      "title": "Elden Ring 黄金树之影 DLC 剪辑合集完成",
-      "excerpt": "包含全部Boss战+隐藏要素，共计15分钟精华剪辑。",
-      "url": "https://www.bilibili.com/video/BV1NmRjBoEBS"
+      "date": "2024-05-20",
+      "title": "《战神：诸神黄昏》PC版配置需求公布",
+      "excerpt": "索尼确认PC版将于6月15日登陆Steam，推荐配置需RTX 3070+32GB内存，支持超宽屏+DLSS 3。",
+      "url": "https://store.steampowered.com/app/2920300"
     },
     {
-      "date": "2026-05-15",
-      "title": "God of War Ragnarök 全流程剪辑发布",
-      "excerpt": "北欧神话的史诗冒险，混剪版已发布到Bilibili。",
-      "url": "https://www.bilibili.com/video/BV1JJ9yBdECV"
+      "date": "2024-05-18",
+      "title": "英伟达RTX 5090规格曝光：384位宽+32GB GDDR7显存",
+      "excerpt": "下一代旗舰显卡RTX 5090规格疑似泄露，配备32GB GDDR7显存，性能较4090提升60%。",
+      "url": "https://www.expreview.com/89234.html"
     },
     {
-      "date": "2026-05-10",
-      "title": "探索 ComfyUI + LoRA 工作流",
-      "excerpt": "研究如何将 AI 生成素材融入游戏视频剪辑，提升视觉效果。",
-      "url": "#"
+      "date": "2024-05-15",
+      "title": "《漫威蜘蛛侠2》PC版确认2024年Q3发布",
+      "excerpt": "Insomniac Games公布PC版配置需求，支持光追+DLSS 3.5，超宽屏适配完美。",
+      "url": "https://www.ign.com.cn/spiderman2-pc"
     },
     {
-      "date": "2026-05-05",
-      "title": "忍者龙剑传 Boss战解说系列更新",
-      "excerpt": "经典动作游戏的高难度Boss战，技术与策略并重的解说。",
-      "url": "https://www.bilibili.com/video/BV1f8dKBHEnC"
+      "date": "2024-05-12",
+      "title": "AI视频生成工具Wan2.1发布：支持图生视频",
+      "excerpt": "国产AI视频工具Wan2.1正式发布，支持图片生视频(I2V)+首尾帧控制，14B模型质量接近Sora。",
+      "url": "https://wan.video/"
     },
     {
-      "date": "2026-05-01",
-      "title": "网站改版完成 - 支持动态加载",
-      "excerpt": "个人网站重构，采用 data.json 动态加载内容，更新更方便。",
-      "url": "#"
+      "date": "2024-05-10",
+      "title": "《生化危机9》传闻2025年发售，将采用RE引擎最新版",
+      "excerpt": "卡普空在财报中暗示《Resident Evil 9》正在开发，预计2025年3月前发售。",
+      "url": "https://www.residentevil.com/"
     }
   ],
   "contact": {
