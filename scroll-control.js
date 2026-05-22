@@ -2,7 +2,9 @@
  * scroll-control.js - 游戏科技动态板块滚动控制视频
  * 功能：
  * 1. 滚动到"游戏科技动态"板块时，暂停《零》视频，播放 B站视频
- * 2. 离开板块时，暂停 B站视频，恢复播放《零》
+ * 2. 离开板块时，暂停 B站视频，恢复播放《零》视频
+ * 3. 预加载 B站 iframe，加快加载速度
+ * 4. 取消静音，确保有声音
  */
 
 (function() {
@@ -18,6 +20,7 @@
     let newsSection, newsVideo, zeroIframe;
     let observer = null;
     let isPlayingNews = false;
+    let isNewsVideoReady = false;
 
     // ========== 初始化 ==========
     function init() {
@@ -39,23 +42,46 @@
             log('⚠️ 找不到 #works iframe（《零》视频）');
         }
 
+        // 预加载 B站 iframe（加快加载速度）
+        preloadNewsVideo();
+
         // 等待 B站 iframe 加载完成
         newsVideo.addEventListener('load', () => {
             log('✅ B站 iframe 加载完成');
+            isNewsVideoReady = true;
             setupObserver();
         });
 
         // 如果 iframe 已经加载完成（缓存情况）
         if (newsVideo.contentDocument || newsVideo.contentWindow) {
             log('✅ B站 iframe 已加载（缓存）');
+            isNewsVideoReady = true;
             setupObserver();
         } else {
             // 设置超时兜底（10 秒后强制初始化）
             setTimeout(() => {
                 log('⚠️ 超时兜底：强制初始化 Observer');
+                isNewsVideoReady = true;
                 setupObserver();
             }, 10000);
         }
+    }
+
+    // ========== 预加载 B站 iframe ==========
+    function preloadNewsVideo() {
+        // 确保 src 没有 muted=1（取消静音）
+        const baseSrc = newsVideo.src.split('?')[0];
+        const params = new URLSearchParams(newsVideo.src.split('?')[1] || '');
+        
+        // 删除 muted 参数（取消静音）
+        params.delete('muted');
+        params.delete('autoplay');  // 不自动播放（等待滚动控制）
+        
+        // 重新组装 URL
+        const newSrc = baseSrc + '?' + params.toString();
+        newsVideo.src = newSrc;
+        
+        log('✅ B站 iframe 预加载完成（已取消静音）');
     }
 
     // ========== 设置 Intersection Observer ==========
@@ -132,37 +158,39 @@
         }
     }
 
-    // ========== 播放 B站视频 ==========
+    // ========== 播放 B站视频（用 postMessage，不重载 iframe） ==========
     function playNewsVideo() {
-        if (!newsVideo) {
+        if (!newsVideo || !newsVideo.contentWindow) {
             log('❌ B站 iframe 未就绪');
             return;
         }
 
         try {
-            // 方法1：重载 iframe，添加 autoplay=1
-            const baseSrc = newsVideo.src.split('&autoplay=')[0].split('?autoplay=')[0];
-            const separator = baseSrc.includes('?') ? '&' : '?';
-            newsVideo.src = baseSrc + separator + 'autoplay=1&muted=1';
-            log('▶️ 播放 B站视频 (重载 iframe, autoplay=1)');
+            // 方法1：取消静音（确保有声音）
+            newsVideo.contentWindow.postMessage('{"command":"mute","mute":false}', '*');
+            newsVideo.contentWindow.postMessage('{"command":"volume","volume":1}', '*');
+            
+            // 方法2：播放视频（不重载 iframe，秒开）
+            newsVideo.contentWindow.postMessage('{"command":"play"}', '*');
+            
+            log('▶️ 播放 B站视频 (postMessage, 取消静音)');
         } catch (err) {
             log(`❌ 播放 B站视频失败: ${err.message}`);
         }
     }
 
-    // ========== 暂停 B站视频 ==========
+    // ========== 暂停 B站视频（用 postMessage，不重载 iframe） ==========
     function pauseNewsVideo() {
-        if (!newsVideo) {
+        if (!newsVideo || !newsVideo.contentWindow) {
             log('❌ B站 iframe 未就绪');
             return;
         }
 
         try {
-            // 方法1：重载 iframe，改回 autoplay=0
-            const baseSrc = newsVideo.src.split('&autoplay=')[0].split('?autoplay=')[0];
-            const separator = baseSrc.includes('?') ? '&' : '?';
-            newsVideo.src = baseSrc + separator + 'autoplay=0';
-            log('⏸️ 暂停 B站视频 (重载 iframe, autoplay=0)');
+            // 方法1：暂停视频（不重载 iframe）
+            newsVideo.contentWindow.postMessage('{"command":"pause"}', '*');
+            
+            log('⏸️ 暂停 B站视频 (postMessage)');
         } catch (err) {
             log(`❌ 暂停 B站视频失败: ${err.message}`);
         }
