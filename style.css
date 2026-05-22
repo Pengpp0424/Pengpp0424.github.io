@@ -158,6 +158,13 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    animation: gradientShift 6s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% { filter: drop-shadow(0 0 20px rgba(99,102,241,0.3)) drop-shadow(0 0 40px rgba(139,92,246,0.2)); }
+    100% { filter: drop-shadow(0 0 30px rgba(99,102,241,0.5)) drop-shadow(0 0 60px rgba(139,92,246,0.3)); }
 }
 
 .hero-desc {
@@ -761,4 +768,21 @@ body {
     .work-embed {
         padding-top: 56.25%;
     }
+}
+
+/* ========== Profile Avatar ========== */
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+    border: 2px solid rgba(99,102,241,0.3);
+    transition: var(--transition);
+}
+
+.profile-avatar:hover {
+    border-color: rgba(99,102,241,0.6);
+    box-shadow: 0 0 20px rgba(99,102,241,0.2);
 }
