@@ -15,7 +15,7 @@
     };
 
     // ========== 状态 ==========
-    let newsSection, newsVideo, zeroVideos;
+    let newsSection, newsVideo, zeroIframe;
     let observer = null;
     let isPlayingNews = false;
 
@@ -24,7 +24,7 @@
         // 获取 DOM 元素
         newsSection = document.getElementById('news');
         newsVideo = document.getElementById('newsVideo');
-        zeroVideos = document.querySelectorAll('.hero-anim video');
+        zeroIframe = document.querySelector('#works iframe');  // 《零》在"精选作品"板块
 
         // 检查必要元素
         if (!newsSection) {
@@ -35,8 +35,8 @@
             log('❌ 找不到 #newsVideo iframe');
             return;
         }
-        if (!zeroVideos || zeroVideos.length === 0) {
-            log('⚠️ 找不到 .hero-anim video（《零》视频）');
+        if (!zeroIframe) {
+            log('⚠️ 找不到 #works iframe（《零》视频）');
         }
 
         // 等待 B站 iframe 加载完成
@@ -102,36 +102,34 @@
         isPlayingNews = false;
     }
 
-    // ========== 暂停《零》视频 ==========
+    // ========== 暂停《零》视频（B站 iframe） ==========
     function pauseZeroVideo() {
-        if (!zeroVideos || zeroVideos.length === 0) {
-            log('⚠️ 没有找到《零》视频');
+        if (!zeroIframe || !zeroIframe.contentWindow) {
+            log('⚠️ 《零》iframe 未就绪');
             return;
         }
 
-        zeroVideos.forEach((video, index) => {
-            if (!video.paused) {
-                video.pause();
-                log(`⏸️ 暂停《零》视频 [${index}]`);
-            }
-        });
+        try {
+            zeroIframe.contentWindow.postMessage('{"command":"pause"}', '*');
+            log('⏸️ 暂停《零》视频 (B站 iframe)');
+        } catch (err) {
+            log(`❌ 暂停《零》失败: ${err.message}`);
+        }
     }
 
-    // ========== 恢复播放《零》视频 ==========
+    // ========== 恢复播放《零》视频（B站 iframe） ==========
     function resumeZeroVideo() {
-        if (!zeroVideos || zeroVideos.length === 0) {
-            log('⚠️ 没有找到《零》视频');
+        if (!zeroIframe || !zeroIframe.contentWindow) {
+            log('⚠️ 《零》iframe 未就绪');
             return;
         }
 
-        zeroVideos.forEach((video, index) => {
-            // 只有之前在播放的才恢复
-            video.play().then(() => {
-                log(`▶️ 恢复播放《零》视频 [${index}]`);
-            }).catch(err => {
-                log(`❌ 恢复播放失败 [${index}]: ${err.message}`);
-            });
-        });
+        try {
+            zeroIframe.contentWindow.postMessage('{"command":"play"}', '*');
+            log('▶️ 恢复播放《零》视频 (B站 iframe)');
+        } catch (err) {
+            log(`❌ 恢复播放《零》失败: ${err.message}`);
+        }
     }
 
     // ========== 播放 B站视频 ==========
