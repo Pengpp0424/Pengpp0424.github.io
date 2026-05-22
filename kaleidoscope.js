@@ -11,15 +11,15 @@
     const CONFIG = {
         symmetry: 6,                  // 对称性（6折万花筒）
         colors: {
-            deepSea: ['#0f3460', '#16213e', '#1a1a2e', '#0a2647'],  // 深海蓝
-            crystalPurple: ['#7b2d8e', '#9b59b6', '#8e44ad', '#6c3483'],  // 水晶紫
-            glow: ['rgba(15,52,96,0.6)', 'rgba(123,45,142,0.6)', 'rgba(155,89,182,0.4)']  // 反光
+            deepSea: ['#0f3460', '#16213e', '#1a1a2e', '#0a2647'],  // 深海蓝（降低亮度）
+            crystalPurple: ['#4a1a5e', '#5b2d8e', '#6b3dae', '#3c1260'],  // 水晶紫（降低亮度）
+            glow: ['rgba(15,52,96,0.3)', 'rgba(123,45,142,0.3)', 'rgba(155,89,182,0.2)']  // 反光（降低透明度）
         },
-        shapeCount: 12,               // 每帧绘制的几何图形数量
-        rotationSpeed: 0.002,         // 旋转速度
-        pulseSpeed: 0.01,            // 脉动速度
-        maxSize: 80,                  // 最大图形尺寸
-        minSize: 10                   // 最小图形尺寸
+        shapeCount: 8,                // 减少图形数量（避免过亮）
+        rotationSpeed: 0.001,         // 降低旋转速度
+        pulseSpeed: 0.005,            // 降低脉动速度
+        maxSize: 60,                  // 减小最大尺寸
+        minSize: 15                   // 增加最小尺寸
     };
 
     // ========== 状态 ==========
@@ -33,6 +33,7 @@
         // 创建 Canvas
         canvas = document.createElement('canvas');
         canvas.id = 'kaleidoscope-canvas';
+        // 修改：降低整体透明度
         canvas.style.cssText = `
             position: absolute;
             inset: 0;
@@ -40,7 +41,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.3;  /* 从 0.5 降到 0.3 */
         `;
 
         // 插入到 Hero 区（在 .hero-bg 之后，视频之前）
@@ -77,12 +78,12 @@
     // ========== 动画循环 ==========
     function animate() {
         // 清空画布（半透明，制造拖尾效果）
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';  /* 从 0.08 增加到 0.12，拖尾更短 */
         ctx.fillRect(0, 0, width, height);
 
-        // 更新状态
-        rotation += CONFIG.rotationSpeed;
-        pulse += CONFIG.pulseSpeed;
+        // 更新状态（降低速度）
+        rotation += CONFIG.rotationSpeed;  /* 从 0.002 降到 0.001 */
+        pulse += CONFIG.pulseSpeed;        /* 从 0.01 降到 0.005 */
 
         // 在整个区域绘制多个万花筒簇（覆盖整个长方形）
         const positions = [
@@ -129,14 +130,14 @@
         }
     }
 
-    // ========== 绘制几何图形 ==========
+    // ========== 绘制几何图形（水晶质感） ==========
     function drawGeometricShapes() {
         for (let i = 0; i < CONFIG.shapeCount; i++) {
             // 随机参数
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * Math.min(width, height) * 0.4;
+            const distance = Math.random() * Math.min(width, height) * 0.35;  /* 从 0.4 降到 0.35 */
             const size = CONFIG.minSize + Math.random() * (CONFIG.maxSize - CONFIG.minSize);
-            const pulseSize = size * (1 + 0.2 * Math.sin(pulse + i));
+            const pulseSize = size * (1 + 0.15 * Math.sin(pulse + i));  /* 从 0.2 降到 0.15 */
 
             // 位置
             const x = Math.cos(angle + rotation) * distance;
@@ -147,39 +148,41 @@
             const colorIndex = Math.floor(Math.random() * CONFIG.colors[colorType].length);
             const color = CONFIG.colors[colorType][colorIndex];
 
-            // 反光效果（径向渐变）
-            const gradient = ctx.createRadialGradient(x, y, 0, x, y, pulseSize);
-            gradient.addColorStop(0, color.replace(')', ',0.8)').replace('rgb', 'rgba'));
-            gradient.addColorStop(0.5, color.replace(')', ',0.4)').replace('rgb', 'rgba'));
-            gradient.addColorStop(1, color.replace(')', ',0.1)').replace('rgb', 'rgba'));
-
-            // 绘制图形（不规则水晶矿形状）
+            // 绘制图形（水晶矿质感）
             ctx.save();
             ctx.translate(x, y);
             ctx.rotate(angle + rotation * 2);
 
-            // 只用不规则水晶矿形状（不用圆圈或六边形）
-            drawCrystalShape(ctx, 0, 0, pulseSize);
+            // 绘制水晶矿形状（不规则 + 交错纹理）
+            drawCrystalFacet(ctx, 0, 0, pulseSize);
 
             ctx.restore();
         }
     }
 
-    // ========== 绘制不规则水晶矿形状 ==========
-    function drawCrystalShape(context, x, y, size) {
-        // 生成不规则多边形（水晶矿形状）
+    // ========== 绘制水晶矿形状（不规则 + 交错纹理 + 水晶反光） ==========
+    function drawCrystalFacet(context, x, y, size) {
+        // 生成不规则多边形（水晶矿形状，锯齿状）
         const vertices = [];
-        const numPoints = 5 + Math.floor(Math.random() * 4);  // 5-8 个顶点
+        const innerVertices = [];  // 内部交错顶点
+        const numPoints = 6 + Math.floor(Math.random() * 4);  // 6-9 个顶点（更多锯齿）
 
         for (let i = 0; i < numPoints; i++) {
-            const angle = (Math.PI * 2 / numPoints) * i + (Math.random() - 0.5) * 0.8;
-            const radius = size * (0.6 + Math.random() * 0.6);  // 随机半径（制造锯齿）
+            const angle = (Math.PI * 2 / numPoints) * i + (Math.random() - 0.5) * 0.6;  // 增加随机性
+            const radius = size * (0.5 + Math.random() * 0.7);  // 随机半径（制造锯齿）
             const px = x + radius * Math.cos(angle);
             const py = y + radius * Math.sin(angle);
             vertices.push({ x: px, y: py });
+
+            // 内部交错顶点（制造水晶纹理）
+            const innerAngle = angle + (Math.PI * 2 / numPoints) * 0.5;  // 偏移一半角度
+            const innerRadius = radius * (0.3 + Math.random() * 0.4);  // 内部半径更小
+            const innerPx = x + innerRadius * Math.cos(innerAngle);
+            const innerPy = y + innerRadius * Math.sin(innerAngle);
+            innerVertices.push({ x: innerPx, y: innerPy });
         }
 
-        // 绘制多边形
+        // 绘制外轮廓（水晶矿形状）
         context.beginPath();
         context.moveTo(vertices[0].x, vertices[0].y);
         for (let i = 1; i < vertices.length; i++) {
@@ -187,26 +190,54 @@
         }
         context.closePath();
 
-        // 填充（深海蓝/水晶紫，半透明）
-        context.fillStyle = `rgba(123, 45, 142, ${0.2 + 0.2 * Math.sin(pulse)})`;
+        // 填充（深海蓝/水晶紫，低透明度 + 水晶质感渐变）
+        const gradient = context.createRadialGradient(x, y, 0, x, y, size);
+        gradient.addColorStop(0, `rgba(155, 89, 182, ${0.25 + 0.15 * Math.sin(pulse)})`);  /* 中心：较亮 */
+        gradient.addColorStop(0.5, `rgba(123, 45, 142, ${0.15 + 0.1 * Math.sin(pulse)})`);  /* 中间：中等 */
+        gradient.addColorStop(1, `rgba(74, 26, 94, ${0.05 + 0.05 * Math.sin(pulse)})`);  /* 边缘：很暗 */
+        context.fillStyle = gradient;
         context.fill();
 
-        // 边框（反光效果）
-        context.strokeStyle = `rgba(155, 89, 182, ${0.5 + 0.3 * Math.sin(pulse * 2)})`;
-        context.lineWidth = 1.5;
+        // 边框（反光效果，亮紫）
+        context.strokeStyle = `rgba(155, 89, 182, ${0.4 + 0.3 * Math.sin(pulse * 2)})`;  /* 降低透明度 */
+        context.lineWidth = 1;
         context.stroke();
 
-        // 内部细节（模拟水晶纹理）
+        // 内部交错纹理（模拟水晶矿的锯齿状纹理）
         context.beginPath();
         for (let i = 0; i < vertices.length; i++) {
-            const midX = (vertices[i].x + vertices[(i + 1) % vertices.length].x) / 2;
-            const midY = (vertices[i].y + vertices[(i + 1) % vertices.length].y) / 2;
-            context.moveTo(x, y);
-            context.lineTo(midX, midY);
+            const current = vertices[i];
+            const next = vertices[(i + 1) % vertices.length];
+            const innerCurrent = innerVertices[i];
+            const innerNext = innerVertices[(i + 1) % innerVertices.length];
+
+            // 绘制外部顶点到内部顶点的连线（交错纹理）
+            context.moveTo(current.x, current.y);
+            context.lineTo(innerCurrent.x, innerCurrent.y);
+
+            // 绘制内部顶点到下一个外部顶点的连线（交错效果）
+            context.moveTo(innerCurrent.x, innerCurrent.y);
+            context.lineTo(next.x, next.y);
         }
-        context.strokeStyle = `rgba(155, 89, 182, ${0.3 + 0.2 * Math.sin(pulse * 1.5)})`;
+        context.strokeStyle = `rgba(155, 89, 182, ${0.2 + 0.15 * Math.sin(pulse * 1.5)})`;  /* 降低透明度 */
         context.lineWidth = 0.5;
         context.stroke();
+
+        // 高光点（模拟水晶反光）
+        const highlightGradient = context.createRadialGradient(
+            x + size * 0.2 * Math.cos(pulse),  /* 高光点偏移 */
+            y + size * 0.2 * Math.sin(pulse),
+            0,
+            x, y,
+            size * 0.5
+        );
+        highlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.15)');  /* 中心：白色高光，低透明度 */
+        highlightGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');  /* 边缘：透明 */
+        
+        context.beginPath();
+        context.arc(x, y, size * 0.5, 0, Math.PI * 2);
+        context.fillStyle = highlightGradient;
+        context.fill();
     }
 
     // ========== 启动 ==========
