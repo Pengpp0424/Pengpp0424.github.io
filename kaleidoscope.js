@@ -147,90 +147,59 @@
             gradient.addColorStop(0.5, color.replace(')', ',0.4)').replace('rgb', 'rgba'));
             gradient.addColorStop(1, color.replace(')', ',0.1)').replace('rgb', 'rgba'));
 
-            // 绘制图形（三角形/圆形/六边形）
+            // 绘制图形（不规则水晶矿形状）
             ctx.save();
             ctx.translate(x, y);
             ctx.rotate(angle + rotation * 2);
 
-            const shapeType = i % 3;
-            if (shapeType === 0) {
-                // 三角形
-                drawTriangle(ctx, 0, 0, pulseSize);
-            } else if (shapeType === 1) {
-                // 圆形
-                drawCircle(ctx, 0, 0, pulseSize * 0.5);
-            } else {
-                // 六边形
-                drawHexagon(ctx, 0, 0, pulseSize * 0.4);
-            }
+            // 只用不规则水晶矿形状（不用圆圈或六边形）
+            drawCrystalShape(ctx, 0, 0, pulseSize);
 
             ctx.restore();
         }
     }
 
-    // ========== 绘制三角形 ==========
-    function drawTriangle(context, x, y, size) {
+    // ========== 绘制不规则水晶矿形状 ==========
+    function drawCrystalShape(context, x, y, size) {
+        // 生成不规则多边形（水晶矿形状）
+        const vertices = [];
+        const numPoints = 5 + Math.floor(Math.random() * 4);  // 5-8 个顶点
+
+        for (let i = 0; i < numPoints; i++) {
+            const angle = (Math.PI * 2 / numPoints) * i + (Math.random() - 0.5) * 0.8;
+            const radius = size * (0.6 + Math.random() * 0.6);  // 随机半径（制造锯齿）
+            const px = x + radius * Math.cos(angle);
+            const py = y + radius * Math.sin(angle);
+            vertices.push({ x: px, y: py });
+        }
+
+        // 绘制多边形
         context.beginPath();
-        context.moveTo(x, y - size);
-        context.lineTo(x + size * 0.866, y + size * 0.5);
-        context.lineTo(x - size * 0.866, y + size * 0.5);
+        context.moveTo(vertices[0].x, vertices[0].y);
+        for (let i = 1; i < vertices.length; i++) {
+            context.lineTo(vertices[i].x, vertices[i].y);
+        }
         context.closePath();
 
-        // 填充（半透明）
-        context.fillStyle = `rgba(123, 45, 142, ${0.3 + 0.2 * Math.sin(pulse)})`;
+        // 填充（深海蓝/水晶紫，半透明）
+        context.fillStyle = `rgba(123, 45, 142, ${0.2 + 0.2 * Math.sin(pulse)})`;
         context.fill();
 
         // 边框（反光效果）
         context.strokeStyle = `rgba(155, 89, 182, ${0.5 + 0.3 * Math.sin(pulse * 2)})`;
-        context.lineWidth = 1;
-        context.stroke();
-    }
-
-    // ========== 绘制圆形 ==========
-    function drawCircle(context, x, y, radius) {
-        context.beginPath();
-        context.arc(x, y, radius, 0, Math.PI * 2);
-
-        // 径向渐变（反光效果）
-        const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(15, 52, 96, 0.6)`);
-        gradient.addColorStop(0.5, `rgba(123, 45, 142, 0.3)`);
-        gradient.addColorStop(1, 'rgba(123, 45, 142, 0.1)');
-
-        context.fillStyle = gradient;
-        context.fill();
-
-        // 光晕效果
-        context.shadowBlur = 20;
-        context.shadowColor = 'rgba(123, 45, 142, 0.5)';
-        context.strokeStyle = `rgba(155, 89, 182, ${0.4 + 0.2 * Math.sin(pulse)})`;
-        context.lineWidth = 2;
-        context.stroke();
-        context.shadowBlur = 0;
-    }
-
-    // ========== 绘制六边形 ==========
-    function drawHexagon(context, x, y, size) {
-        context.beginPath();
-        for (let i = 0; i < 6; i++) {
-            const angle = (Math.PI / 3) * i;
-            const px = x + size * Math.cos(angle);
-            const py = y + size * Math.sin(angle);
-            if (i === 0) {
-                context.moveTo(px, py);
-            } else {
-                context.lineTo(px, py);
-            }
-        }
-        context.closePath();
-
-        // 填充（深海蓝）
-        context.fillStyle = `rgba(15, 52, 96, ${0.2 + 0.1 * Math.sin(pulse + 1)})`;
-        context.fill();
-
-        // 边框（水晶紫，反光）
-        context.strokeStyle = `rgba(123, 45, 142, ${0.6 + 0.2 * Math.sin(pulse * 1.5)})`;
         context.lineWidth = 1.5;
+        context.stroke();
+
+        // 内部细节（模拟水晶纹理）
+        context.beginPath();
+        for (let i = 0; i < vertices.length; i++) {
+            const midX = (vertices[i].x + vertices[(i + 1) % vertices.length].x) / 2;
+            const midY = (vertices[i].y + vertices[(i + 1) % vertices.length].y) / 2;
+            context.moveTo(x, y);
+            context.lineTo(midX, midY);
+        }
+        context.strokeStyle = `rgba(155, 89, 182, ${0.3 + 0.2 * Math.sin(pulse * 1.5)})`;
+        context.lineWidth = 0.5;
         context.stroke();
     }
 
