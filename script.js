@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             populateProfile(data.profile);
             populateWorks(data.works);
+            populateNews(data.news);  // 从 data.json 加载新闻
             populateContact(data.contact);
             populateFooter(data.footer);
         })
@@ -38,9 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.section').forEach(section => {
         observer.observe(section);
     });
-
-    // 加载新闻
-    loadNews();
 });
 
 // 填充个人信息
@@ -94,7 +92,7 @@ function populateProfile(profile) {
     if (profilePrinciples) profilePrinciples.textContent = profile.principles;
 }
 
-// 填充作品展示
+// 填充作品展示（支持嵌入播放）
 function populateWorks(works) {
     const worksContainer = document.getElementById('worksGrid');
     if (!worksContainer) return;
@@ -105,11 +103,34 @@ function populateWorks(works) {
         const workCard = document.createElement('div');
         workCard.className = `work-card ${work.size === 'large' ? 'work-card-large' : ''}`;
 
+        let mediaContent = '';
+        if (work.bvid) {
+            // 嵌入 B 站播放器
+            mediaContent = `
+                <div class="work-embed">
+                    <iframe src="//player.bilibili.com/player.html?bvid=${work.bvid}&page=1"
+                            scrolling="no"
+                            border="0"
+                            frameborder="no"
+                            framespacing="0"
+                            allowfullscreen="true"
+                            width="100%"
+                            height="300">
+                    </iframe>
+                </div>
+            `;
+        } else {
+            //  fallback：渐变缩略图
+            mediaContent = `
+                <div class="work-thumb" style="background: ${work.gradient};">
+                    <div class="work-thumb-icon">${work.icon}</div>
+                    <div class="work-play">▶</div>
+                </div>
+            `;
+        }
+
         workCard.innerHTML = `
-            <div class="work-thumb" style="background: ${work.gradient};">
-                <div class="work-thumb-icon">${work.icon}</div>
-                <div class="work-play">▶</div>
-            </div>
+            ${mediaContent}
             <div class="work-info">
                 <span class="work-tag">${work.tag}</span>
                 <h3>${work.title}</h3>
@@ -118,6 +139,36 @@ function populateWorks(works) {
         `;
 
         worksContainer.appendChild(workCard);
+    });
+}
+
+// 填充新闻动态（从 data.json 加载）
+function populateNews(news) {
+    const newsGrid = document.getElementById('newsGrid');
+    if (!newsGrid) return;
+
+    newsGrid.innerHTML = '';
+
+    if (!news || news.length === 0) {
+        newsGrid.innerHTML = '<p style="text-align: center; color: #666;">暂无动态</p>';
+        return;
+    }
+
+    news.forEach(item => {
+        const newsCard = document.createElement('div');
+        newsCard.className = 'news-card';
+
+        const pubDate = new Date(item.date).toLocaleDateString('zh-CN');
+
+        newsCard.innerHTML = `
+            <div class="news-date">${pubDate}</div>
+            <h3 class="news-title">
+                <a href="${item.url || '#'}" target="_blank" rel="noopener">${item.title}</a>
+            </h3>
+            <p class="news-excerpt">${item.excerpt}</p>
+        `;
+
+        newsGrid.appendChild(newsCard);
     });
 }
 
@@ -143,7 +194,7 @@ function populateContact(contact) {
 
     // QQ
     const qqCard = document.createElement('a');
-    qqCard.href = '#';
+    qqCard.href = `#`;
     qqCard.className = 'contact-card';
     qqCard.innerHTML = `
         <div class="contact-icon">💬</div>
@@ -158,6 +209,7 @@ function populateContact(contact) {
     const bilibiliCard = document.createElement('a');
     bilibiliCard.href = contact.bilibili.url;
     bilibiliCard.target = '_blank';
+    bilibiliCard.rel = 'noopener';
     bilibiliCard.className = 'contact-card';
     bilibiliCard.innerHTML = `
         <div class="contact-icon">📺</div>
@@ -172,6 +224,7 @@ function populateContact(contact) {
     const xiaohongshuCard = document.createElement('a');
     xiaohongshuCard.href = contact.xiaohongshu.url;
     xiaohongshuCard.target = '_blank';
+    xiaohongshuCard.rel = 'noopener';
     xiaohongshuCard.className = 'contact-card';
     xiaohongshuCard.innerHTML = `
         <div class="contact-icon">📕</div>
@@ -186,6 +239,7 @@ function populateContact(contact) {
     const kuaishouCard = document.createElement('a');
     kuaishouCard.href = contact.kuaishou.url;
     kuaishouCard.target = '_blank';
+    kuaishouCard.rel = 'noopener';
     kuaishouCard.className = 'contact-card';
     kuaishouCard.innerHTML = `
         <div class="contact-icon">⚡</div>
@@ -201,54 +255,4 @@ function populateContact(contact) {
 function populateFooter(footerText) {
     const footer = document.getElementById('footerText');
     if (footer) footer.textContent = footerText;
-}
-
-// 加载新闻动态（RSS）
-function loadNews() {
-    const newsGrid = document.getElementById('newsGrid');
-    if (!newsGrid) return;
-
-    // 多个RSS源
-    const RSS_FEEDS = [
-        'https://www.3dmgame.com/news/rss.xml',
-        'https://36kr.com/feed',
-        'https://www.ithome.com/rss/'
-    ];
-
-    // 使用 RSS2JSON 服务（免费，无需API key）
-    const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
-
-    // 清空加载提示
-    newsGrid.innerHTML = '';
-
-    // 只加载第一个可用的RSS源
-    fetch(RSS2JSON_API + encodeURIComponent(RSS_FEEDS[0]))
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'ok' && data.items) {
-                const newsItems = data.items.slice(0, 6); // 只取前6条
-
-                newsItems.forEach(item => {
-                    const newsCard = document.createElement('div');
-                    newsCard.className = 'news-card';
-
-                    const pubDate = new Date(item.pubDate).toLocaleDateString('zh-CN');
-
-                    newsCard.innerHTML = `
-                        <div class="news-date">${pubDate}</div>
-                        <h3 class="news-title">${item.title}</h3>
-                        <p class="news-excerpt">${item.description.substring(0, 100)}...</p>
-                        <a href="${item.link}" target="_blank" class="news-link">阅读全文 →</a>
-                    `;
-
-                    newsGrid.appendChild(newsCard);
-                });
-            } else {
-                throw new Error('RSS解析失败');
-            }
-        })
-        .catch(error => {
-            console.error('加载新闻失败:', error);
-            newsGrid.innerHTML = '<p class="news-error">暂时无法加载动态，请稍后再试。</p>';
-        });
 }

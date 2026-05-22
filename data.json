@@ -25,6 +25,7 @@
       "title": "《零》— AI科幻短片",
       "tag": "AI短片",
       "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
+      "bvid": "BV17j536wEvy",
       "size": "large",
       "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
       "icon": "《零》"
@@ -34,6 +35,7 @@
       "title": "Elden Ring 剪辑合集",
       "tag": "游戏剪辑",
       "description": "黄金树之影DLC精彩瞬间",
+      "bvid": "BV1NmRjBoEBS",
       "size": "normal",
       "gradient": "linear-gradient(135deg, #1a0a00 0%, #2a1500 50%, #0a0a00 100%)",
       "icon": "魂"
@@ -43,6 +45,7 @@
       "title": "God of War Ragnarök",
       "tag": "游戏剪辑",
       "description": "北欧神话的史诗冒险",
+      "bvid": "BV1JJ9yBdECV",
       "size": "normal",
       "gradient": "linear-gradient(135deg, #0a1a0a 0%, #001a0a 50%, #0a0a1a 100%)",
       "icon": "战"
@@ -52,6 +55,7 @@
       "title": "Marvel's Spider-Man",
       "tag": "游戏剪辑",
       "description": "纽约城的超级英雄",
+      "bvid": "BV1xLovBEEqn",
       "size": "normal",
       "gradient": "linear-gradient(135deg, #1a0000 0%, #0a0a1a 50%, #00001a 100%)",
       "icon": "蛛"
@@ -61,6 +65,7 @@
       "title": "Resident Evil",
       "tag": "游戏剪辑",
       "description": "恐怖生存的极限挑战",
+      "bvid": "BV199PazgExC",
       "size": "normal",
       "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)",
       "icon": "生"
@@ -70,9 +75,48 @@
       "title": "忍者龙剑传 Boss战合集",
       "tag": "游戏剪辑",
       "description": "经典动作游戏的Boss战解说，技术与策略并重。",
+      "bvid": "BV1f8dKBHEnC",
       "size": "large",
       "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a1a3e 50%, #0a1a2e 100%)",
       "icon": "忍者"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-05-23",
+      "title": "《零》AI科幻短片第一集发布",
+      "excerpt": "个人原创硬核科幻作品，探索人工智能与人类意识的边界。",
+      "url": "https://www.bilibili.com/video/BV17j536wEvy"
+    },
+    {
+      "date": "2026-05-20",
+      "title": "Elden Ring 黄金树之影 DLC 剪辑合集完成",
+      "excerpt": "包含全部Boss战+隐藏要素，共计15分钟精华剪辑。",
+      "url": "https://www.bilibili.com/video/BV1NmRjBoEBS"
+    },
+    {
+      "date": "2026-05-15",
+      "title": "God of War Ragnarök 全流程剪辑发布",
+      "excerpt": "北欧神话的史诗冒险，混剪版已发布到Bilibili。",
+      "url": "https://www.bilibili.com/video/BV1JJ9yBdECV"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "探索 ComfyUI + LoRA 工作流",
+      "excerpt": "研究如何将 AI 生成素材融入游戏视频剪辑，提升视觉效果。",
+      "url": "#"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "忍者龙剑传 Boss战解说系列更新",
+      "excerpt": "经典动作游戏的高难度Boss战，技术与策略并重的解说。",
+      "url": "https://www.bilibili.com/video/BV1f8dKBHEnC"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "网站改版完成 - 支持动态加载",
+      "excerpt": "个人网站重构，采用 data.json 动态加载内容，更新更方便。",
+      "url": "#"
     }
   ],
   "contact": {
