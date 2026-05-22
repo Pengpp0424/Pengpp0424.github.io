@@ -1,0 +1,98 @@
+{
+  "profile": {
+    "name": "蓬碰鹏",
+    "nickname": "老鹏",
+    "title": "老鹏 · 视频创作者 / AI探索者",
+    "tagline": "专注于游戏视频创作 · 剪辑 · AI视频制作",
+    "bio": [
+      "游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。",
+      "游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。",
+      "目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作原创 AI 科幻短片《零》系列。"
+    ],
+    "stats": [
+      { "number": "100+", "label": "视频作品" },
+      { "number": "50w+", "label": "总播放量" },
+      { "number": "3年+", "label": "创作经验" }
+    ],
+    "games": "Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传",
+    "tools": "FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计",
+    "ai_skills": "图生视频 · LoRA训练 · TTS配音 · AI编剧",
+    "principles": "实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印"
+  },
+  "works": [
+    {
+      "id": 1,
+      "title": "《零》— AI科幻短片",
+      "tag": "AI短片",
+      "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
+      "size": "large",
+      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
+      "icon": "《零》"
+    },
+    {
+      "id": 2,
+      "title": "Elden Ring 剪辑合集",
+      "tag": "游戏剪辑",
+      "description": "黄金树之影DLC精彩瞬间",
+      "size": "normal",
+      "gradient": "linear-gradient(135deg, #1a0a00 0%, #2a1500 50%, #0a0a00 100%)",
+      "icon": "魂"
+    },
+    {
+      "id": 3,
+      "title": "God of War Ragnarök",
+      "tag": "游戏剪辑",
+      "description": "北欧神话的史诗冒险",
+      "size": "normal",
+      "gradient": "linear-gradient(135deg, #0a1a0a 0%, #001a0a 50%, #0a0a1a 100%)",
+      "icon": "战"
+    },
+    {
+      "id": 4,
+      "title": "Marvel's Spider-Man",
+      "tag": "游戏剪辑",
+      "description": "纽约城的超级英雄",
+      "size": "normal",
+      "gradient": "linear-gradient(135deg, #1a0000 0%, #0a0a1a 50%, #00001a 100%)",
+      "icon": "蛛"
+    },
+    {
+      "id": 5,
+      "title": "Resident Evil",
+      "tag": "游戏剪辑",
+      "description": "恐怖生存的极限挑战",
+      "size": "normal",
+      "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)",
+      "icon": "生"
+    },
+    {
+      "id": 6,
+      "title": "忍者龙剑传 Boss战合集",
+      "tag": "游戏剪辑",
+      "description": "经典动作游戏的Boss战解说，技术与策略并重。",
+      "size": "large",
+      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a1a3e 50%, #0a1a2e 100%)",
+      "icon": "忍者"
+    }
+  ],
+  "contact": {
+    "email": "105945357@qq.com",
+    "qq": "105945357",
+    "bilibili": {
+      "name": "哔哩哔哩",
+      "username": "子弹傀儡",
+      "url": "https://space.bilibili.com/690705993"
+    },
+    "xiaohongshu": {
+      "name": "小红书",
+      "stats": "232赞藏",
+      "url": "https://xhslink.com/m/4wqivNR4SSB"
+    },
+    "kuaishou": {
+      "name": "快手",
+      "username": "子弹傀儡",
+      "url": "https://v.kuaishou.com/JaY1qv62"
+    }
+  },
+  "footer": "© 2025 蓬碰鹏（老鹏）· 用心创作每一帧"
+}

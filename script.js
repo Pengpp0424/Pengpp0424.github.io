@@ -1,208 +1,254 @@
-// ========== Navbar Scroll Effect ==========
-const navbar = document.getElementById('navbar');
+// 等待 DOM 加载完成
+document.addEventListener('DOMContentLoaded', function() {
+    // 加载 JSON 数据
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            populateProfile(data.profile);
+            populateWorks(data.works);
+            populateContact(data.contact);
+            populateFooter(data.footer);
+        })
+        .catch(error => console.error('加载数据失败:', error));
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// ========== Smooth Scroll for Nav Links ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
-});
 
-// ========== Scroll Reveal Animation ==========
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+    // 滚动动画
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-document.querySelectorAll('.section-header, .about-grid > *, .work-card, .contact-card, .news-card').forEach(el => {
-    el.classList.add('reveal');
-    observer.observe(el);
-});
-
-// ========== Stagger Delay ==========
-document.querySelectorAll('.work-card').forEach((el, i) => el.style.transitionDelay = `${i * 0.08}s`);
-document.querySelectorAll('.contact-card').forEach((el, i) => el.style.transitionDelay = `${i * 0.1}s`);
-document.querySelectorAll('.news-card').forEach((el, i) => el.style.transitionDelay = `${i * 0.08}s`);
-
-// ========== News Feed ==========
-async function loadNews() {
-    const grid = document.getElementById('newsGrid');
-
-    // RSS2JSON API - free tier, no CORS issues
-    // Multiple RSS feeds for gaming & tech news
-    const feeds = [
-        {
-            url: 'https://www.3dmgame.com/rss/news.xml',
-            category: 'game',
-            categoryName: '游戏'
-        },
-        {
-            url: 'https://rsshub.app/36kr/newsflashes',
-            category: 'tech',
-            categoryName: '科技'
-        },
-        {
-            url: 'https://rsshub.app/ithome/ranking/daily',
-            category: 'tech',
-            categoryName: '科技'
-        }
-    ];
-
-    // Fallback: curated news items (updated periodically)
-    const fallbackNews = [
-        {
-            title: 'GTA 6 正式预告引发全球热议',
-            desc: 'Rockstar Games 发布了 GTA 6 的最新预告片，展示了前所未有的开放世界细节和物理引擎升级。',
-            category: 'game', categoryName: '游戏',
-            source: 'IGN', date: '2025-12'
-        },
-        {
-            title: 'NVIDIA 发布 RTX 5090 消费级旗舰显卡',
-            desc: '搭载 Blackwell 架构，性能相比上代提升显著，AI 图像生成速度翻倍。',
-            category: 'tech', categoryName: '硬件',
-            source: 'AnandTech', date: '2025-01'
-        },
-        {
-            title: 'Wan2.1 图生视频模型开源：AI视频制作新突破',
-            desc: '阿里云开源 Wan2.1 视频生成模型，支持文本/图片到视频生成，质量接近Sora水平。',
-            category: 'ai', categoryName: 'AI',
-            source: 'Hugging Face', date: '2025-02'
-        },
-        {
-            title: 'Elden Ring 黄金树之影 DLC 获年度最佳扩展',
-            desc: 'FromSoftware 的扩展包在全球各大游戏媒体评选中横扫年度最佳 DLC 奖项。',
-            category: 'game', categoryName: '游戏',
-            source: 'GameSpot', date: '2025-12'
-        },
-        {
-            title: 'ComfyUI 新版支持实时视频生成工作流',
-            desc: '开源 AI 图像工具 ComfyUI 更新，新增视频生成节点和 LoRA 训练一站式流程。',
-            category: 'ai', categoryName: 'AI',
-            source: 'GitHub', date: '2025-03'
-        },
-        {
-            title: 'PS5 Pro 正式发售：4K 60fps 成为标配',
-            desc: '索尼推出 PS5 Pro 主机，搭载升级 GPU 和光线追踪加速器，支持 PSSR 超分辨率技术。',
-            category: 'tech', categoryName: '硬件',
-            source: 'The Verge', date: '2024-11'
-        }
-    ];
-
-    try {
-        // Try fetching real news via RSS2JSON
-        let allNews = [];
-        
-        // Use a free CORS proxy for RSS feeds
-        const rssApiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=';
-        
-        const feedResults = await Promise.allSettled(
-            feeds.map(async (feed) => {
-                try {
-                    const resp = await fetch(rssApiUrl + encodeURIComponent(feed.url), {
-                        signal: AbortSignal.timeout(8000)
-                    });
-                    if (!resp.ok) throw new Error('Fetch failed');
-                    const data = await resp.json();
-                    if (data.status !== 'ok' || !data.items) throw new Error('No items');
-                    return data.items.slice(0, 3).map(item => ({
-                        title: item.title,
-                        desc: stripHtml(item.description || item.content || '').slice(0, 120) + '...',
-                        category: feed.category,
-                        categoryName: feed.categoryName,
-                        source: feed.categoryName === '游戏' ? '3DM' : '36氪',
-                        date: formatDate(item.pubDate),
-                        link: item.link
-                    }));
-                } catch {
-                    return [];
-                }
-            })
-        );
-
-        feedResults.forEach(r => {
-            if (r.status === 'fulfilled' && r.value.length) {
-                allNews.push(...r.value);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
         });
+    }, observerOptions);
 
-        // If real feeds failed, use fallback
-        if (allNews.length === 0) {
-            allNews = fallbackNews;
-        } else {
-            // Mix real news with some fallback
-            allNews = [...allNews.slice(0, 4), ...fallbackNews.slice(0, 2)].slice(0, 6);
-        }
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+    });
 
-        renderNews(allNews);
-    } catch {
-        renderNews(fallbackNews);
+    // 加载新闻
+    loadNews();
+});
+
+// 填充个人信息
+function populateProfile(profile) {
+    // Hero 区描述
+    const heroDesc = document.getElementById('heroDesc');
+    if (heroDesc) heroDesc.textContent = profile.tagline;
+
+    // 关于我 - 简介
+    const aboutLead = document.getElementById('aboutLead');
+    if (aboutLead) aboutLead.textContent = profile.bio[0];
+
+    const aboutBio1 = document.getElementById('aboutBio1');
+    if (aboutBio1) aboutBio1.textContent = profile.bio[1];
+
+    const aboutBio2 = document.getElementById('aboutBio2');
+    if (aboutBio2) aboutBio2.textContent = profile.bio[2];
+
+    // 统计数据
+    const statsContainer = document.getElementById('aboutStats');
+    if (statsContainer) {
+        statsContainer.innerHTML = '';
+        profile.stats.forEach(stat => {
+            const statDiv = document.createElement('div');
+            statDiv.className = 'stat';
+            statDiv.innerHTML = `
+                <span class="stat-number">${stat.number}</span>
+                <span class="stat-label">${stat.label}</span>
+            `;
+            statsContainer.appendChild(statDiv);
+        });
     }
+
+    // 个人卡片
+    const profileName = document.getElementById('profileName');
+    if (profileName) profileName.textContent = profile.name;
+
+    const profileTitle = document.getElementById('profileTitle');
+    if (profileTitle) profileTitle.textContent = profile.title;
+
+    const profileGames = document.getElementById('profileGames');
+    if (profileGames) profileGames.textContent = profile.games;
+
+    const profileTools = document.getElementById('profileTools');
+    if (profileTools) profileTools.textContent = profile.tools;
+
+    const profileAISkills = document.getElementById('profileAISkills');
+    if (profileAISkills) profileAISkills.textContent = profile.ai_skills;
+
+    const profilePrinciples = document.getElementById('profilePrinciples');
+    if (profilePrinciples) profilePrinciples.textContent = profile.principles;
 }
 
-function renderNews(items) {
-    const grid = document.getElementById('newsGrid');
-    const catClass = { game: 'cat-game', tech: 'cat-tech', ai: 'cat-ai' };
+// 填充作品展示
+function populateWorks(works) {
+    const worksContainer = document.getElementById('worksGrid');
+    if (!worksContainer) return;
 
-    grid.innerHTML = items.map(item => `
-        <a class="news-card" href="${item.link || '#'}" target="_blank" rel="noopener">
-            <span class="news-category ${catClass[item.category] || 'cat-tech'}">${item.categoryName}</span>
-            <h3>${escapeHtml(item.title)}</h3>
-            <p>${escapeHtml(item.desc)}</p>
-            <div class="news-meta">
-                <span class="news-source">${escapeHtml(item.source)}</span>
-                <span>${escapeHtml(item.date)}</span>
+    worksContainer.innerHTML = '';
+
+    works.forEach(work => {
+        const workCard = document.createElement('div');
+        workCard.className = `work-card ${work.size === 'large' ? 'work-card-large' : ''}`;
+
+        workCard.innerHTML = `
+            <div class="work-thumb" style="background: ${work.gradient};">
+                <div class="work-thumb-icon">${work.icon}</div>
+                <div class="work-play">▶</div>
             </div>
-        </a>
-    `).join('');
+            <div class="work-info">
+                <span class="work-tag">${work.tag}</span>
+                <h3>${work.title}</h3>
+                <p>${work.description}</p>
+            </div>
+        `;
 
-    // Re-observe new elements for scroll reveal
-    grid.querySelectorAll('.news-card').forEach((el, i) => {
-        el.classList.add('reveal');
-        el.style.transitionDelay = `${i * 0.08}s`;
-        observer.observe(el);
+        worksContainer.appendChild(workCard);
     });
 }
 
-function stripHtml(html) {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || '';
+// 填充联系方式
+function populateContact(contact) {
+    const contactContainer = document.getElementById('contactLinks');
+    if (!contactContainer) return;
+
+    contactContainer.innerHTML = '';
+
+    // 邮箱
+    const emailCard = document.createElement('a');
+    emailCard.href = `mailto:${contact.email}`;
+    emailCard.className = 'contact-card';
+    emailCard.innerHTML = `
+        <div class="contact-icon">📧</div>
+        <div>
+            <h3>邮箱</h3>
+            <p>${contact.email}</p>
+        </div>
+    `;
+    contactContainer.appendChild(emailCard);
+
+    // QQ
+    const qqCard = document.createElement('a');
+    qqCard.href = '#';
+    qqCard.className = 'contact-card';
+    qqCard.innerHTML = `
+        <div class="contact-icon">💬</div>
+        <div>
+            <h3>QQ</h3>
+            <p>${contact.qq}</p>
+        </div>
+    `;
+    contactContainer.appendChild(qqCard);
+
+    // 哔哩哔哩
+    const bilibiliCard = document.createElement('a');
+    bilibiliCard.href = contact.bilibili.url;
+    bilibiliCard.target = '_blank';
+    bilibiliCard.className = 'contact-card';
+    bilibiliCard.innerHTML = `
+        <div class="contact-icon">📺</div>
+        <div>
+            <h3>${contact.bilibili.name}</h3>
+            <p>${contact.bilibili.username}</p>
+        </div>
+    `;
+    contactContainer.appendChild(bilibiliCard);
+
+    // 小红书
+    const xiaohongshuCard = document.createElement('a');
+    xiaohongshuCard.href = contact.xiaohongshu.url;
+    xiaohongshuCard.target = '_blank';
+    xiaohongshuCard.className = 'contact-card';
+    xiaohongshuCard.innerHTML = `
+        <div class="contact-icon">📕</div>
+        <div>
+            <h3>${contact.xiaohongshu.name}</h3>
+            <p>${contact.xiaohongshu.stats}</p>
+        </div>
+    `;
+    contactContainer.appendChild(xiaohongshuCard);
+
+    // 快手
+    const kuaishouCard = document.createElement('a');
+    kuaishouCard.href = contact.kuaishou.url;
+    kuaishouCard.target = '_blank';
+    kuaishouCard.className = 'contact-card';
+    kuaishouCard.innerHTML = `
+        <div class="contact-icon">⚡</div>
+        <div>
+            <h3>${contact.kuaishou.name}</h3>
+            <p>${contact.kuaishou.username}</p>
+        </div>
+    `;
+    contactContainer.appendChild(kuaishouCard);
 }
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
+// 填充页脚
+function populateFooter(footerText) {
+    const footer = document.getElementById('footerText');
+    if (footer) footer.textContent = footerText;
 }
 
-function formatDate(dateStr) {
-    try {
-        const d = new Date(dateStr);
-        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-    } catch {
-        return dateStr;
-    }
+// 加载新闻动态（RSS）
+function loadNews() {
+    const newsGrid = document.getElementById('newsGrid');
+    if (!newsGrid) return;
+
+    // 多个RSS源
+    const RSS_FEEDS = [
+        'https://www.3dmgame.com/news/rss.xml',
+        'https://36kr.com/feed',
+        'https://www.ithome.com/rss/'
+    ];
+
+    // 使用 RSS2JSON 服务（免费，无需API key）
+    const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+    // 清空加载提示
+    newsGrid.innerHTML = '';
+
+    // 只加载第一个可用的RSS源
+    fetch(RSS2JSON_API + encodeURIComponent(RSS_FEEDS[0]))
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'ok' && data.items) {
+                const newsItems = data.items.slice(0, 6); // 只取前6条
+
+                newsItems.forEach(item => {
+                    const newsCard = document.createElement('div');
+                    newsCard.className = 'news-card';
+
+                    const pubDate = new Date(item.pubDate).toLocaleDateString('zh-CN');
+
+                    newsCard.innerHTML = `
+                        <div class="news-date">${pubDate}</div>
+                        <h3 class="news-title">${item.title}</h3>
+                        <p class="news-excerpt">${item.description.substring(0, 100)}...</p>
+                        <a href="${item.link}" target="_blank" class="news-link">阅读全文 →</a>
+                    `;
+
+                    newsGrid.appendChild(newsCard);
+                });
+            } else {
+                throw new Error('RSS解析失败');
+            }
+        })
+        .catch(error => {
+            console.error('加载新闻失败:', error);
+            newsGrid.innerHTML = '<p class="news-error">暂时无法加载动态，请稍后再试。</p>';
+        });
 }
-
-// Load news on page load
-loadNews();
-
-// ========== Console Easter Egg ==========
-console.log('%c欢迎来到老鹏的个人网站！', 'font-size: 20px; color: #8b5cf6; font-weight: bold;');
-console.log('%c联系邮箱: 105945357@qq.com', 'font-size: 14px; color: #888;');

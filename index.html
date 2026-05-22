@@ -30,7 +30,7 @@
                 <span class="hero-line">用镜头</span>
                 <span class="hero-line gradient-text">讲述故事</span>
             </h1>
-            <p class="hero-desc">专注于游戏视频创作 · 剪辑 · AI视频制作</p>
+            <p class="hero-desc" id="heroDesc">专注于游戏视频创作 · 剪辑 · AI视频制作</p>
             <div class="hero-actions">
                 <a href="#works" class="btn btn-primary">浏览作品</a>
                 <a href="#contact" class="btn btn-secondary">联系我</a>
@@ -50,45 +50,34 @@
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <p class="about-lead">游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。</p>
-                    <p>游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。</p>
-                    <p>目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作原创 AI 科幻短片《零》系列。</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">100+</span>
-                            <span class="stat-label">视频作品</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">50w+</span>
-                            <span class="stat-label">总播放量</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">3年+</span>
-                            <span class="stat-label">创作经验</span>
-                        </div>
+                    <p class="about-lead" id="aboutLead"></p>
+                    <p id="aboutBio1"></p>
+                    <p id="aboutBio2"></p>
+                    <div class="about-stats" id="aboutStats">
+                        <!-- 统计数据由JS动态加载 -->
                     </div>
                 </div>
                 <div class="about-profile">
                     <div class="profile-card">
                         <div class="profile-avatar">👤</div>
-                        <h3>蓬碰鹏</h3>
-                        <p class="profile-title">老鹏 · 视频创作者 / AI探索者</p>
+                        <h3 id="profileName">蓬碰鹏</h3>
+                        <p class="profile-title" id="profileTitle">老鹏 · 视频创作者 / AI探索者</p>
                         <div class="profile-details">
                             <div class="profile-item">
                                 <span class="profile-label">🎮 主力游戏</span>
-                                <span>Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传</span>
+                                <span id="profileGames"></span>
                             </div>
                             <div class="profile-item">
                                 <span class="profile-label">🛠️ 常用工具</span>
-                                <span>FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计</span>
+                                <span id="profileTools"></span>
                             </div>
                             <div class="profile-item">
                                 <span class="profile-label">🤖 AI技能</span>
-                                <span>图生视频 · LoRA训练 · TTS配音 · AI编剧</span>
+                                <span id="profileAISkills"></span>
                             </div>
                             <div class="profile-item">
                                 <span class="profile-label">📋 剪辑原则</span>
-                                <span>实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印</span>
+                                <span id="profilePrinciples"></span>
                             </div>
                         </div>
                     </div>
@@ -104,73 +93,8 @@
                 <span class="section-tag">WORKS</span>
                 <h2 class="section-title">精选作品</h2>
             </div>
-            <div class="works-grid">
-                <div class="work-card work-card-large">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%);">
-                        <div class="work-thumb-icon">《零》</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">AI短片</span>
-                        <h3>《零》— AI科幻短片</h3>
-                        <p>个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #1a0a00 0%, #2a1500 50%, #0a0a00 100%);">
-                        <div class="work-thumb-icon">魂</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">游戏剪辑</span>
-                        <h3>Elden Ring 剪辑合集</h3>
-                        <p>黄金树之影DLC精彩瞬间</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #0a1a0a 0%, #001a0a 50%, #0a0a1a 100%);">
-                        <div class="work-thumb-icon">战</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">游戏剪辑</span>
-                        <h3>God of War Ragnarök</h3>
-                        <p>北欧神话的史诗冒险</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #1a0000 0%, #0a0a1a 50%, #00001a 100%);">
-                        <div class="work-thumb-icon">蛛</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">游戏剪辑</span>
-                        <h3>Marvel's Spider-Man</h3>
-                        <p>纽约城的超级英雄</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);">
-                        <div class="work-thumb-icon">生</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">游戏剪辑</span>
-                        <h3>Resident Evil</h3>
-                        <p>恐怖生存的极限挑战</p>
-                    </div>
-                </div>
-                <div class="work-card work-card-large">
-                    <div class="work-thumb" style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1a3e 50%, #0a1a2e 100%);">
-                        <div class="work-thumb-icon">忍者</div>
-                        <div class="work-play">▶</div>
-                    </div>
-                    <div class="work-info">
-                        <span class="work-tag">游戏剪辑</span>
-                        <h3>忍者龙剑传 Boss战合集</h3>
-                        <p>经典动作游戏的Boss战解说，技术与策略并重。</p>
-                    </div>
-                </div>
+            <div class="works-grid" id="worksGrid">
+                <!-- 作品由JS动态加载 -->
             </div>
         </div>
     </section>
@@ -201,42 +125,8 @@
             </div>
             <div class="contact-content">
                 <p class="contact-desc">有合作意向或想交流视频创作？欢迎随时联系。</p>
-                <div class="contact-links">
-                    <a href="mailto:105945357@qq.com" class="contact-card">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h3>邮箱</h3>
-                            <p>105945357@qq.com</p>
-                        </div>
-                    </a>
-                    <a href="#" class="contact-card">
-                        <div class="contact-icon">💬</div>
-                        <div>
-                            <h3>QQ</h3>
-                            <p>105945357</p>
-                        </div>
-                    </a>
-                    <a href="https://space.bilibili.com/690705993" target="_blank" class="contact-card">
-                        <div class="contact-icon">📺</div>
-                        <div>
-                            <h3>哔哩哔哩</h3>
-                            <p>子弹傀儡</p>
-                        </div>
-                    </a>
-                    <a href="https://xhslink.com/m/4wqivNR4SSB" target="_blank" class="contact-card">
-                        <div class="contact-icon">📕</div>
-                        <div>
-                            <h3>小红书</h3>
-                            <p>232赞藏</p>
-                        </div>
-                    </a>
-                    <a href="https://v.kuaishou.com/JaY1qv62" target="_blank" class="contact-card">
-                        <div class="contact-icon">⚡</div>
-                        <div>
-                            <h3>快手</h3>
-                            <p>子弹傀儡</p>
-                        </div>
-                    </a>
+                <div class="contact-links" id="contactLinks">
+                    <!-- 联系方式由JS动态加载 -->
                 </div>
             </div>
         </div>
@@ -245,7 +135,7 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 蓬碰鹏（老鹏）· 用心创作每一帧</p>
+            <p id="footerText">© 2025 蓬碰鹏（老鹏）· 用心创作每一帧</p>
         </div>
     </footer>
 
