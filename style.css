@@ -807,3 +807,28 @@ body {
     right: 5%;
     top: 10%;
 }
+
+/* ========== 游戏科技动态 - 视频背景 ========== */
+.news-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;  /* 在文字下方 */
+    opacity: 0.3;  /* 半透明，不抢文字风头 */
+    pointer-events: none;  /* 不拦截鼠标 */
+}
+
+.news-video-bg iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#news {
+    position: relative;  /* 为绝对定位的视频提供参照 */
+    overflow: hidden;  /* 防止视频溢出 */
+}
+
+#news .container {
+    position: relative;
+    z-index: 1;  /* 在视频上方 */
+}
