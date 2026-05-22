@@ -110,23 +110,28 @@
 
     <!-- 游戏科技动态 -->
     <section class="section" id="news">
-        <!-- B站视频背景（信息底层） -->
-        <div class="news-video-bg">
-            <iframe id="newsVideo" src="//player.bilibili.com/player.html?bvid=BV1N6Gh68EJC&page=1&muted=1" 
-                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
-            </iframe>
-        </div>
-        
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">NEWS</span>
-                <h2 class="section-title">游戏科技动态</h2>
-            </div>
-            <div class="news-grid" id="newsGrid">
-                <!-- 新闻由JS动态加载 -->
-                <div class="news-loading">
-                    <div class="loading-spinner"></div>
-                    <p>正在加载最新动态...</p>
+            <div class="news-layout">
+                <!-- 左侧：B站视频 -->
+                <div class="news-video-left">
+                    <iframe id="newsVideo" src="//player.bilibili.com/player.html?bvid=BV1N6Gh68EJC&page=1" 
+                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+                    </iframe>
+                </div>
+
+                <!-- 右侧：新闻内容 -->
+                <div class="news-content-right">
+                    <div class="section-header">
+                        <span class="section-tag">NEWS</span>
+                        <h2 class="section-title">游戏科技动态</h2>
+                    </div>
+                    <div class="news-grid" id="newsGrid">
+                        <!-- 新闻由JS动态加载 -->
+                        <div class="news-loading">
+                            <div class="loading-spinner"></div>
+                            <p>正在加载最新动态...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
