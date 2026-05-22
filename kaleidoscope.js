@@ -84,17 +84,23 @@
         rotation += CONFIG.rotationSpeed;
         pulse += CONFIG.pulseSpeed;
 
-        // 保存上下文
-        ctx.save();
+        // 在整个区域绘制多个万花筒簇（覆盖整个长方形）
+        const positions = [
+            { x: width * 0.15, y: height * 0.2 },
+            { x: width * 0.5, y: height * 0.15 },
+            { x: width * 0.85, y: height * 0.25 },
+            { x: width * 0.3, y: height * 0.5 },
+            { x: width * 0.7, y: height * 0.55 },
+            { x: width * 0.2, y: height * 0.75 },
+            { x: width * 0.8, y: height * 0.7 },
+        ];
 
-        // 移动到中心点
-        ctx.translate(centerX, centerY);
-
-        // 绘制万花筒图案
-        drawKaleidoscope();
-
-        // 恢复上下文
-        ctx.restore();
+        positions.forEach(pos => {
+            ctx.save();
+            ctx.translate(pos.x, pos.y);
+            drawKaleidoscope();
+            ctx.restore();
+        });
 
         // 下一帧
         animationId = requestAnimationFrame(animate);
