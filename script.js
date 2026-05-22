@@ -106,11 +106,11 @@ function populateWorks(works) {
         let mediaContent = '';
         if (work.bvid) {
             // 嵌入 B 站播放器
-            // 只有《零》(id=1) 默认开启声音，其他作品默认静音
-            const muteParam = (work.id === 1) ? '' : '&mute=1';
+            // 只有《零》(id=1) 自动播放（有声音），其他作品不自动播放
+            const autoplayParam = (work.id === 1) ? '&autoplay=1' : '&autoplay=0';
             mediaContent = `
                 <div class="work-embed">
-                    <iframe src="//player.bilibili.com/player.html?bvid=${work.bvid}&page=1${muteParam}"
+                    <iframe src="//player.bilibili.com/player.html?bvid=${work.bvid}&page=1${autoplayParam}"
                             scrolling="no"
                             border="0"
                             frameborder="no"

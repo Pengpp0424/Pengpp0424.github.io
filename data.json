@@ -83,39 +83,39 @@
   ],
   "news": [
     {
-      "date": "2024-05-22",
-      "title": "《艾尔登法环：黄金树幽影》全球销量破500万",
-      "excerpt": "FromSoftware官方宣布，DLC发售首周销量突破500万套，成为魂系游戏最成功的DLC作品。",
-      "url": "https://www.3dmgame.com/news/202405/1234567.html"
+      "date": "2026-05-23",
+      "title": "《艾尔登法环》DLC销量突破800万套",
+      "excerpt": "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
+      "url": "https://www.3dmgame.com/news/202605/1300123.html"
     },
     {
-      "date": "2024-05-20",
-      "title": "《战神：诸神黄昏》PC版配置需求公布",
-      "excerpt": "索尼确认PC版将于6月15日登陆Steam，推荐配置需RTX 3070+32GB内存，支持超宽屏+DLSS 3。",
+      "date": "2026-05-21",
+      "title": "《战神：诸神黄昏》PC版6月15日发售，支持DLSS 4",
+      "excerpt": "索尼确认《God of War Ragnarök》PC版将于6月15日登陆Steam，支持超宽屏+DLSS 4+光追。",
       "url": "https://store.steampowered.com/app/2920300"
     },
     {
-      "date": "2024-05-18",
-      "title": "英伟达RTX 5090规格曝光：384位宽+32GB GDDR7显存",
-      "excerpt": "下一代旗舰显卡RTX 5090规格疑似泄露，配备32GB GDDR7显存，性能较4090提升60%。",
-      "url": "https://www.expreview.com/89234.html"
+      "date": "2026-05-19",
+      "title": "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
+      "excerpt": "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
+      "url": "https://www.expreview.com/90234.html"
     },
     {
-      "date": "2024-05-15",
-      "title": "《漫威蜘蛛侠2》PC版确认2024年Q3发布",
-      "excerpt": "Insomniac Games公布PC版配置需求，支持光追+DLSS 3.5，超宽屏适配完美。",
+      "date": "2026-05-17",
+      "title": "《漫威蜘蛛侠2》PC版配置需求公布，支持光追+DLSS 4",
+      "excerpt": "Insomniac Games公布PC版配置需求，推荐配置需RTX 4070+32GB内存，支持光追+DLSS 4。",
       "url": "https://www.ign.com.cn/spiderman2-pc"
     },
     {
-      "date": "2024-05-12",
-      "title": "AI视频生成工具Wan2.1发布：支持图生视频",
-      "excerpt": "国产AI视频工具Wan2.1正式发布，支持图片生视频(I2V)+首尾帧控制，14B模型质量接近Sora。",
+      "date": "2026-05-15",
+      "title": "AI视频生成工具Wan2.2发布：支持图生视频+首尾帧控制",
+      "excerpt": "国产AI视频工具Wan2.2正式发布，支持图片生视频(I2V)+首尾帧控制，14B模型质量接近Sora。",
       "url": "https://wan.video/"
     },
     {
-      "date": "2024-05-10",
-      "title": "《生化危机9》传闻2025年发售，将采用RE引擎最新版",
-      "excerpt": "卡普空在财报中暗示《Resident Evil 9》正在开发，预计2025年3月前发售。",
+      "date": "2026-05-12",
+      "title": "《生化危机9》官方确认开发中，2027年发售",
+      "excerpt": "卡普空在财报中确认《Resident Evil 9》正在开发，预计2027年3月前发售，将采用RE引擎最新版。",
       "url": "https://www.residentevil.com/"
     }
   ],
