@@ -786,3 +786,24 @@ body {
     border-color: rgba(99,102,241,0.6);
     box-shadow: 0 0 20px rgba(99,102,241,0.2);
 }
+
+/* ========== Hero Animations (赛博科幻动画) ========== */
+.hero-anim {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.hero-anim-left {
+    left: 5%;
+    bottom: 10%;
+}
+
+.hero-anim-right {
+    right: 5%;
+    top: 10%;
+}
