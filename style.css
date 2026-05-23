@@ -808,22 +808,24 @@ body {
 /* ========== Hero Animations (赛博科幻动画) ========== */
 .hero-anim {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    z-index: 5;
-    opacity: 0.6;
+    width: 150px;
+    height: 150px;
+    z-index: 3;
+    opacity: 0.7;
     pointer-events: none;
     object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
 }
 
 .hero-anim-left {
-    left: 5%;
-    bottom: 10%;
+    left: 3%;
+    bottom: 15%;
 }
 
 .hero-anim-right {
-    right: 5%;
-    top: 10%;
+    right: 3%;
+    top: 15%;
 }
 
 /* 作品外部链接缩略图 */

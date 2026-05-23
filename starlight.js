@@ -1,6 +1,6 @@
 /*
- * starlight.js - 全站板块依稀星光闪烁效果
- * 用法：自动在所有 .section / .hero / .section-dark 背景注入星光
+ * starlight.js - 全局背景星光闪烁效果
+ * 用法：创建一个fixed定位的canvas覆盖整个页面背景
  * 风格：极淡、稀疏、缓慢闪烁，不抢主体视觉
  */
 
@@ -8,152 +8,127 @@
     'use strict';
 
     const CONFIG = {
-        starsPerSection: 35,       // 每个板块星星数量（稀疏！）
-        minRadius: 0.3,            // 最小星光半径
-        maxRadius: 1.6,            // 最大星光半径
-        minAlpha: 0.03,            // 最低透明度（依稀）
-        maxAlpha: 0.18,            // 最高透明度（依稀）
-        twinkleSpeedMin: 0.003,     // 最慢闪烁速度
-        twinkleSpeedMax: 0.025,     // 最快闪烁速度
-        colorPalette: [              // 星光颜色（冷色系）
-            'rgba(180, 210, 255,',  // 淡蓝白
-            'rgba(200, 180, 255,',  // 淡紫白
-            'rgba(180, 255, 240,',  // 淡青
-            'rgba(255, 240, 220,',  // 暖白
-            'rgba(220, 200, 255,'   // 淡薰衣草
+        starCount: 200,           // 全局星星数量
+        minRadius: 0.5,           // 最小星光半径
+        maxRadius: 2.0,           // 最大星光半径
+        minAlpha: 0.05,           // 最低透明度（依稀）
+        maxAlpha: 0.4,            // 最高透明度（依稀）
+        twinkleSpeedMin: 0.002,   // 最慢闪烁速度
+        twinkleSpeedMax: 0.015,   // 最快闪烁速度
+        colors: [                  // 星光颜色（冷色系）
+            '#ffffff',             // 纯白
+            '#e0e7ff',             // 淡蓝白
+            '#c7d2fe',             // 淡紫白
+            '#a5b4fc',             // 淡蓝紫
+            '#818cf8',             // 蓝紫
+            '#c4b5fd',             // 淡紫
+            '#67e8f9',             // 淡青
+            '#a5f3fc'              // 青白
         ],
-        bgFillAlpha: 0.06,         // 每帧背景覆盖透明度（制造拖尾）
+        parallaxFactor: 0.01      // 视差系数（随滚动轻微移动）
     };
 
-    let canvases = [];  // { canvas, ctx, stars, w, h }
-    let globalTime = 0;
+    let canvas, ctx, stars = [];
+    let scrollY = 0;
     let animId = null;
 
-    function init() {
-        const sections = document.querySelectorAll('.hero, .section, .section-dark');
-        if (!sections.length) {
-            console.warn('[Starlight] 未找到任何板块');
-            return;
-        }
-
-        sections.forEach((sec, idx) => {
-            const cv = document.createElement('canvas');
-            cv.id = 'starlight-canvas-' + idx;
-            cv.style.cssText = `
-                position: absolute;
-                left: 0; top: 0;
-                width: 100%; height: 100%;
-                z-index: 2;
-                pointer-events: none;
-                opacity: 1.0;
-            `;
-
-            // 插入板块最底层（但要在 .hero-bg 等背景层之上）
-            sec.style.position = 'relative';
-            sec.style.overflow = 'hidden';
-            
-            // 找到 .hero-bg 元素（如果有），插入到它后面
-            const heroBg = sec.querySelector('.hero-bg');
-            if (heroBg) {
-                heroBg.after(cv);
-            } else {
-                sec.appendChild(cv);
-            }
-
-            const c = cv.getContext('2d');
-            const stars = buildStars(sec);
-
-            canvases.push({ canvas: cv, ctx: c, stars: stars, w: 0, h: 0 });
-        });
-
-        resizeAll();
-        window.addEventListener('resize', resizeAll);
-
-        animate();
-        console.log('[Starlight] 已注入 ' + canvases.length + ' 个板块');
+    function createGlobalCanvas() {
+        canvas = document.createElement('canvas');
+        canvas.id = 'starlight-global';
+        canvas.style.cssText = `
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        `;
+        document.body.insertBefore(canvas, document.body.firstChild);
+        ctx = canvas.getContext('2d');
     }
 
-    function buildStars(section) {
-        const w = section.offsetWidth || window.innerWidth;
-        const h = section.offsetHeight || window.innerHeight;
-        const arr = [];
-        for (let i = 0; i < CONFIG.starsPerSection; i++) {
-            arr.push({
-                x: Math.random() * w,
-                y: Math.random() * h,
-                r: CONFIG.minRadius + Math.random() * (CONFIG.maxRadius - CONFIG.minRadius),
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        buildStars();
+    }
+
+    function buildStars() {
+        stars = [];
+        const docHeight = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            window.innerHeight
+        );
+
+        for (let i = 0; i < CONFIG.starCount; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * docHeight,  // 分布在整个文档高度
+                radius: CONFIG.minRadius + Math.random() * (CONFIG.maxRadius - CONFIG.minRadius),
+                color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
                 baseAlpha: CONFIG.minAlpha + Math.random() * (CONFIG.maxAlpha - CONFIG.minAlpha),
-                speed: CONFIG.twinkleSpeedMin + Math.random() * (CONFIG.twinkleSpeedMax - CONFIG.twinkleSpeedMin),
                 phase: Math.random() * Math.PI * 2,
-                colorIdx: Math.floor(Math.random() * CONFIG.colorPalette.length),
-                // 偶尔来个稍亮的星（5% 概率）
-                bright: Math.random() < 0.05
+                speed: CONFIG.twinkleSpeedMin + Math.random() * (CONFIG.twinkleSpeedMax - CONFIG.twinkleSpeedMin)
             });
         }
-        return arr;
-    }
-
-    function resizeAll() {
-        canvases.forEach(item => {
-            const sec = item.canvas.parentElement;
-            const w = sec.offsetWidth;
-            const h = sec.offsetHeight;
-            if (w === item.w && h === item.h) return;
-            item.w = w;
-            item.h = h;
-            item.canvas.width = w;
-            item.canvas.height = h;
-            // 重新分布星星位置
-            item.stars.forEach(s => {
-                s.x = Math.random() * w;
-                s.y = Math.random() * h;
-            });
-        });
     }
 
     function animate() {
-        globalTime++;
+        // 清空画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        canvases.forEach(item => {
-            const { ctx, stars, w, h } = item;
+        const time = Date.now();
 
-            // 半透明覆盖（制造拖尾 / 缓慢消失）
-            ctx.fillStyle = `rgba(2, 4, 12, ${CONFIG.bgFillAlpha})`;
-            ctx.fillRect(0, 0, w, h);
+        stars.forEach(star => {
+            // 计算可见位置（视差偏移）
+            const offsetY = star.y - scrollY * CONFIG.parallaxFactor;
+            
+            // 只绘制屏幕内的星（加一些缓冲）
+            if (offsetY > -50 && offsetY < canvas.height + 50) {
+                // 闪烁
+                const twinkle = 0.5 + 0.5 * Math.sin(time * star.speed + star.phase);
+                const alpha = star.baseAlpha * twinkle;
 
-            stars.forEach(s => {
-                // 闪烁：用 sin 控制透明度
-                const twinkle = 0.5 + 0.5 * Math.sin(globalTime * s.speed + s.phase);
-                let alpha = s.baseAlpha * twinkle;
+                // 柔光渐变
+                const gradient = ctx.createRadialGradient(
+                    star.x, offsetY, 0,
+                    star.x, offsetY, star.radius * 3
+                );
+                gradient.addColorStop(0, star.color);
+                gradient.addColorStop(1, 'transparent');
 
-                // 偶尔亮星
-                if (s.bright && twinkle > 0.7) {
-                    alpha = Math.min(alpha * 2.8, CONFIG.maxAlpha * 2.5);
-                }
-
-                const colorBase = CONFIG.colorPalette[s.colorIdx];
-                const alphaHex = Math.round(Math.min(alpha, 1) * 255).toString(16).padStart(2, '0');
-
-                // 柔光（径向渐变）
-                const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3);
-                grad.addColorStop(0, colorBase + alphaHex + ')');
-                grad.addColorStop(0.5, colorBase + Math.round(alpha * 0.4 * 255).toString(16).padStart(2, '0') + ')');
-                grad.addColorStop(1, colorBase + '00)');
-
-                ctx.fillStyle = grad;
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+                ctx.arc(star.x, offsetY, star.radius * 3, 0, Math.PI * 2);
                 ctx.fill();
 
                 // 核心亮点
-                ctx.fillStyle = colorBase + Math.round(alpha * 0.9 * 255).toString(16).padStart(2, '0') + ')';
+                ctx.globalAlpha = alpha * 1.2;
+                ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.arc(star.x, offsetY, star.radius * 0.5, 0, Math.PI * 2);
                 ctx.fill();
-            });
+
+                ctx.globalAlpha = 1;
+            }
         });
 
         animId = requestAnimationFrame(animate);
+    }
+
+    function init() {
+        createGlobalCanvas();
+        resize();
+        
+        window.addEventListener('resize', resize);
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        animate();
+        console.log('[Starlight] 全局星光已启动，共 ' + stars.length + ' 颗星');
     }
 
     // 启动
@@ -164,8 +139,8 @@
     }
 
     window.Starlight = {
+        reload: resize,
         stop: () => { if (animId) cancelAnimationFrame(animId); },
-        start: () => { animate(); },
-        reload: () => { init(); }
+        start: () => { animate(); }
     };
 })();
