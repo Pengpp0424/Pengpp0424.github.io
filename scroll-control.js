@@ -1,10 +1,11 @@
 /* 
- * scroll-control.js - 游戏科技动态板块滚动控制视频
- * 功能：
- * 1. 滚动到"游戏科技动态"板块时，暂停《零》视频，播放 B站视频
- * 2. 离开板块时，暂停 B站视频，恢复播放《零》视频
- * 3. 预加载 B站 iframe，加快加载速度
- * 4. 取消静音，确保有声音
+ * scroll-control.js - 全站视频优先级与互斥控制
+ * 
+ * 规则：
+ * 1. 《零》播放优先级最高（默认播放）
+ * 2. 滚动到游戏科技板块 → 暂停《零》，播放B站视频
+ * 3. 离开游戏科技板块 → 暂停B站，恢复《零》
+ * 4. 点击任何视频 → 暂停其他所有正在播放的视频
  */
 
 (function() {
@@ -12,214 +13,181 @@
 
     // ========== 配置 ==========
     const CONFIG = {
-        threshold: 0.5,  // 板块可见 50% 时触发
-        debug: false       // 调试模式（控制台输出日志）
+        threshold: 0.4,     // 板块可见40%时触发
+        debug: false        // 调试模式
     };
 
     // ========== 状态 ==========
     let newsSection, newsVideo, zeroIframe;
     let observer = null;
-    let isPlayingNews = false;
-    let isNewsVideoReady = false;
 
     // ========== 初始化 ==========
     function init() {
-        // 获取 DOM 元素
         newsSection = document.getElementById('news');
         newsVideo = document.getElementById('newsVideo');
-        zeroIframe = document.querySelector('#works iframe');  // 《零》在"精选作品"板块
+        zeroIframe = document.querySelector('#works iframe');
 
-        // 检查必要元素
-        if (!newsSection) {
-            log('❌ 找不到 #news 板块');
-            return;
-        }
-        if (!newsVideo) {
-            log('❌ 找不到 #newsVideo iframe');
-            return;
-        }
-        if (!zeroIframe) {
-            log('⚠️ 找不到 #works iframe（《零》视频）');
+        if (!newsSection) { log('❌ 找不到 #news'); return; }
+        if (!newsVideo) { log('❌ 找不到 #newsVideo'); return; }
+
+        // 确保 B站新闻视频不自动播放（只有滚动到才播放）
+        ensureNotAutoplay(newsVideo);
+
+        // 确保《零》自动播放
+        if (zeroIframe) {
+            ensureAutoplay(zeroIframe);
         }
 
-        // 预加载 B站 iframe（加快加载速度）
-        preloadNewsVideo();
+        // 设置点击互斥（点击任何视频暂停其他）
+        setupClickMutex();
 
-        // 等待 B站 iframe 加载完成
-        newsVideo.addEventListener('load', () => {
-            log('✅ B站 iframe 加载完成');
-            isNewsVideoReady = true;
-            setupObserver();
-        });
+        // 设置滚动观察
+        setupObserver();
 
-        // 如果 iframe 已经加载完成（缓存情况）
-        if (newsVideo.contentDocument || newsVideo.contentWindow) {
-            log('✅ B站 iframe 已加载（缓存）');
-            isNewsVideoReady = true;
-            setupObserver();
-        } else {
-            // 设置超时兜底（10 秒后强制初始化）
-            setTimeout(() => {
-                log('⚠️ 超时兜底：强制初始化 Observer');
-                isNewsVideoReady = true;
-                setupObserver();
-            }, 10000);
+        log('✅ 全站视频控制已初始化');
+    }
+
+    // ========== 确保B站iframe不自动播放 ==========
+    function ensureNotAutoplay(iframe) {
+        try {
+            const src = iframe.src;
+            if (src.includes('autoplay=1')) {
+                iframe.src = src.replace('autoplay=1', 'autoplay=0');
+                log('✅ 已将新闻视频设为不自动播放');
+            }
+        } catch(e) {
+            log('⚠️ 修改新闻视频src失败: ' + e.message);
         }
     }
 
-    // ========== 预加载 B站 iframe ==========
-    function preloadNewsVideo() {
-        // 确保 src 没有 muted=1（取消静音）
-        const baseSrc = newsVideo.src.split('?')[0];
-        const params = new URLSearchParams(newsVideo.src.split('?')[1] || '');
-        
-        // 删除 muted 参数（取消静音）
-        params.delete('muted');
-        params.delete('autoplay');  // 不自动播放（等待滚动控制）
-        
-        // 重新组装 URL
-        const newSrc = baseSrc + '?' + params.toString();
-        newsVideo.src = newSrc;
-        
-        log('✅ B站 iframe 预加载完成（已取消静音）');
+    // ========== 确保《零》自动播放 ==========
+    function ensureAutoplay(iframe) {
+        try {
+            const src = iframe.src;
+            if (!src.includes('autoplay=1')) {
+                iframe.src = src.replace('autoplay=0', 'autoplay=1');
+                log('✅ 已确保《零》自动播放');
+            }
+        } catch(e) {
+            log('⚠️ 修改《零》src失败: ' + e.message);
+        }
     }
 
-    // ========== 设置 Intersection Observer ==========
+    // ========== 设置滚动观察 ==========
     function setupObserver() {
-        // 创建 Observer
         observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // 进入视口
                     log('📥 进入"游戏科技动态"板块');
                     onEnterNews();
                 } else {
-                    // 离开视口
                     log('📤 离开"游戏科技动态"板块');
                     onLeaveNews();
                 }
             });
         }, { threshold: CONFIG.threshold });
 
-        // 开始观察
         observer.observe(newsSection);
         log('✅ Intersection Observer 已启动');
     }
 
-    // ========== 进入板块 ==========
+    // ========== 进入游戏科技板块 ==========
     function onEnterNews() {
-        // 暂停《零》视频
-        pauseZeroVideo();
+        // 1. 暂停《零》
+        pauseIframe(zeroIframe, '《零》');
 
-        // 播放 B站视频
-        playNewsVideo();
-
-        isPlayingNews = true;
+        // 2. 播放新闻视频
+        playIframe(newsVideo, '游戏科技');
     }
 
-    // ========== 离开板块 ==========
+    // ========== 离开游戏科技板块 ==========
     function onLeaveNews() {
-        // 暂停 B站视频
-        pauseNewsVideo();
+        // 1. 暂停新闻视频
+        pauseIframe(newsVideo, '游戏科技');
 
-        // 恢复播放《零》视频
-        resumeZeroVideo();
-
-        isPlayingNews = false;
+        // 2. 恢复播放《零》
+        playIframe(zeroIframe, '《零》');
     }
 
-    // ========== 暂停《零》视频（B站 iframe） ==========
-    function pauseZeroVideo() {
-        if (!zeroIframe || !zeroIframe.contentWindow) {
-            log('⚠️ 《零》iframe 未就绪');
+    // ========== 通用：播放B站iframe ==========
+    function playIframe(iframe, label) {
+        if (!iframe || !iframe.contentWindow) {
+            log('⚠️ ' + label + ' iframe 未就绪');
             return;
         }
-
         try {
-            zeroIframe.contentWindow.postMessage('{"command":"pause"}', '*');
-            log('⏸️ 暂停《零》视频 (B站 iframe)');
-        } catch (err) {
-            log(`❌ 暂停《零》失败: ${err.message}`);
+            iframe.contentWindow.postMessage('{"command":"play"}', '*');
+            log('▶️ 播放 ' + label);
+        } catch(e) {
+            log('❌ 播放 ' + label + ' 失败: ' + e.message);
         }
     }
 
-    // ========== 恢复播放《零》视频（B站 iframe） ==========
-    function resumeZeroVideo() {
-        if (!zeroIframe || !zeroIframe.contentWindow) {
-            log('⚠️ 《零》iframe 未就绪');
+    // ========== 通用：暂停B站iframe ==========
+    function pauseIframe(iframe, label) {
+        if (!iframe || !iframe.contentWindow) {
+            log('⚠️ ' + label + ' iframe 未就绪');
             return;
         }
-
         try {
-            zeroIframe.contentWindow.postMessage('{"command":"play"}', '*');
-            log('▶️ 恢复播放《零》视频 (B站 iframe)');
-        } catch (err) {
-            log(`❌ 恢复播放《零》失败: ${err.message}`);
+            iframe.contentWindow.postMessage('{"command":"pause"}', '*');
+            log('⏸️ 暂停 ' + label);
+        } catch(e) {
+            log('❌ 暂停 ' + label + ' 失败: ' + e.message);
         }
     }
 
-    // ========== 播放 B站视频（用 postMessage，不重载 iframe） ==========
-    function playNewsVideo() {
-        if (!newsVideo || !newsVideo.contentWindow) {
-            log('❌ B站 iframe 未就绪');
-            return;
-        }
+    // ========== 点击互斥：点击任何视频，暂停其他所有 ==========
+    function setupClickMutex() {
+        // 监听所有 iframe 的父容器点击
+        document.addEventListener('click', (e) => {
+            const clickedEmbed = e.target.closest('.work-embed') || e.target.closest('.news-video-left');
+            if (!clickedEmbed) return;
 
-        try {
-            // 方法1：取消静音（确保有声音）
-            newsVideo.contentWindow.postMessage('{"command":"mute","mute":false}', '*');
-            newsVideo.contentWindow.postMessage('{"command":"volume","volume":1}', '*');
-            
-            // 方法2：播放视频（不重载 iframe，秒开）
-            newsVideo.contentWindow.postMessage('{"command":"play"}', '*');
-            
-            log('▶️ 播放 B站视频 (postMessage, 取消静音)');
-        } catch (err) {
-            log(`❌ 播放 B站视频失败: ${err.message}`);
+            const clickedIframe = clickedEmbed.querySelector('iframe');
+            if (!clickedIframe) return;
+
+            log('🖱️ 点击视频: ' + (clickedIframe === newsVideo ? '游戏科技' : '作品'));
+
+            // 暂停所有其他 iframe
+            pauseAllExcept(clickedIframe);
+        });
+
+        log('✅ 点击互斥已设置');
+    }
+
+    // ========== 暂停除指定iframe外的所有视频 ==========
+    function pauseAllExcept(exceptIframe) {
+        // 所有作品 iframe（《零》等）
+        const workIframes = document.querySelectorAll('#works iframe');
+        workIframes.forEach(iframe => {
+            if (iframe !== exceptIframe) {
+                pauseIframe(iframe, '作品');
+            }
+        });
+
+        // 新闻视频 iframe
+        if (newsVideo && newsVideo !== exceptIframe) {
+            pauseIframe(newsVideo, '游戏科技');
         }
     }
 
-    // ========== 暂停 B站视频（用 postMessage，不重载 iframe） ==========
-    function pauseNewsVideo() {
-        if (!newsVideo || !newsVideo.contentWindow) {
-            log('❌ B站 iframe 未就绪');
-            return;
-        }
-
-        try {
-            // 方法1：暂停视频（不重载 iframe）
-            newsVideo.contentWindow.postMessage('{"command":"pause"}', '*');
-            
-            log('⏸️ 暂停 B站视频 (postMessage)');
-        } catch (err) {
-            log(`❌ 暂停 B站视频失败: ${err.message}`);
-        }
-    }
-
-    // ========== 工具函数 ==========
-    function log(message) {
-        if (CONFIG.debug) {
-            console.log(`[ScrollControl] ${message}`);
-        }
+    // ========== 工具 ==========
+    function log(msg) {
+        if (CONFIG.debug) console.log('[VideoControl] ' + msg);
     }
 
     // ========== 启动 ==========
-    // 等待 DOM 加载完成
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // 导出（可选）
-    window.ScrollControl = {
-        pauseZero: pauseZeroVideo,
-        resumeZero: resumeZeroVideo,
-        playNews: playNewsVideo,
-        pauseNews: pauseNewsVideo,
-        setDebug: function(enabled) {
-            CONFIG.debug = enabled;
-            console.log(`[ScrollControl] 调试模式: ${enabled ? '开启' : '关闭'}`);
-        }
+    window.VideoControl = {
+        playIframe: playIframe,
+        pauseIframe: pauseIframe,
+        pauseAllExcept: pauseAllExcept,
+        setDebug: (v) => { CONFIG.debug = v; }
     };
 })();
