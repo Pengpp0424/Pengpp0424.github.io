@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Channel Cover - 蓬碰鹏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 2560px;
+            height: 1440px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 30%, #2d1b69 60%, #1a1a3e 100%);
+            position: relative;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 粒子背景 */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-80px) translateX(40px); opacity: 0.8; }
+        }
+
+        /* 主内容区 */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 1546px; /* 安全区域宽度 */
+        }
+
+        /* Logo 图标 */
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.8);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 80px rgba(139, 92, 246, 0.8); }
+            50% { box-shadow: 0 0 120px rgba(236, 72, 153, 0.9); }
+        }
+
+        /* 主标题 */
+        .title {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            letter-spacing: 15px;
+            text-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+        }
+
+        /* 副标题 */
+        .subtitle {
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 60px;
+        }
+
+        /* 标签 */
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 15px 40px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 底部网站链接 */
+        .website {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 42px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+
+        .website span {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* 装饰线条 */
+        .line {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+        }
+
+        .line-top {
+            top: 150px;
+            left: 200px;
+            right: 200px;
+        }
+
+        .line-bottom {
+            bottom: 250px;
+            left: 200px;
+            right: 200px;
+        }
+
+        /* 游戏图标装饰 */
+        .game-icons {
+            position: absolute;
+            bottom: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 60px;
+            font-size: 64px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 装饰线条 -->
+    <div class="line line-top"></div>
+    <div class="line line-bottom"></div>
+
+    <!-- 主内容 -->
+    <div class="content">
+        <!-- Logo -->
+        <div class="logo">鹏</div>
+
+        <!-- 主标题 -->
+        <div class="title">蓬碰鹏</div>
+
+        <!-- 副标题 -->
+        <div class="subtitle">游戏视频创作者 / AI探索者</div>
+
+        <!-- 标签 -->
+        <div class="tags">
+            <div class="tag">游戏剪辑</div>
+            <div class="tag">AI视频</div>
+            <div class="tag">实况解说</div>
+        </div>
+    </div>
+
+    <!-- 游戏图标 -->
+    <div class="game-icons">
+        <span>🎮</span>
+        <span>⚔️</span>
+        <span>🎬</span>
+        <span>🤖</span>
+    </div>
+
+    <!-- 底部网站链接 -->
+    <div class="website">
+        个人网站: <span>pengpp0424.github.io</span>
+    </div>
+
+    <script>
+        // 生成粒子
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 80; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
