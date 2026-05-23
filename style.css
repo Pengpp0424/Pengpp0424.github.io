@@ -116,7 +116,7 @@ body {
     z-index: 10;
     padding: 0 24px;
     animation: fadeInUp 1s ease-out;
-    transform: translateY(-80px);
+    transform: translateY(-140px);
 }
 
 @keyframes fadeInUp {
