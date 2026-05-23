@@ -58,7 +58,16 @@
                 <span class="section-tag">ABOUT</span>
                 <h2 class="section-title">关于我</h2>
             </div>
-            <div class="about-grid">
+            <div class="about-grid" id="aboutGrid">
+                <!-- 骨架屏 -->
+                <div class="profile-skeleton" id="aboutSkeleton">
+                    <div class="profile-skeleton-line long"></div>
+                    <div class="profile-skeleton-line medium"></div>
+                    <div class="profile-skeleton-line short"></div>
+                    <div class="profile-skeleton-line long"></div>
+                    <div class="profile-skeleton-line medium"></div>
+                </div>
+                
                 <div class="about-text">
                     <p class="about-lead" id="aboutLead"></p>
                     <p id="aboutBio1"></p>
@@ -112,7 +121,25 @@
                 <button class="filter-btn" data-filter="怀旧">怀旧</button>
             </div>
             <div class="works-grid" id="worksGrid">
-                <!-- 作品由JS动态加载 -->
+                <!-- 加载骨架屏 -->
+                <div class="skeleton-container" id="worksSkeleton">
+                    <div class="skeleton-card">
+                        <div class="skeleton-thumb"></div>
+                        <div class="skeleton-line" style="width:60%"></div>
+                        <div class="skeleton-line" style="width:90%"></div>
+                        <div class="skeleton-line" style="width:80%"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-thumb"></div>
+                        <div class="skeleton-line" style="width:70%"></div>
+                        <div class="skeleton-line" style="width:85%"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-thumb"></div>
+                        <div class="skeleton-line" style="width:65%"></div>
+                        <div class="skeleton-line" style="width:95%"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

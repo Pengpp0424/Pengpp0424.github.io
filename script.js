@@ -2,8 +2,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[Debug] 开始加载数据...');
     
-    // 加载 JSON 数据
-    fetch('data.json')
+    // 显示骨架屏（HTML 中已写好）
+    // 开始加载 JSON 数据
+    fetch('data.json?v=' + Date.now())  // 防缓存
         .then(response => {
             console.log('[Debug] HTTP 状态:', response.status);
             if (!response.ok) throw new Error('HTTP ' + response.status);
@@ -11,17 +12,38 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('[Debug] 数据加载成功:', Object.keys(data));
+            
+            // 填充数据
             populateProfile(data.profile);
             populateWorks(data.works);
             populateNews(data.news);
             populateContact(data.contact);
             populateFooter(data.footer);
+            
+            // 移除骨架屏
+            removeSkeletons();
         })
         .catch(error => {
             console.error('[Debug] 加载数据失败:', error);
-            document.getElementById('worksGrid').innerHTML = '<p style="color:orange;text-align:center;">⚠️ 作品加载失败，请按F12查看控制台</p>';
-            document.getElementById('newsGrid').innerHTML = '<p style="color:orange;text-align:center;">⚠️ 动态加载失败，请按F12查看控制台</p>';
+            // 加载失败也移除骨架屏，显示错误信息
+            removeSkeletons();
+            const worksGrid = document.getElementById('worksGrid');
+            const newsGrid = document.getElementById('newsGrid');
+            if (worksGrid) worksGrid.innerHTML = '<p style="color:orange;text-align:center;">⚠️ 作品加载失败，请刷新页面</p>';
+            if (newsGrid) newsGrid.innerHTML = '<p style="color:orange;text-align:center;">⚠️ 动态加载失败，请刷新页面</p>';
         });
+
+    // 移除骨架屏函数
+    function removeSkeletons() {
+        const worksSkeleton = document.getElementById('worksSkeleton');
+        if (worksSkeleton) worksSkeleton.remove();
+        
+        const newsLoading = document.querySelector('.news-loading');
+        if (newsLoading) newsLoading.remove();
+        
+        const aboutSkeleton = document.getElementById('aboutSkeleton');
+        if (aboutSkeleton) aboutSkeleton.remove();
+    }
 
     // 导航栏滚动效果
     const navbar = document.getElementById('navbar');
