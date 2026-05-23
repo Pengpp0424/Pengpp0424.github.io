@@ -18,6 +18,7 @@
             <a href="#works">作品</a>
             <a href="#news">动态</a>
             <a href="#contact">联系</a>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
         </div>
     </nav>
 
@@ -102,6 +103,14 @@
                 <span class="section-tag">WORKS</span>
                 <h2 class="section-title">精选作品</h2>
             </div>
+            <div class="works-filter" id="worksFilter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="AI短片">AI短片</button>
+                <button class="filter-btn" data-filter="情感故事">情感故事</button>
+                <button class="filter-btn" data-filter="大作体验">大作体验</button>
+                <button class="filter-btn" data-filter="硬件">硬件</button>
+                <button class="filter-btn" data-filter="怀旧">怀旧</button>
+            </div>
             <div class="works-grid" id="worksGrid">
                 <!-- 作品由JS动态加载 -->
             </div>
@@ -157,8 +166,19 @@
     <footer class="footer">
         <div class="container">
             <p id="footerText">© 2025 蓬碰鹏（老鹏）· 用心创作每一帧</p>
+            <p class="visitor-stats">
+                <span id="busuanzi_container_site_pv" style="display:none">
+                    访问量 <span id="busuanzi_value_site_pv">-</span> 次
+                </span>
+                <span id="busuanzi_container_site_uv" style="display:none">
+                    · 访客 <span id="busuanzi_value_site_uv">-</span> 人
+                </span>
+            </p>
         </div>
     </footer>
+
+    <!-- 不蒜子统计 -->
+    <script async src="https://busuanzi.ufuxi.in/js2/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     <script src="kaleidoscope.js"></script>
     <script src="solar-system.js"></script>

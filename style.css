@@ -21,6 +21,18 @@
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 浅色主题 */
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f0f0;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.1) 0%, transparent 60%);
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -89,6 +101,22 @@ body {
 
 .nav-links a:hover {
     color: var(--text-primary);
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: var(--transition);
+    margin-left: 8px;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-card);
 }
 
 /* ========== Hero ========== */
@@ -681,6 +709,42 @@ body {
 .footer p {
     font-size: 0.85rem;
     color: var(--text-tertiary);
+}
+
+.visitor-stats {
+    margin-top: 8px;
+    font-size: 0.8rem;
+}
+
+/* ========== 作品筛选器 ========== */
+.works-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-primary);
 }
 
 /* ========== Animations (scroll reveal) ========== */

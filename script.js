@@ -92,7 +92,7 @@ function populateProfile(profile) {
     if (profilePrinciples) profilePrinciples.textContent = profile.principles;
 }
 
-// 填充作品展示（支持嵌入播放）
+// 填充作品展示（支持嵌入播放和筛选）
 function populateWorks(works) {
     const worksContainer = document.getElementById('worksGrid');
     if (!worksContainer) return;
@@ -102,6 +102,7 @@ function populateWorks(works) {
     works.forEach(work => {
         const workCard = document.createElement('div');
         workCard.className = `work-card ${work.size === 'large' ? 'work-card-large' : ''}`;
+        workCard.dataset.tags = work.tag;  // 用于筛选
 
         let mediaContent = '';
         if (work.bvid) {
@@ -265,4 +266,59 @@ function populateContact(contact) {
 function populateFooter(footerText) {
     const footer = document.getElementById('footerText');
     if (footer) footer.textContent = footerText;
+}
+
+// ========== 作品筛选功能 ==========
+document.addEventListener(''DOMContentLoaded'', function() {
+    const filterBtns = document.querySelectorAll(''.filter-btn'');
+    const worksGrid = document.getElementById(''worksGrid'');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener(''click'', function() {
+            // 更新按钮状态
+            filterBtns.forEach(b => b.classList.remove(''active''));
+            this.classList.add(''active'');
+
+            const filter = this.dataset.filter;
+            const workCards = worksGrid.querySelectorAll(''.work-card'');
+
+            workCards.forEach(card => {
+                if (filter === ''all'') {
+                    card.style.display = ''''  ;
+                } else {
+                    const tags = card.dataset.tags || '''' ;
+                    if (tags.includes(filter)) {
+                        card.style.display = '''' ;
+                    } else {
+                        card.style.display = ''none'' ;
+                    }
+                }
+            });
+        });
+    });
+});
+
+// ========== 主题切换功能 ==========
+const themeToggle = document.getElementById(''themeToggle'');
+const html = document.documentElement;
+
+if (themeToggle) {
+    // 读取保存的主题
+    const savedTheme = localStorage.getItem(''theme'') || ''dark'';
+    if (savedTheme === ''light'') {
+        html.dataset.theme = ''light'';
+        themeToggle.textContent = ''☀️'';
+    }
+
+    themeToggle.addEventListener(''click'', function() {
+        if (html.dataset.theme === ''light'') {
+            delete html.dataset.theme;
+            this.textContent = ''🌙'';
+            localStorage.setItem(''theme'', ''dark'');
+        } else {
+            html.dataset.theme = ''light'';
+            this.textContent = ''☀️'';
+            localStorage.setItem(''theme'', ''light'');
+        }
+    });
 }
