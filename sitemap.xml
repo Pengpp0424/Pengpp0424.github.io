@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- 主页面 -->
+    <url>
+        <loc>https://pengpp0424.github.io/</loc>
+        <lastmod>2026-05-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- 如果没有其他页面，可以只提交首页 -->
+    <!-- 如果有子页面（如 /works.html、/about.html），继续添加 -->
+    <!--
+    <url>
+        <loc>https://pengpp0424.github.io/works</loc>
+        <lastmod>2026-05-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+</urlset>

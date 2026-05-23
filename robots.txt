@@ -1,0 +1,12 @@
+# robots.txt for pengpp0424.github.io
+# 告诉搜索引擎哪些页面可以爬取
+
+User-agent: *
+Allow: /
+
+# 禁止爬取的目录（如果有）
+# Disallow: /private/
+# Disallow: /tmp/
+
+# Sitemap 位置
+Sitemap: https://pengpp0424.github.io/sitemap.xml
