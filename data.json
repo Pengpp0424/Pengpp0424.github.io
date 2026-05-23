@@ -22,63 +22,43 @@
   "works": [
     {
       "id": 1,
-      "title": "《零》— AI科幻短片",
-      "tag": "AI短片",
-      "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
-      "bvid": "BV17j536wEvy",
-      "size": "large",
-      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
-      "icon": "《零》"
+      "title": "故事短剧",
+      "tag": "情感故事、悬疑短剧",
+      "description": "情感故事、悬疑短剧",
+      "link": "https://www.kuaishou.com/f/X-awvSrbxWtysXhM",
+      "size": "normal",
+      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #2e0a3e 50%, #1a0a2e 100%)",
+      "icon": "🎬"
     },
     {
       "id": 2,
-      "title": "Elden Ring 剪辑合集",
-      "tag": "游戏剪辑",
-      "description": "黄金树之影DLC精彩瞬间",
-      "bvid": "BV1NmRjBoEBS",
+      "title": "体验经典",
+      "tag": "大作体验、经典回顾",
+      "description": "大作体验、经典回顾",
+      "bvid": "BV1ccUxBbEvH",
       "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a0a00 0%, #2a1500 50%, #0a0a00 100%)",
-      "icon": "魂"
+      "gradient": "linear-gradient(135deg, #0a1a2e 0%, #0a2e3e 50%, #0a1a2e 100%)",
+      "icon": "🎮"
     },
     {
       "id": 3,
-      "title": "God of War Ragnarök",
-      "tag": "游戏剪辑",
-      "description": "北欧神话的史诗冒险",
-      "bvid": "BV1JJ9yBdECV",
+      "title": "硬件评测",
+      "tag": "硬件开箱、设备评测",
+      "description": "硬件开箱、设备评测",
+      "bvid": "BV1BCPuzUEYZ",
       "size": "normal",
-      "gradient": "linear-gradient(135deg, #0a1a0a 0%, #001a0a 50%, #0a0a1a 100%)",
-      "icon": "战"
+      "gradient": "linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 50%, #1a1a0a 100%)",
+      "icon": "🔧"
     },
     {
       "id": 4,
-      "title": "Marvel's Spider-Man",
-      "tag": "游戏剪辑",
-      "description": "纽约城的超级英雄",
-      "bvid": "BV1xLovBEEqn",
+      "title": "怀旧专区",
+      "tag": "怀旧品味、情怀专区",
+      "description": "怀旧品味、情怀专区",
+      "bvid": "BV1WERRBcE6L",
       "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a0000 0%, #0a0a1a 50%, #00001a 100%)",
-      "icon": "蛛"
-    },
-    {
-      "id": 5,
-      "title": "Resident Evil",
-      "tag": "游戏剪辑",
-      "description": "恐怖生存的极限挑战",
-      "bvid": "BV199PazgExC",
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)",
-      "icon": "生"
-    },
-    {
-      "id": 6,
-      "title": "忍者龙剑传 Boss战合集",
-      "tag": "游戏剪辑",
-      "description": "经典动作游戏的Boss战解说，技术与策略并重。",
-      "bvid": "BV1f8dKBHEnC",
-      "size": "large",
-      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a1a3e 50%, #0a1a2e 100%)",
-      "icon": "忍者"
+      "gradient": "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
+      "icon": "🕹️"
     }
   ],
   "news": [

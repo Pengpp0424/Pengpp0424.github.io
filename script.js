@@ -106,8 +106,7 @@ function populateWorks(works) {
         let mediaContent = '';
         if (work.bvid) {
             // 嵌入 B 站播放器
-            // 只有《零》(id=1) 自动播放（有声音），其他作品不自动播放
-            const autoplayParam = (work.id === 1) ? '&autoplay=1' : '&autoplay=0';
+            const autoplayParam = '&autoplay=0';  // 全部不自动播放，滚动/点击控制
             mediaContent = `
                 <div class="work-embed">
                     <iframe src="//player.bilibili.com/player.html?bvid=${work.bvid}&page=1${autoplayParam}"
@@ -120,6 +119,14 @@ function populateWorks(works) {
                             height="300">
                     </iframe>
                 </div>
+            `;
+        } else if (work.link) {
+            // 外部链接（如快手）
+            mediaContent = `
+                <a href="${work.link}" target="_blank" rel="noopener" class="work-thumb-link" style="background: ${work.gradient};">
+                    <div class="work-thumb-icon">${work.icon}</div>
+                    <div class="work-play">▶</div>
+                </a>
             `;
         } else {
             //  fallback：渐变缩略图

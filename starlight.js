@@ -45,11 +45,12 @@
                 width: 100%; height: 100%;
                 z-index: 0;
                 pointer-events: none;
-                opacity: 0.7;
+                opacity: 0.85;
             `;
 
             // 插入板块最底层
             sec.style.position = 'relative';
+            sec.style.overflow = 'hidden';
             sec.insertBefore(cv, sec.firstChild);
 
             const c = cv.getContext('2d');
