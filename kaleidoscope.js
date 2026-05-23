@@ -66,8 +66,8 @@
             // 顶点数
             this.vertices = 4 + Math.floor(Math.random() * 5);  // 4-8个顶点
             
-            // 颜色（全部深海蓝）
-            this.isBlue = true;  // 100%蓝色
+            // 颜色（深海蓝或亮紫）
+            this.isBlue = Math.random() > 0.4;  // 60%蓝色，40%紫色
             
             // 水晶闪烁参数
             this.flickerPhase = Math.random() * Math.PI * 2;
