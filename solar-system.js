@@ -154,7 +154,14 @@
         ctx.arc(px, py, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // 土星环已移除
+        // 土星环
+        if (p.hasRing) {
+            ctx.strokeStyle = 'rgba(232, 208, 136, 0.35)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.ellipse(px, py, p.radius * 2.2, p.radius * 0.6, -0.2, 0, Math.PI * 2);
+            ctx.stroke();
+        }
 
         // 高光点
         ctx.fillStyle = 'rgba(255,255,255,0.35)';
