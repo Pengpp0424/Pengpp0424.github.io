@@ -154,12 +154,21 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
-    animation: gradientShift 6s ease-in-out infinite alternate;
+    animation: gradientShift 6s ease-in-out infinite alternate, glowPulse 3s ease-in-out infinite alternate;
 }
 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 20px rgba(99,102,241,0.4), 0 0 40px rgba(139,92,246,0.3), 0 0 60px rgba(6,182,212,0.2);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(99,102,241,0.6), 0 0 60px rgba(139,92,246,0.4), 0 0 90px rgba(6,182,212,0.3);
+    }
 }
 
 .hero-desc {
