@@ -33,9 +33,13 @@
         // 确保 B站新闻视频不自动播放（只有滚动到才播放）
         ensureNotAutoplay(newsVideo);
 
-        // 确保《零》自动播放
+        // 确保《零》自动播放（初始就播放）
         if (zeroIframe) {
             ensureAutoplay(zeroIframe);
+            // 页面加载后延迟播放《零》
+            setTimeout(() => {
+                playIframe(zeroIframe, '《零》');
+            }, 1500);
         }
 
         // 设置点击互斥（点击任何视频暂停其他）

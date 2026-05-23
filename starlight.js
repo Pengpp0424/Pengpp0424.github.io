@@ -1,31 +1,33 @@
 /*
  * starlight.js - 全局背景星光闪烁效果
  * 用法：创建一个fixed定位的canvas覆盖整个页面背景
- * 风格：极淡、稀疏、缓慢闪烁，不抢主体视觉
+ * 风格：真实夜空星光，有发光晕染，在灰色和黑色区域都可见
  */
 
 (function() {
     'use strict';
 
     const CONFIG = {
-        starCount: 200,           // 全局星星数量
-        minRadius: 0.5,           // 最小星光半径
-        maxRadius: 2.0,           // 最大星光半径
-        minAlpha: 0.05,           // 最低透明度（依稀）
-        maxAlpha: 0.4,            // 最高透明度（依稀）
-        twinkleSpeedMin: 0.002,   // 最慢闪烁速度
-        twinkleSpeedMax: 0.015,   // 最快闪烁速度
-        colors: [                  // 星光颜色（冷色系）
-            '#ffffff',             // 纯白
-            '#e0e7ff',             // 淡蓝白
-            '#c7d2fe',             // 淡紫白
-            '#a5b4fc',             // 淡蓝紫
-            '#818cf8',             // 蓝紫
-            '#c4b5fd',             // 淡紫
-            '#67e8f9',             // 淡青
-            '#a5f3fc'              // 青白
+        starCount: 250,           // 全局星星数量
+        minRadius: 1.0,           // 最小星光半径
+        maxRadius: 3.5,           // 最大星光半径
+        minAlpha: 0.15,           // 最低透明度
+        maxAlpha: 0.9,            // 最高透明度
+        glowRadius: 4,            // 发光晕染半径倍数
+        twinkleSpeedMin: 0.001,   // 最慢闪烁速度
+        twinkleSpeedMax: 0.012,   // 最快闪烁速度
+        colors: [                  // 星光颜色（带发光）
+            { r: 255, g: 255, b: 255 },  // 纯白
+            { r: 230, g: 240, b: 255 },  // 冷白
+            { r: 200, g: 220, b: 255 },  // 淡蓝白
+            { r: 180, g: 200, b: 255 },  // 蓝白
+            { r: 220, g: 200, b: 255 },  // 淡紫白
+            { r: 200, g: 180, b: 255 },  // 紫白
+            { r: 255, g: 245, b: 230 },  // 暖白
+            { r: 180, g: 255, b: 240 },  // 淡青
         ],
-        parallaxFactor: 0.01      // 视差系数（随滚动轻微移动）
+        parallaxFactor: 0.008,    // 视差系数
+        brightStarChance: 0.08    // 亮星概率
     };
 
     let canvas, ctx, stars = [];
@@ -62,56 +64,82 @@
         );
 
         for (let i = 0; i < CONFIG.starCount; i++) {
+            const color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+            const isBright = Math.random() < CONFIG.brightStarChance;
+            
             stars.push({
                 x: Math.random() * canvas.width,
-                y: Math.random() * docHeight,  // 分布在整个文档高度
-                radius: CONFIG.minRadius + Math.random() * (CONFIG.maxRadius - CONFIG.minRadius),
-                color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
-                baseAlpha: CONFIG.minAlpha + Math.random() * (CONFIG.maxAlpha - CONFIG.minAlpha),
+                y: Math.random() * docHeight,
+                radius: isBright 
+                    ? 2.0 + Math.random() * (CONFIG.maxRadius - 2.0)
+                    : CONFIG.minRadius + Math.random() * 1.5,
+                color: color,
+                baseAlpha: isBright 
+                    ? 0.5 + Math.random() * (CONFIG.maxAlpha - 0.5)
+                    : CONFIG.minAlpha + Math.random() * 0.3,
                 phase: Math.random() * Math.PI * 2,
-                speed: CONFIG.twinkleSpeedMin + Math.random() * (CONFIG.twinkleSpeedMax - CONFIG.twinkleSpeedMin)
+                speed: CONFIG.twinkleSpeedMin + Math.random() * (CONFIG.twinkleSpeedMax - CONFIG.twinkleSpeedMin),
+                isBright: isBright
             });
         }
     }
 
     function animate() {
-        // 清空画布
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const time = Date.now();
 
         stars.forEach(star => {
-            // 计算可见位置（视差偏移）
+            // 视差偏移
             const offsetY = star.y - scrollY * CONFIG.parallaxFactor;
             
-            // 只绘制屏幕内的星（加一些缓冲）
+            // 只绘制屏幕内的星
             if (offsetY > -50 && offsetY < canvas.height + 50) {
                 // 闪烁
                 const twinkle = 0.5 + 0.5 * Math.sin(time * star.speed + star.phase);
-                const alpha = star.baseAlpha * twinkle;
+                let alpha = star.baseAlpha * twinkle;
 
-                // 柔光渐变
-                const gradient = ctx.createRadialGradient(
+                // 亮星更亮
+                if (star.isBright && twinkle > 0.6) {
+                    alpha = Math.min(alpha * 1.5, CONFIG.maxAlpha);
+                }
+
+                const { r, g, b } = star.color;
+                const glowSize = star.radius * CONFIG.glowRadius;
+
+                // 外层发光晕染（柔和）
+                const outerGlow = ctx.createRadialGradient(
                     star.x, offsetY, 0,
-                    star.x, offsetY, star.radius * 3
+                    star.x, offsetY, glowSize * 2
                 );
-                gradient.addColorStop(0, star.color);
-                gradient.addColorStop(1, 'transparent');
+                outerGlow.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha * 0.4})`);
+                outerGlow.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${alpha * 0.15})`);
+                outerGlow.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
-                ctx.globalAlpha = alpha;
-                ctx.fillStyle = gradient;
+                ctx.fillStyle = outerGlow;
                 ctx.beginPath();
-                ctx.arc(star.x, offsetY, star.radius * 3, 0, Math.PI * 2);
+                ctx.arc(star.x, offsetY, glowSize * 2, 0, Math.PI * 2);
                 ctx.fill();
 
-                // 核心亮点
-                ctx.globalAlpha = alpha * 1.2;
-                ctx.fillStyle = '#ffffff';
+                // 内层发光（较亮）
+                const innerGlow = ctx.createRadialGradient(
+                    star.x, offsetY, 0,
+                    star.x, offsetY, glowSize
+                );
+                innerGlow.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha * 0.8})`);
+                innerGlow.addColorStop(0.6, `rgba(${r}, ${g}, ${b}, ${alpha * 0.3})`);
+                innerGlow.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+                ctx.fillStyle = innerGlow;
                 ctx.beginPath();
-                ctx.arc(star.x, offsetY, star.radius * 0.5, 0, Math.PI * 2);
+                ctx.arc(star.x, offsetY, glowSize, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.globalAlpha = 1;
+                // 核心亮点（最亮）
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(star.x, offsetY, star.radius * 0.4, 0, Math.PI * 2);
+                ctx.fill();
             }
         });
 
@@ -131,7 +159,6 @@
         console.log('[Starlight] 全局星光已启动，共 ' + stars.length + ' 颗星');
     }
 
-    // 启动
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
