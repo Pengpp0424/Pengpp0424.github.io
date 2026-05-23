@@ -44,6 +44,7 @@
             z-index: 0;
             pointer-events: none;
             opacity: 0.5;
+            z-index: 2;
         `;
 
         const hero = document.getElementById('hero');
