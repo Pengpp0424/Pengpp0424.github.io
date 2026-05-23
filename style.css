@@ -116,7 +116,13 @@ body {
     z-index: 10;
     padding: 0 24px;
     animation: fadeInUp 1s ease-out;
-    transform: translateY(-140px);
+    transform: translateY(-80px);
+}
+
+.hero-content .hero-line:nth-child(2),
+.hero-content .hero-desc,
+.hero-content .hero-actions {
+    transform: translateY(60px);
 }
 
 @keyframes fadeInUp {
