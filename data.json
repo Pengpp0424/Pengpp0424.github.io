@@ -1,132 +1,142 @@
-{
-  "profile": {
-    "name": "蓬碰鹏",
-    "nickname": "老鹏",
-    "title": "老鹏 · 视频创作者 / AI探索者",
-    "tagline": "专注于游戏视频创作 · 剪辑 · AI视频制作",
-    "bio": [
-      "游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。",
-      "游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。",
-      "目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作原创 AI 科幻短片《零》系列。"
-    ],
-    "stats": [
-      { "number": "100+", "label": "视频作品" },
-      { "number": "50w+", "label": "总播放量" },
-      { "number": "3年+", "label": "创作经验" }
-    ],
-    "games": "Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传",
-    "tools": "FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计",
-    "ai_skills": "图生视频 · LoRA训练 · TTS配音 · AI编剧",
-    "principles": "实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印"
-  },
-  "works": [
-    {
-      "id": 1,
-      "title": "《零》— AI科幻短片",
-      "tag": "AI短片",
-      "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
-      "bvid": "BV17j536wEvy",
-      "size": "large",
-      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
-      "icon": "《零》"
-    },
-    {
-      "id": 2,
-      "title": "故事短剧",
-      "tag": "情感故事、悬疑短剧",
-      "description": "情感故事、悬疑短剧",
-      "bvid": "BV1haJZzLEnx",
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #2e0a3e 50%, #1a0a2e 100%)",
-      "icon": "🎬"
-    },
-    {
-      "id": 3,
-      "title": "体验经典",
-      "tag": "大作体验、经典回顾",
-      "description": "大作体验、经典回顾",
-      "bvid": "BV1ccUxBbEvH",
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #0a1a2e 0%, #0a2e3e 50%, #0a1a2e 100%)",
-      "icon": "🎮"
-    },
-    {
-      "id": 4,
-      "title": "硬件评测",
-      "tag": "硬件开箱、设备评测",
-      "description": "硬件开箱、设备评测",
-      "bvid": "BV1BCPuzUEYZ",
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 50%, #1a1a0a 100%)",
-      "icon": "🔧"
-    },
-    {
-      "id": 5,
-      "title": "怀旧专区",
-      "tag": "怀旧品味、情怀专区",
-      "description": "怀旧品味、情怀专区",
-      "bvid": "BV1WERRBcE6L",
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
-      "icon": "🕹️"
-    }
-  ],
-  "news": [
-    {
-      "date": "2026-05-23",
-      "title": "《艾尔登法环》DLC销量突破800万套",
-      "excerpt": "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
-      "url": "https://www.3dmgame.com/news/202605/1300123.html"
-    },
-    {
-      "date": "2026-05-21",
-      "title": "《地狱潜者2》登陆Xbox Series X|S，首日加入Game Pass",
-      "excerpt": "索尼确认《Helldivers 2》将于8月Xbox平台发售，首日加入Game Pass，支持跨平台联机。",
-      "url": "https://store.steampowered.com/app/553850"
-    },
-    {
-      "date": "2026-05-19",
-      "title": "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
-      "excerpt": "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
-      "url": "https://www.expreview.com/90234.html"
-    },
-    {
-      "date": "2026-05-17",
-      "title": "《黑色神话：悟空》DLC「轮回」公布，2027年春节发售",
-      "excerpt": "游戏科学公布首款DLC「轮回」，新增3章主线剧情+12种新BOSS，支持全景光追。",
-      "url": "https://www.heishenhua.com/"
-    },
-    {
-      "date": "2026-05-15",
-      "title": "Steam新品节：2000+游戏试玩，包括《GTA 6》《上古卷轴6》",
-      "excerpt": "Steam新品节开幕，2000+游戏提供免费试玩，包括《GTA 6》《上古卷轴6》等重磅作品。",
-      "url": "https://store.steampowered.com/sale/nextfest"
-    },
-    {
-      "date": "2026-05-10",
-      "title": "《生化危机》DLC「绝望之谷」官方确认，2027年发售",
-      "excerpt": "卡普空在财报中确认《Resident Evil 9》DLC「绝望之谷」正在开发，预计2027年3月前发售。",
-      "url": "https://www.residentevil.com/"
-    }
-  ],
-  "contact": {
-    "email": "105945357@qq.com",
-    "qq": "105945357",
-    "douyin": {
-      "name": "抖音",
-      "username": "66883111674",
-      "url": "https://www.douyin.com/user/66883111674"
-    },
-    "xiaohongshu": {
-      "name": "小红书",
-      "stats": "232赞藏",
-      "url": "https://xhslink.com/m/4wqivNR4SSB"
-    },
-    "kuaishou": {
-      "name": "快手",
-      "username": "子弹傀儡",
-      "url": "https://v.kuaishou.com/JaY1qv62"
-    }
-  },
-  "footer": "© 2025 蓬碰鹏（老鹏）· 用心创作每一帧"
+﻿{
+    "profile":  {
+                    "name":  "蓬碰鹏",
+                    "nickname":  "老鹏",
+                    "title":  "老鹏 · 视频创作者 / AI探索者",
+                    "tagline":  "专注于游戏视频创作 · 剪辑 · AI视频制作",
+                    "bio":  [
+                                "游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。",
+                                "游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。",
+                                "目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作原创 AI 科幻短片《零》系列。"
+                            ],
+                    "stats":  [
+                                  {
+                                      "number":  "100+",
+                                      "label":  "视频作品"
+                                  },
+                                  {
+                                      "number":  "50w+",
+                                      "label":  "总播放量"
+                                  },
+                                  {
+                                      "number":  "3年+",
+                                      "label":  "创作经验"
+                                  }
+                              ],
+                    "games":  "Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传",
+                    "tools":  "FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计",
+                    "ai_skills":  "图生视频 · LoRA训练 · TTS配音 · AI编剧",
+                    "principles":  "实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印"
+                },
+    "works":  [
+                  {
+                      "id":  1,
+                      "title":  "《零》— AI科幻短片",
+                      "tag":  "AI短片",
+                      "description":  "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。原创AI生成的科幻短片系列，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
+                      "bvid":  "BV17j536wEvy",
+                      "size":  "large",
+                      "gradient":  "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
+                      "icon":  "《零》"
+                  },
+                  {
+                      "id":  2,
+                      "title":  "故事短剧",
+                      "tag":  "情感故事、悬疑短剧",
+                      "description":  "情感故事、悬疑短剧",
+                      "bvid":  "BV1haJZzLEnx",
+                      "size":  "normal",
+                      "gradient":  "linear-gradient(135deg, #1a0a2e 0%, #2e0a3e 50%, #1a0a2e 100%)",
+                      "icon":  "🎬"
+                  },
+                  {
+                      "id":  3,
+                      "title":  "体验经典",
+                      "tag":  "大作体验、经典回顾",
+                      "description":  "大作体验、经典回顾",
+                      "bvid":  "BV1ccUxBbEvH",
+                      "size":  "normal",
+                      "gradient":  "linear-gradient(135deg, #0a1a2e 0%, #0a2e3e 50%, #0a1a2e 100%)",
+                      "icon":  "🎮"
+                  },
+                  {
+                      "id":  4,
+                      "title":  "硬件评测",
+                      "tag":  "硬件开箱、设备评测",
+                      "description":  "硬件开箱、设备评测",
+                      "bvid":  "BV1BCPuzUEYZ",
+                      "size":  "normal",
+                      "gradient":  "linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 50%, #1a1a0a 100%)",
+                      "icon":  "🔧"
+                  },
+                  {
+                      "id":  5,
+                      "title":  "怀旧专区",
+                      "tag":  "怀旧品味、情怀专区",
+                      "description":  "怀旧品味、情怀专区",
+                      "bvid":  "BV1WERRBcE6L",
+                      "size":  "normal",
+                      "gradient":  "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
+                      "icon":  "🕹️"
+                  }
+              ],
+    "news":  [
+                 {
+                     "date":  "2026-05-23",
+                     "title":  "《艾尔登法环》DLC销量突破800万套",
+                     "excerpt":  "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
+                     "url":  "https://www.3dmgame.com/news/202605/1300123.html"
+                 },
+                 {
+                     "date":  "2026-05-21",
+                     "title":  "《地狱潜者2》登陆Xbox Series X|S，首日加入Game Pass",
+                     "excerpt":  "索尼确认《Helldivers 2》将于8月Xbox平台发售，首日加入Game Pass，支持跨平台联机。",
+                     "url":  "https://store.steampowered.com/app/553850"
+                 },
+                 {
+                     "date":  "2026-05-19",
+                     "title":  "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
+                     "excerpt":  "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
+                     "url":  "https://www.expreview.com/90234.html"
+                 },
+                 {
+                     "date":  "2026-05-17",
+                     "title":  "《黑色神话：悟空》DLC「轮回」公布，2027年春节发售",
+                     "excerpt":  "游戏科学公布首款DLC「轮回」，新增3章主线剧情+12种新BOSS，支持全景光追。",
+                     "url":  "https://www.heishenhua.com/"
+                 },
+                 {
+                     "date":  "2026-05-15",
+                     "title":  "Steam新品节：2000+游戏试玩，包括《GTA 6》《上古卷轴6》",
+                     "excerpt":  "Steam新品节开幕，2000+游戏提供免费试玩，包括《GTA 6》《上古卷轴6》等重磅作品。",
+                     "url":  "https://store.steampowered.com/sale/nextfest"
+                 },
+                 {
+                     "date":  "2026-05-10",
+                     "title":  "《生化危机》DLC「绝望之谷」官方确认，2027年发售",
+                     "excerpt":  "卡普空在财报中确认《Resident Evil 9》DLC「绝望之谷」正在开发，预计2027年3月前发售。",
+                     "url":  "https://www.residentevil.com/"
+                 }
+             ],
+    "contact":  {
+                    "email":  "105945357@qq.com",
+                    "qq":  "105945357",
+                    "douyin":  {
+                                   "name":  "抖音",
+                                   "username":  "66883111674",
+                                   "url":  "https://www.douyin.com/user/66883111674"
+                               },
+                    "xiaohongshu":  {
+                                        "name":  "小红书",
+                                        "stats":  "232赞藏",
+                                        "url":  "https://xhslink.com/m/4wqivNR4SSB"
+                                    },
+                    "kuaishou":  {
+                                     "name":  "快手",
+                                     "username":  "子弹傀儡",
+                                     "url":  "https://v.kuaishou.com/JaY1qv62"
+                                 }
+                },
+    "footer":  "© 2025 蓬碰鹏（老鹏）· 用心创作每一帧",
+    "lastUpdated":  "2026-05-23"
 }

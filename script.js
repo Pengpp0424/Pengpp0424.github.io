@@ -2,7 +2,52 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[Debug] 开始加载数据...');
     
-    // 显示骨架屏（HTML 中已写好）
+    // 默认数据（降级方案）
+    const fallbackData = {
+        profile: {
+            name: "蓬碰鹏",
+            title: "老鹏 · 视频创作者 / AI探索者",
+            lead: "热爱游戏与AI的视频创作者",
+            bio1: "专注游戏实况与AI工具探索",
+            bio2: "用心创作每一帧",
+            stats: [
+                { label: "作品", value: "10+" },
+                { label: "平台", value: "B站/抖音" },
+                { label: "方向", value: "游戏/AI" }
+            ],
+            games: "艾尔登法环、战神、漫威蜘蛛侠",
+            tools: "Ollama、ComfyUI、FFmpeg",
+            aiSkills: "本地大模型、AI视频生成",
+            principles: "原声优先、BGM场景匹配、解说贴合内容"
+        },
+        works: [
+            {
+                title: "艾尔登法环 · 剧情向剪辑",
+                desc: "黄金树幽影DLC精选片段",
+                tags: ["剧情", "大作体验"],
+                type: "bilibili",
+                bvid: "BV1N6Gh68EJC",
+                page: 1
+            }
+        ],
+        news: [
+            {
+                title: "网站上线啦！",
+                date: "2026-05-23",
+                excerpt: "个人作品展示网站正式上线，持续更新中...",
+                url: "#"
+            }
+        ],
+        contact: {
+            email: "105945357@qq.com",
+            qq: "105945357",
+            douyin: "#",
+            xiaohongshu: "#",
+            kuaishou: "#"
+        },
+        footer: "© 2025 蓬碰鹏（老鹏）· 用心创作每一帧"
+    };
+    
     // 开始加载 JSON 数据
     fetch('data.json?v=' + Date.now())  // 防缓存
         .then(response => {
@@ -24,13 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
             removeSkeletons();
         })
         .catch(error => {
-            console.error('[Debug] 加载数据失败:', error);
-            // 加载失败也移除骨架屏，显示错误信息
+            console.error('[Debug] 加载数据失败，使用默认数据:', error);
+            // 加载失败时使用默认数据
+            populateProfile(fallbackData.profile);
+            populateWorks(fallbackData.works);
+            populateNews(fallbackData.news);
+            populateContact(fallbackData.contact);
+            populateFooter(fallbackData.footer);
+            
+            // 移除骨架屏
             removeSkeletons();
-            const worksGrid = document.getElementById('worksGrid');
-            const newsGrid = document.getElementById('newsGrid');
-            if (worksGrid) worksGrid.innerHTML = '<p style="color:orange;text-align:center;">⚠️ 作品加载失败，请刷新页面</p>';
-            if (newsGrid) newsGrid.innerHTML = '<p style="color:orange;text-align:center;">⚠️ 动态加载失败，请刷新页面</p>';
+            
+            // 显示警告（非阻塞）
+            console.warn('[Warning] 使用离线数据，部分内容可能过时');
         });
 
     // 移除骨架屏函数
