@@ -79,6 +79,18 @@
     }
 
     function drawSun() {
+        // 大范围金色光辉（洒向整个板块）
+        const sunLightRadius = Math.max(w, h) * 0.8;
+        const sunLightGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, sunLightRadius);
+        sunLightGrad.addColorStop(0, 'rgba(255, 200, 60, 0.08)');
+        sunLightGrad.addColorStop(0.3, 'rgba(255, 160, 20, 0.04)');
+        sunLightGrad.addColorStop(0.6, 'rgba(255, 120, 0, 0.02)');
+        sunLightGrad.addColorStop(1, 'rgba(255, 80, 0, 0)');
+        ctx.fillStyle = sunLightGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, sunLightRadius, 0, Math.PI * 2);
+        ctx.fill();
+
         // 外层光晕（多层）
         for (let i = CONFIG.glowPasses; i >= 1; i--) {
             const r = CONFIG.sunGlow * (i / CONFIG.glowPasses);
