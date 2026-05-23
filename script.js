@@ -1,9 +1,37 @@
-﻿// 等待 DOM 加载完成
+﻿// 动态更新资源版本号（根据 data.json 的 lastUpdated）
+function updateResourceVersions(lastUpdated) {
+    if (!lastUpdated) return;
+    
+    const version = 'v=' + lastUpdated.replace(/-/g, '');  // "2026-05-23" → "v=20260523"
+    
+    // 更新 script.js
+    const scriptTag = document.querySelector('script[src*="script.js"]');
+    if (scriptTag) {
+        const newSrc = 'script.js?' + version;
+        if (!scriptTag.src.includes(version)) {
+            scriptTag.src = newSrc;
+            console.log('[Debug] script.js 版本更新为:', version);
+        }
+    }
+    
+    // 更新 style.css
+    const styleTag = document.querySelector('link[href*="style.css"]');
+    if (styleTag) {
+        const newHref = 'style.css?' + version;
+        if (!styleTag.href.includes(version)) {
+            styleTag.href = newHref;
+            console.log('[Debug] style.css 版本更新为:', version);
+        }
+    }
+}
+
+// 等待 DOM 加载完成
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[Debug] 开始加载数据...');
     
     // 默认数据（降级方案）
     const fallbackData = {
+        lastUpdated: "2026-05-23",
         profile: {
             name: "蓬碰鹏",
             title: "老鹏 · 视频创作者 / AI探索者",
@@ -65,6 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
             populateContact(data.contact);
             populateFooter(data.footer);
             
+            // 更新资源版本号（根据 lastUpdated）
+            if (data.lastUpdated) {
+                updateResourceVersions(data.lastUpdated);
+            }
+            
             // 移除骨架屏
             removeSkeletons();
         })
@@ -76,6 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
             populateNews(fallbackData.news);
             populateContact(fallbackData.contact);
             populateFooter(fallbackData.footer);
+            
+            // 更新资源版本号（降级方案）
+            if (fallbackData.lastUpdated) {
+                updateResourceVersions(fallbackData.lastUpdated);
+            }
             
             // 移除骨架屏
             removeSkeletons();
