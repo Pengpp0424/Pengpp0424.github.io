@@ -839,7 +839,7 @@ body {
 }
 
 /* 手机端优化 */
-@media (max-width: 768) {
+@media (max-width: 768px) {
     .work-thumb {
         height: 180px !important;
     }
