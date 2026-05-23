@@ -1111,3 +1111,43 @@ body {
         font-size: 20px;
     }
 }
+/* ========== 作品卡片悬停效果 ========== */
+.work-card {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3),
+                0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.work-card .work-info {
+    transition: background 0.3s ease;
+}
+
+.work-card:hover .work-info {
+    background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.1) 100%);
+}
+
+/* 作品缩略图悬停效果 */
+.work-thumb, .work-thumb-link {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.work-card:hover .work-thumb,
+.work-card:hover .work-thumb-link {
+    transform: scale(1.05);
+}
+
+/* 作品标签悬停效果 */
+.work-tag {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.work-card:hover .work-tag {
+    background: #6366f1;
+    color: #fff;
+}
