@@ -48,10 +48,17 @@
                 opacity: 1.0;
             `;
 
-            // 插入板块最底层
+            // 插入板块最底层（但要在 .hero-bg 等背景层之上）
             sec.style.position = 'relative';
             sec.style.overflow = 'hidden';
-            sec.insertBefore(cv, sec.firstChild);
+            
+            // 找到 .hero-bg 元素（如果有），插入到它后面
+            const heroBg = sec.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.after(cv);
+            } else {
+                sec.appendChild(cv);
+            }
 
             const c = cv.getContext('2d');
             const stars = buildStars(sec);
