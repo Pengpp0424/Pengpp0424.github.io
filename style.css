@@ -955,20 +955,53 @@ body {
 }
 
 .video-ad-banner {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: linear-gradient(135deg, #f59e0b, #d97706, #f59e0b);
+    background-size: 200% 200%;
+    animation: ad-gradient-shift 3s ease-in-out infinite, ad-pulse 2s ease-in-out infinite;
     color: #000;
     text-align: center;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 16px;
     letter-spacing: 0.5px;
-    animation: ad-pulse 2s ease-in-out infinite;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
     flex-shrink: 0;
 }
 
+/* 渐变流动动画 */
+@keyframes ad-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 边框发光效果 */
+.video-ad-banner::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #f59e0b, #6366f1, #f59e0b, #6366f1);
+    background-size: 400% 400%;
+    z-index: -1;
+    border-radius: 12px;
+    animation: ad-border-glow 3s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes ad-border-glow {
+    0%, 100% { background-position: 0% 50%; opacity: 0.6; }
+    50% { background-position: 100% 50%; opacity: 1; }
+}
+
+/* 改进原有的脉冲动画 */
 @keyframes ad-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.85; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.02); }
 }
 
 .news-content-right {
