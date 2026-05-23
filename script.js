@@ -1,16 +1,27 @@
-// 等待 DOM 加载完成
+﻿// 等待 DOM 加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('[Debug] 开始加载数据...');
+    
     // 加载 JSON 数据
     fetch('data.json')
-        .then(response => response.json())
+        .then(response => {
+            console.log('[Debug] HTTP 状态:', response.status);
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            return response.json();
+        })
         .then(data => {
+            console.log('[Debug] 数据加载成功:', Object.keys(data));
             populateProfile(data.profile);
             populateWorks(data.works);
-            populateNews(data.news);  // 从 data.json 加载新闻
+            populateNews(data.news);
             populateContact(data.contact);
             populateFooter(data.footer);
         })
-        .catch(error => console.error('加载数据失败:', error));
+        .catch(error => {
+            console.error('[Debug] 加载数据失败:', error);
+            document.getElementById('worksGrid').innerHTML = '<p style="color:orange;text-align:center;">⚠️ 作品加载失败，请按F12查看控制台</p>';
+            document.getElementById('newsGrid').innerHTML = '<p style="color:orange;text-align:center;">⚠️ 动态加载失败，请按F12查看控制台</p>';
+        });
 
     // 导航栏滚动效果
     const navbar = document.getElementById('navbar');
@@ -269,28 +280,27 @@ function populateFooter(footerText) {
 }
 
 // ========== 作品筛选功能 ==========
-document.addEventListener(''DOMContentLoaded'', function() {
-    const filterBtns = document.querySelectorAll(''.filter-btn'');
-    const worksGrid = document.getElementById(''worksGrid'');
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const worksGrid = document.getElementById('worksGrid');
 
     filterBtns.forEach(btn => {
-        btn.addEventListener(''click'', function() {
-            // 更新按钮状态
-            filterBtns.forEach(b => b.classList.remove(''active''));
-            this.classList.add(''active'');
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
 
             const filter = this.dataset.filter;
-            const workCards = worksGrid.querySelectorAll(''.work-card'');
+            const workCards = worksGrid.querySelectorAll('.work-card');
 
             workCards.forEach(card => {
-                if (filter === ''all'') {
-                    card.style.display = ''''  ;
+                if (filter === 'all') {
+                    card.style.display = '';
                 } else {
-                    const tags = card.dataset.tags || '''' ;
+                    const tags = card.dataset.tags || '';
                     if (tags.includes(filter)) {
-                        card.style.display = '''' ;
+                        card.style.display = '';
                     } else {
-                        card.style.display = ''none'' ;
+                        card.style.display = 'none';
                     }
                 }
             });
@@ -299,26 +309,27 @@ document.addEventListener(''DOMContentLoaded'', function() {
 });
 
 // ========== 主题切换功能 ==========
-const themeToggle = document.getElementById(''themeToggle'');
-const html = document.documentElement;
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
 
-if (themeToggle) {
-    // 读取保存的主题
-    const savedTheme = localStorage.getItem(''theme'') || ''dark'';
-    if (savedTheme === ''light'') {
-        html.dataset.theme = ''light'';
-        themeToggle.textContent = ''☀️'';
-    }
-
-    themeToggle.addEventListener(''click'', function() {
-        if (html.dataset.theme === ''light'') {
-            delete html.dataset.theme;
-            this.textContent = ''🌙'';
-            localStorage.setItem(''theme'', ''dark'');
-        } else {
-            html.dataset.theme = ''light'';
-            this.textContent = ''☀️'';
-            localStorage.setItem(''theme'', ''light'');
+    if (themeToggle) {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            html.dataset.theme = 'light';
+            themeToggle.textContent = '☀️';
         }
-    });
-}
+
+        themeToggle.addEventListener('click', function() {
+            if (html.dataset.theme === 'light') {
+                delete html.dataset.theme;
+                this.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.dataset.theme = 'light';
+                this.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+});
