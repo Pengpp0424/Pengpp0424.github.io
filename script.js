@@ -45,15 +45,32 @@ document.addEventListener('DOMContentLoaded', function() {
         if (aboutSkeleton) aboutSkeleton.remove();
     }
 
-    // 导航栏滚动效果
+    // 导航栏滚动效果 + 回到顶部按钮
     const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    
     window.addEventListener('scroll', () => {
+        // 导航栏效果
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        
+        // 回到顶部按钮显示/隐藏
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     });
+    
+    // 回到顶部按钮点击事件
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // 滚动动画
     const observerOptions = {
