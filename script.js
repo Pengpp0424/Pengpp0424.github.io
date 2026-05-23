@@ -215,20 +215,20 @@ function populateContact(contact) {
     `;
     contactContainer.appendChild(qqCard);
 
-    // 哔哩哔哩
-    const bilibiliCard = document.createElement('a');
-    bilibiliCard.href = contact.bilibili.url;
-    bilibiliCard.target = '_blank';
-    bilibiliCard.rel = 'noopener';
-    bilibiliCard.className = 'contact-card';
-    bilibiliCard.innerHTML = `
-        <div class="contact-icon">📺</div>
+    // 抖音
+    const douyinCard = document.createElement('a');
+    douyinCard.href = contact.douyin.url;
+    douyinCard.target = '_blank';
+    douyinCard.rel = 'noopener';
+    douyinCard.className = 'contact-card';
+    douyinCard.innerHTML = `
+        <div class="contact-icon">🎵</div>
         <div>
-            <h3>${contact.bilibili.name}</h3>
-            <p>${contact.bilibili.username}</p>
+            <h3>${contact.douyin.name}</h3>
+            <p>${contact.douyin.username}</p>
         </div>
     `;
-    contactContainer.appendChild(bilibiliCard);
+    contactContainer.appendChild(douyinCard);
 
     // 小红书
     const xiaohongshuCard = document.createElement('a');
