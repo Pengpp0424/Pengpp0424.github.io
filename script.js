@@ -288,6 +288,20 @@ function populateWorks(works) {
             </div>
         `;
 
+        // 作品点击统计（localStorage）
+        workCard.addEventListener('click', (event) => {
+            // 如果点击的是 iframe 内部，不统计
+            if (event.target.tagName === 'IFRAME') return;
+            
+            const workId = work.id || work.title;
+            const storageKey = `work_clicks_${workId}`;
+            const currentClicks = parseInt(localStorage.getItem(storageKey) || '0', 10);
+            const newClicks = currentClicks + 1;
+            
+            localStorage.setItem(storageKey, newClicks.toString());
+            console.log(`[统计] 作品点击: ${work.title} (累计 ${newClicks} 次)`);
+        });
+        
         worksContainer.appendChild(workCard);
     });
 }
