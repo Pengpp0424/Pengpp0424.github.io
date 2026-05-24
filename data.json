@@ -118,6 +118,56 @@
                      "url":  "https://www.residentevil.com/"
                  }
              ],
+    "gaming_news": [
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《艾尔登法环》DLC销量突破800万套",
+                     "excerpt": "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
+                     "url": "https://www.3dmgame.com/news/202605/1300123.html",
+                     "source": "3DM"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《地狱潜者2》登陆Xbox Series X|S，首日加入Game Pass",
+                     "excerpt": "索尼确认《Helldivers 2》将于8月Xbox平台发售，首日加入Game Pass，支持跨平台联机。",
+                     "url": "https://store.steampowered.com/app/553850",
+                     "source": "Steam"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "tech",
+                     "title": "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
+                     "excerpt": "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
+                     "url": "https://www.expreview.com/90234.html",
+                     "source": "超能网"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《黑色神话：悟空》DLC「轮回」公布，2027年春节发售",
+                     "excerpt": "游戏科学公布首款DLC「轮回」，新增3章主线剧情+12种新BOSS，支持全景光追。",
+                     "url": "https://www.heishenhua.com/",
+                     "source": "游戏科学"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "Steam新品节：2000+游戏试玩，包括《GTA 6》《上古卷轴6》",
+                     "excerpt": "Steam新品节开幕，2000+游戏提供免费试玩，包括《GTA 6》《上古卷轴6》等重磅作品。",
+                     "url": "https://store.steampowered.com/sale/nextfest",
+                     "source": "Steam"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《生化危机》DLC「绝望之谷」官方确认，2027年发售",
+                     "excerpt": "卡普空在财报中确认《Resident Evil 9》DLC「绝望之谷」正在开发，预计2027年3月前发售。",
+                     "url": "https://www.residentevil.com/",
+                     "source": "卡普空"
+                 }
+             ],
     "contact":  {
                     "email":  "105945357@qq.com",
                     "qq":  "105945357",
@@ -138,5 +188,5 @@
                                  }
                 },
     "footer":  "© 2025 蓬碰鹏（老鹏）· 用心创作每一帧",
-    "lastUpdated":  "2026-05-23"
+    "lastUpdated":  "2026-05-24"
 }

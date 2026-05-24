@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             populateProfile(data.profile);
             populateWorks(data.works);
             populateNews(data.news);
+            populateGamingNews(data.gaming_news || data.news);
             populateContact(data.contact);
             populateFooter(data.footer);
             
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             populateProfile(fallbackData.profile);
             populateWorks(fallbackData.works);
             populateNews(fallbackData.news);
+            populateGamingNews(fallbackData.news);
             populateContact(fallbackData.contact);
             populateFooter(fallbackData.footer);
             
@@ -334,6 +336,55 @@ function populateNews(news) {
 
         newsGrid.appendChild(newsCard);
     });
+}
+
+// 填充游戏科技动态（新版动图背景板块）
+function populateGamingNews(news) {
+    const newsGrid = document.getElementById('gamingNewsGrid');
+    if (!newsGrid) return;
+
+    newsGrid.innerHTML = '';
+
+    if (!news || news.length === 0) {
+        newsGrid.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.4);">暂无动态</p>';
+        return;
+    }
+
+    // 按日期降序排列
+    const sorted = [...news].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    sorted.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'gaming-news-card';
+
+        const pubDate = new Date(item.date).toLocaleDateString('zh-CN');
+
+        // 分类标签
+        let categoryClass = 'cat-game';
+        let categoryText = '游戏';
+        if (item.category === 'tech') { categoryClass = 'cat-tech'; categoryText = '科技'; }
+        else if (item.category === 'ai') { categoryClass = 'cat-ai'; categoryText = 'AI'; }
+
+        card.innerHTML = `
+            <span class="news-category ${categoryClass}">${categoryText}</span>
+            <h3 class="news-title">
+                <a href="${item.url || '#'}" target="_blank" rel="noopener">${item.title}</a>
+            </h3>
+            <p class="news-excerpt">${item.excerpt}</p>
+            <div class="news-meta">
+                <span class="news-date">${pubDate}</span>
+                <span class="news-source">${item.source || '综合'}</span>
+            </div>
+        `;
+
+        newsGrid.appendChild(card);
+    });
+
+    // 更新最后更新时间
+    const lastUpdate = document.getElementById('newsLastUpdate');
+    if (lastUpdate && sorted.length > 0) {
+        lastUpdate.textContent = '最近更新：' + new Date(sorted[0].date).toLocaleDateString('zh-CN');
+    }
 }
 
 // 填充联系方式
