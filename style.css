@@ -932,24 +932,19 @@ body {
     backdrop-filter: blur(4px);
 }
 
-/* ========== 游戏科技动态 - 视频左侧布局 ========== */
-.news-layout {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.news-video-left {
-    flex: 0 0 45%;  /* 固定宽度 45% */
+/* ========== 游戏科技动态 - 全宽视频 + 底部并排 ========== */
+.news-video-full {
+    width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 
-.news-video-left iframe {
+.news-video-full iframe {
     flex: 1;
     width: 100%;
 }
@@ -964,27 +959,21 @@ body {
     font-size: 0.95rem;
     padding: 10px 16px;
     letter-spacing: 0.5px;
-    border: 2px solid transparent;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
 }
 
-/* 渐变流动动画 */
 @keyframes ad-gradient-shift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 边框发光效果 */
 .video-ad-banner::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
     background: linear-gradient(45deg, #f59e0b, #6366f1, #f59e0b, #6366f1);
     background-size: 400% 400%;
     z-index: -1;
@@ -998,47 +987,51 @@ body {
     50% { background-position: 100% 50%; opacity: 1; }
 }
 
-/* 改进原有的脉冲动画 */
 @keyframes ad-pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.9; transform: scale(1.02); }
 }
 
-.news-content-right {
-    flex: 1;  /* 占据剩余空间 */
+/* 视频下方左右并排 */
+.news-bottom-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
-#news .container {
-    position: relative;
-}
-/* ========== 每日新闻速报（滚动条） ========== */
-.daily-news-section {
-    position: relative;
-    padding: 60px 0;
-    overflow: hidden;
+.news-bottom-left {
+    flex: 1;
+    min-width: 0;
 }
 
-.daily-news-bg {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%);
-    z-index: 0;
+.news-bottom-right {
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a1a2e);
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
-.daily-news-section .container {
-    position: relative;
-    z-index: 1;
-}
-
-.daily-news-section .section-header {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.daily-news-section .section-title {
+.news-bottom-right .section-title {
     color: #fff;
+    font-size: 1.1rem;
 }
 
+.news-bottom-right .section-tag {
+    color: rgba(255,255,255,0.4);
+    border-color: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+    .news-bottom-row {
+        flex-direction: column;
+    }
+    .news-video-full {
+        aspect-ratio: 16 / 9;
+    }
+}
+/* 每日新闻滚动条样式（嵌入news板块右侧） */
 .news-ticker-wrapper {
     overflow: hidden;
     mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
@@ -1104,16 +1097,9 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 16px;
     font-size: 0.72rem;
     color: rgba(255, 255, 255, 0.3);
-}
-
-@media (max-width: 768px) {
-    .ticker-item {
-        padding: 8px 16px;
-        font-size: 0.82rem;
-    }
 }
 
 /* ========== 骨架屏加载动画 ========== */
