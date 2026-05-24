@@ -80,44 +80,16 @@
                       "icon":  "🕹️"
                   }
               ],
-    "news":  [
-                 {
-                     "date":  "2026-05-23",
-                     "title":  "《艾尔登法环》DLC销量突破800万套",
-                     "excerpt":  "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
-                     "url":  "https://www.3dmgame.com/news/202605/1300123.html"
-                 },
-                 {
-                     "date":  "2026-05-21",
-                     "title":  "《地狱潜者2》登陆Xbox Series X|S，首日加入Game Pass",
-                     "excerpt":  "索尼确认《Helldivers 2》将于8月Xbox平台发售，首日加入Game Pass，支持跨平台联机。",
-                     "url":  "https://store.steampowered.com/app/553850"
-                 },
-                 {
-                     "date":  "2026-05-19",
-                     "title":  "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
-                     "excerpt":  "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
-                     "url":  "https://www.expreview.com/90234.html"
-                 },
-                 {
-                     "date":  "2026-05-17",
-                     "title":  "《黑色神话：悟空》DLC「轮回」公布，2027年春节发售",
-                     "excerpt":  "游戏科学公布首款DLC「轮回」，新增3章主线剧情+12种新BOSS，支持全景光追。",
-                     "url":  "https://www.heishenhua.com/"
-                 },
-                 {
-                     "date":  "2026-05-15",
-                     "title":  "Steam新品节：2000+游戏试玩，包括《GTA 6》《上古卷轴6》",
-                     "excerpt":  "Steam新品节开幕，2000+游戏提供免费试玩，包括《GTA 6》《上古卷轴6》等重磅作品。",
-                     "url":  "https://store.steampowered.com/sale/nextfest"
-                 },
-                 {
-                     "date":  "2026-05-10",
-                     "title":  "《生化危机》DLC「绝望之谷」官方确认，2027年发售",
-                     "excerpt":  "卡普空在财报中确认《Resident Evil 9》DLC「绝望之谷」正在开发，预计2027年3月前发售。",
-                     "url":  "https://www.residentevil.com/"
-                 }
-             ],
+    "news": [
+        {"date": "2026-05-24", "title": "神舟二十三号明日发射，首个第三批+第四批航天员乘组", "excerpt": "23:08从酒泉发射，朱杨柱任指令长，将开展100余项科学应用项目。", "url": "https://www.cnsa.gov.cn"},
+        {"date": "2026-05-24", "title": "GTA6发售日确认：11月19日，Steam国区268元起", "excerpt": "Take-Two财报实锤发售日不变，营销活动预计6月下旬启动。", "url": "https://www.rockstargames.com"},
+        {"date": "2026-05-24", "title": "OPPO Find N6曝光：骁龙8 Elite 2首发，Q1发布", "excerpt": "博主数码闲聊站爆料，定位轻薄全能大折叠屏。", "url": "https://www.weibo.com"},
+        {"date": "2026-05-24", "title": "OPPO母亲节文案翻车，中国区负责人遭降级", "excerpt": "与三联合作营销引发舆论危机，段要辉被连降两级。", "url": "https://www.ithome.com"},
+        {"date": "2026-05-24", "title": "Xbox收购动视暴雪诉讼收尾，FTC挑战终结", "excerpt": "最后一项法律障碍清除，交易进入收尾阶段。", "url": "https://www.theverge.com"},
+        {"date": "2026-05-24", "title": "索尼240亿收购Bungie成教训，《命运3》无望", "excerpt": "《命运2》6月停更，Bungie再裁员，索尼投资严重缩水。", "url": "https://www.eurogamer.net"},
+        {"date": "2026-05-24", "title": "逆水寒手游新版5月29日定档，6月开放试玩", "excerpt": "网易武侠MMO手游大更新，新内容即将揭晓。", "url": "https://n.163.com"},
+        {"date": "2026-05-24", "title": "韩国暗黑MMO《无冕之烬》韩服公测进行中", "excerpt": "暗黑风格大作登陆韩国，国际服待定。", "url": "https://www.mmorpg.com"}
+    ],
     "finance": [
         {"symbol": "0700.HK", "name": "腾讯控股", "change": "+0.85%", "dir": "up"},
         {"symbol": "9999.HK", "name": "网易-S", "change": "+1.12%", "dir": "up"},
@@ -129,16 +101,16 @@
         {"symbol": "KRAFTON", "name": "Krafton", "change": "+3.78%", "dir": "up"}
     ],
     "gaming_news": [
-        {"date": "2026-05-24", "category": "game", "title": "《碧蓝航线》9周年庆典开启，福利加码换装升级", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "game", "title": "《破碎族裔》2.0版本回归国区，适配键鼠+线上联机", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "game", "title": "《刺客信条：黑旗》重制版官宣，画面大幅升级", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "game", "title": "《街头霸王6》季票3新角色英格丽德登场", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "game", "title": "《三角洲行动》烽火职业联赛春季总决赛落幕", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "tech", "title": "《星空》登陆PS5，免费更新+付费DLC同步上线", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "game", "title": "《全面战争：战锤3》新DLC开发访谈公开", "url": "https://www.3dmgame.com", "source": "3DM"},
-        {"date": "2026-05-24", "category": "tech", "title": "育碧多款经典游戏重制计划曝光", "url": "https://www.eurogamer.net", "source": "Eurogamer"},
-        {"date": "2026-05-24", "category": "game", "title": "Steam周销榜更新，国产独立游戏表现亮眼", "url": "https://store.steampowered.com", "source": "Steam"},
-        {"date": "2026-05-24", "category": "tech", "title": "索尼PS5 Pro发售半年销量突破1500万台", "url": "https://www.pushsquare.com", "source": "PushSquare"}
+        {"date": "2026-05-24", "category": "game", "title": "GTA6发售日确认！11月19日Steam国区268元起", "url": "https://www.rockstargames.com", "source": "Rockstar"},
+        {"date": "2026-05-24", "category": "game", "title": "索尼240亿收购Bungie失败，《命运2》6月停更", "url": "https://www.eurogamer.net", "source": "Eurogamer"},
+        {"date": "2026-05-24", "category": "game", "title": "逆水寒手游新版5月29日定档，6月开放试玩", "url": "https://n.163.com", "source": "网易"},
+        {"date": "2026-05-24", "category": "game", "title": "《破碎族裔》2.0回归国区，适配键鼠+线上联机", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "tech", "title": "Xbox收购动视暴雪诉讼收尾，FTC挑战终结", "url": "https://www.theverge.com", "source": "The Verge"},
+        {"date": "2026-05-24", "category": "game", "title": "《碧蓝航线》9周年庆典开启，福利加码", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "韩国暗黑MMO《无冕之烬》韩服公测中", "url": "https://www.mmorpg.com", "source": "MMORPG"},
+        {"date": "2026-05-24", "category": "game", "title": "《刺客信条：黑旗》重制版官宣，画面升级", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "tech", "title": "OPPO Find N6曝光：骁龙8 Elite 2首发", "url": "https://www.ithome.com", "source": "IT之家"},
+        {"date": "2026-05-24", "category": "tech", "title": "神舟二十三号明日发射，新乘组首飞", "url": "https://www.cnsa.gov.cn", "source": "中国航天"}
     ],
     "contact":  {
                     "email":  "105945357@qq.com",
