@@ -137,7 +137,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (aboutSkeleton) aboutSkeleton.remove();
     }
 
-    // 导航栏滚动效果 + 回到顶部按钮
+    // 导航栏点击立即跳转（不用平滑滚动）
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'instant'  // 立即跳转，不平滑滚动
+                    });
+                }
+            }
+        });
+    });
+
+    // 回到顶部按钮显示/隐藏
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
     
