@@ -119,87 +119,27 @@
                  }
              ],
     "finance": [
-        {"symbol": "0700.HK", "name": "腾讯控股", "change": "+1.23%", "dir": "up"},
-        {"symbol": "9999.HK", "name": "网易-S", "change": "-0.87%", "dir": "down"},
-        {"symbol": "NTDOY", "name": "任天堂", "change": "+2.15%", "dir": "up"},
-        {"symbol": "SONY", "name": "索尼集团", "change": "+0.64%", "dir": "up"},
-        {"symbol": "EA", "name": "艺电 EA", "change": "-0.32%", "dir": "down"},
-        {"symbol": "RDDD", "name": "Reddit", "change": "+3.41%", "dir": "up"},
-        {"symbol": "NVDA", "name": "英伟达", "change": "+1.78%", "dir": "up"},
-        {"symbol": "KFTON", "name": "Krafton", "change": "+4.20%", "dir": "up"}
+        {"symbol": "0700.HK", "name": "腾讯控股", "change": "+0.85%", "dir": "up"},
+        {"symbol": "9999.HK", "name": "网易-S", "change": "+1.12%", "dir": "up"},
+        {"symbol": "NTDOY", "name": "任天堂", "change": "+2.34%", "dir": "up"},
+        {"symbol": "SONY", "name": "索尼集团", "change": "-0.45%", "dir": "down"},
+        {"symbol": "EA", "name": "艺电", "change": "+0.28%", "dir": "up"},
+        {"symbol": "RDDT", "name": "Reddit", "change": "+4.56%", "dir": "up"},
+        {"symbol": "NVDA", "name": "英伟达", "change": "+1.92%", "dir": "up"},
+        {"symbol": "KRAFTON", "name": "Krafton", "change": "+3.78%", "dir": "up"}
     ],
     "gaming_news": [
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "《战地风云6》第3赛季上线：经典地图重构+大逃杀排位赛",
-                     "url": "https://www.3dmgame.com",
-                     "source": "3DM"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "腾讯Q1财报：海外游戏收入188亿元同比增13%",
-                     "url": "https://www.tencent.com",
-                     "source": "企鹅号"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "《剑灵：革命》5月26日大更新：引擎升级至虚幻5",
-                     "url": "https://www.17173.com",
-                     "source": "17173"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "tech",
-                     "title": "GTA6定档2026年11月19日，或成PS5时代最强装机驱动",
-                     "url": "https://www.zol.com.cn",
-                     "source": "中关村在线"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "卡普空2026财年业绩创历史新高，《生化危机：安魂曲》狂卖691万份",
-                     "url": "https://www.donews.com",
-                     "source": "DoNews"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "2026亚运会LOL预选赛6月12-14日吉隆坡举行",
-                     "url": "https://sports.sina.com.cn",
-                     "source": "新浪电竞"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "tech",
-                     "title": "Bungie大规模裁员，团队缩减至约220人",
-                     "url": "https://www.eurogamer.net",
-                     "source": "Eurogamer"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "《无敌少侠VS》12天狂揽百万玩家，3v3超级英雄格斗",
-                     "url": "https://www.17173.com",
-                     "source": "17173"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "乐高蝙蝠侠合集今日发售，登陆全平台",
-                     "url": "https://www.theverge.com",
-                     "source": "The Verge"
-                 },
-                 {
-                     "date": "2026-05-24",
-                     "category": "game",
-                     "title": "《红色沙漠》营收飙升，Krafton股价创年内新高",
-                     "url": "https://www.eurogamer.net",
-                     "source": "Eurogamer"
-                 }
-             ],
+        {"date": "2026-05-24", "category": "game", "title": "《碧蓝航线》9周年庆典开启，福利加码换装升级", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "《破碎族裔》2.0版本回归国区，适配键鼠+线上联机", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "《刺客信条：黑旗》重制版官宣，画面大幅升级", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "《街头霸王6》季票3新角色英格丽德登场", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "《三角洲行动》烽火职业联赛春季总决赛落幕", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "tech", "title": "《星空》登陆PS5，免费更新+付费DLC同步上线", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "game", "title": "《全面战争：战锤3》新DLC开发访谈公开", "url": "https://www.3dmgame.com", "source": "3DM"},
+        {"date": "2026-05-24", "category": "tech", "title": "育碧多款经典游戏重制计划曝光", "url": "https://www.eurogamer.net", "source": "Eurogamer"},
+        {"date": "2026-05-24", "category": "game", "title": "Steam周销榜更新，国产独立游戏表现亮眼", "url": "https://store.steampowered.com", "source": "Steam"},
+        {"date": "2026-05-24", "category": "tech", "title": "索尼PS5 Pro发售半年销量突破1500万台", "url": "https://www.pushsquare.com", "source": "PushSquare"}
+    ],
     "contact":  {
                     "email":  "105945357@qq.com",
                     "qq":  "105945357",
