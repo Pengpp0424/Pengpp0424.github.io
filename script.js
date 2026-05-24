@@ -452,8 +452,10 @@ function populateContact(contact) {
 
     // 游戏群
     const groupCard = document.createElement('a');
-    groupCard.href = `#`;
-    groupCard.className = 'contact-card';
+    groupCard.href = "https://qun.qq.com/universal-share/share?ac=1&authKey=h2hBVFvrfwHGfTtxyvfxpw3PC1aNLJizDzFBpwN2GR%2BN1iHmW6y6L9AX37y%2FqMup&busi_data=eyJncm91cENvZGUiOiI3OTg3NjAyNDEiLCJ0b2tlbiI6ImpnRW1tcS8zYVZId3JrdU4zRmRmcVFjZUd0RkI3S09mYUNYUWkyZFNvWG9Talh6YlB4UTM5UzlRQTRvaXRDc0ciLCJ1aW4iOiIxMDU5NDUzNTcifQ%3D%3D&data=izu9m91oitzT0LHc3ObjL8G62Me2xXNlikB_bmtzY_nnv0K-IrMJdj6LQIVA1qqCi4KvFTk6Sr0D8gQSP3_T6g&svctype=4&tempid=h5_group_info";
+    groupCard.target = "_blank";
+    groupCard.rel = "noopener";
+    groupCard.className = "contact-card";
     groupCard.innerHTML = `
         <div class="contact-icon">🎮</div>
         <div>
