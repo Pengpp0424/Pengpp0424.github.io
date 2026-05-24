@@ -1,0 +1,45 @@
+# PowerShell scripts (temporary)
+*.ps1
+
+# Log files
+*.log
+*.err
+
+# Temporary files
+*.tmp
+*.temp
+~/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary directories
+tmp/
+tmp_*/
+logs/
+sessions/
+triggers/
+workflows/
+scans/
+debug_*/
+boss_*/
+
+# Personal files (not for public repo)
+# memory/  (需要跟踪记忆文件)
+*.docx
+*.mp4
+*.png
+*.jpg
+
+# OS files
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
