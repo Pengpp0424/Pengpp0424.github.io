@@ -114,7 +114,11 @@
     ],
     "contact":  {
                     "email":  "105945357@qq.com",
-                    "qq":  "105945357",
+                    "group":  {
+                                   "name":  "游戏群",
+                                   "desc":  "NS2 · PS5 · Steam · XGP 全平台讨论群",
+                                   "id":  "798760241"
+                               },
                     "douyin":  {
                                    "name":  "抖音",
                                    "username":  "66883111674",

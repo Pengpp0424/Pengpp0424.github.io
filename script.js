@@ -450,18 +450,18 @@ function populateContact(contact) {
     `;
     contactContainer.appendChild(emailCard);
 
-    // QQ
-    const qqCard = document.createElement('a');
-    qqCard.href = `#`;
-    qqCard.className = 'contact-card';
-    qqCard.innerHTML = `
-        <div class="contact-icon">💬</div>
+    // 游戏群
+    const groupCard = document.createElement('a');
+    groupCard.href = `#`;
+    groupCard.className = 'contact-card';
+    groupCard.innerHTML = `
+        <div class="contact-icon">🎮</div>
         <div>
-            <h3>QQ</h3>
-            <p>${contact.qq}</p>
+            <h3>${contact.group.name}</h3>
+            <p>${contact.group.id}</p>
         </div>
     `;
-    contactContainer.appendChild(qqCard);
+    contactContainer.appendChild(groupCard);
 
     // 抖音
     const douyinCard = document.createElement('a');
