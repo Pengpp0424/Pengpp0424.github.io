@@ -338,52 +338,41 @@ function populateNews(news) {
     });
 }
 
-// 填充游戏科技动态（新版动图背景板块）
+// 填充每日新闻速报（滚动条）
 function populateGamingNews(news) {
-    const newsGrid = document.getElementById('gamingNewsGrid');
-    if (!newsGrid) return;
+    const ticker = document.getElementById('newsTicker');
+    if (!ticker) return;
 
-    newsGrid.innerHTML = '';
+    ticker.innerHTML = '';
 
     if (!news || news.length === 0) {
-        newsGrid.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.4);">暂无动态</p>';
+        ticker.innerHTML = '<span class="ticker-item">暂无新闻</span>';
         return;
     }
 
-    // 按日期降序排列
+    // 按日期降序
     const sorted = [...news].sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    // 构建条目HTML（重复两份实现无缝滚动）
+    let itemsHTML = '';
     sorted.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'gaming-news-card';
+        let tagClass = 'tag-game', tagText = '🎮';
+        if (item.category === 'tech') { tagClass = 'tag-tech'; tagText = '🔧'; }
+        else if (item.category === 'ai') { tagClass = 'tag-ai'; tagText = '🤖'; }
 
-        const pubDate = new Date(item.date).toLocaleDateString('zh-CN');
-
-        // 分类标签
-        let categoryClass = 'cat-game';
-        let categoryText = '游戏';
-        if (item.category === 'tech') { categoryClass = 'cat-tech'; categoryText = '科技'; }
-        else if (item.category === 'ai') { categoryClass = 'cat-ai'; categoryText = 'AI'; }
-
-        card.innerHTML = `
-            <span class="news-category ${categoryClass}">${categoryText}</span>
-            <h3 class="news-title">
-                <a href="${item.url || '#'}" target="_blank" rel="noopener">${item.title}</a>
-            </h3>
-            <p class="news-excerpt">${item.excerpt}</p>
-            <div class="news-meta">
-                <span class="news-date">${pubDate}</span>
-                <span class="news-source">${item.source || '综合'}</span>
-            </div>
-        `;
-
-        newsGrid.appendChild(card);
+        itemsHTML += `<span class="ticker-item">
+            <span class="ticker-tag ${tagClass}">${tagText}</span>
+            <span class="ticker-text"><a href="${item.url || '#'}" target="_blank" rel="noopener">${item.title}</a></span>
+        </span>`;
     });
 
-    // 更新最后更新时间
+    // 两份实现无缝循环
+    ticker.innerHTML = itemsHTML + itemsHTML;
+
+    // 更新时间
     const lastUpdate = document.getElementById('newsLastUpdate');
     if (lastUpdate && sorted.length > 0) {
-        lastUpdate.textContent = '最近更新：' + new Date(sorted[0].date).toLocaleDateString('zh-CN');
+        lastUpdate.textContent = new Date(sorted[0].date).toLocaleDateString('zh-CN');
     }
 }
 

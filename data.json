@@ -122,50 +122,72 @@
                  {
                      "date": "2026-05-24",
                      "category": "game",
-                     "title": "《艾尔登法环》DLC销量突破800万套",
-                     "excerpt": "FromSoftware官方宣布，《黄金树幽影》DLC全球销量突破800万，成为2026年最成功的魂系DLC。",
-                     "url": "https://www.3dmgame.com/news/202605/1300123.html",
+                     "title": "《战地风云6》第3赛季上线：经典地图重构+大逃杀排位赛",
+                     "url": "https://www.3dmgame.com",
                      "source": "3DM"
                  },
                  {
                      "date": "2026-05-24",
                      "category": "game",
-                     "title": "《地狱潜者2》登陆Xbox Series X|S，首日加入Game Pass",
-                     "excerpt": "索尼确认《Helldivers 2》将于8月Xbox平台发售，首日加入Game Pass，支持跨平台联机。",
-                     "url": "https://store.steampowered.com/app/553850",
-                     "source": "Steam"
+                     "title": "腾讯Q1财报：海外游戏收入188亿元同比增13%",
+                     "url": "https://www.tencent.com",
+                     "source": "企鹅号"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《剑灵：革命》5月26日大更新：引擎升级至虚幻5",
+                     "url": "https://www.17173.com",
+                     "source": "17173"
                  },
                  {
                      "date": "2026-05-24",
                      "category": "tech",
-                     "title": "英伟达RTX 6090规格泄露：384位宽+32GB GDDR7X显存",
-                     "excerpt": "下一代旗舰显卡RTX 6090规格疑似泄露，配备32GB GDDR7X显存，性能较5090提升60%。",
-                     "url": "https://www.expreview.com/90234.html",
-                     "source": "超能网"
+                     "title": "GTA6定档2026年11月19日，或成PS5时代最强装机驱动",
+                     "url": "https://www.zol.com.cn",
+                     "source": "中关村在线"
                  },
                  {
                      "date": "2026-05-24",
                      "category": "game",
-                     "title": "《黑色神话：悟空》DLC「轮回」公布，2027年春节发售",
-                     "excerpt": "游戏科学公布首款DLC「轮回」，新增3章主线剧情+12种新BOSS，支持全景光追。",
-                     "url": "https://www.heishenhua.com/",
-                     "source": "游戏科学"
+                     "title": "卡普空2026财年业绩创历史新高，《生化危机：安魂曲》狂卖691万份",
+                     "url": "https://www.donews.com",
+                     "source": "DoNews"
                  },
                  {
                      "date": "2026-05-24",
                      "category": "game",
-                     "title": "Steam新品节：2000+游戏试玩，包括《GTA 6》《上古卷轴6》",
-                     "excerpt": "Steam新品节开幕，2000+游戏提供免费试玩，包括《GTA 6》《上古卷轴6》等重磅作品。",
-                     "url": "https://store.steampowered.com/sale/nextfest",
-                     "source": "Steam"
+                     "title": "2026亚运会LOL预选赛6月12-14日吉隆坡举行",
+                     "url": "https://sports.sina.com.cn",
+                     "source": "新浪电竞"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "tech",
+                     "title": "Bungie大规模裁员，团队缩减至约220人",
+                     "url": "https://www.eurogamer.net",
+                     "source": "Eurogamer"
                  },
                  {
                      "date": "2026-05-24",
                      "category": "game",
-                     "title": "《生化危机》DLC「绝望之谷」官方确认，2027年发售",
-                     "excerpt": "卡普空在财报中确认《Resident Evil 9》DLC「绝望之谷」正在开发，预计2027年3月前发售。",
-                     "url": "https://www.residentevil.com/",
-                     "source": "卡普空"
+                     "title": "《无敌少侠VS》12天狂揽百万玩家，3v3超级英雄格斗",
+                     "url": "https://www.17173.com",
+                     "source": "17173"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "乐高蝙蝠侠合集今日发售，登陆全平台",
+                     "url": "https://www.theverge.com",
+                     "source": "The Verge"
+                 },
+                 {
+                     "date": "2026-05-24",
+                     "category": "game",
+                     "title": "《红色沙漠》营收飙升，Krafton股价创年内新高",
+                     "url": "https://www.eurogamer.net",
+                     "source": "Eurogamer"
                  }
              ],
     "contact":  {

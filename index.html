@@ -223,34 +223,22 @@
         </div>
     </section>
 
-    <!-- 每日新闻速报（新增板块） -->
-    <section class="section gaming-news-section" id="daily-news">
-        <!-- 游戏动图背景层 -->
-        <div class="gaming-gif-bg">
-            <div class="gif-tile gif-1"></div>
-            <div class="gif-tile gif-2"></div>
-            <div class="gif-tile gif-3"></div>
-            <div class="gif-tile gif-4"></div>
-            <div class="gif-tile gif-5"></div>
-            <div class="gif-tile gif-6"></div>
-        </div>
-        <div class="gaming-news-overlay"></div>
-        <div class="container gaming-news-content">
+    <!-- 每日新闻速报 -->
+    <section class="daily-news-section" id="daily-news">
+        <div class="daily-news-bg"></div>
+        <div class="container">
             <div class="section-header">
                 <span class="section-tag">DAILY</span>
                 <h2 class="section-title">📰 每日新闻速报</h2>
-                <p class="gaming-news-subtitle">游戏 × 科技 × AI · 每日同步更新</p>
             </div>
-            <div class="gaming-news-grid" id="gamingNewsGrid">
-                <!-- 新闻由JS动态加载 -->
-                <div class="news-loading">
-                    <div class="loading-spinner"></div>
-                    <p>正在加载最新动态...</p>
+            <div class="news-ticker-wrapper">
+                <div class="news-ticker" id="newsTicker">
+                    <!-- 新闻条目由JS动态加载 -->
                 </div>
             </div>
-            <div class="gaming-news-footer">
+            <div class="daily-news-footer">
                 <span>📡 每日自动更新</span>
-                <span id="newsLastUpdate">最近更新：--</span>
+                <span id="newsLastUpdate">--</span>
             </div>
         </div>
     </section>
