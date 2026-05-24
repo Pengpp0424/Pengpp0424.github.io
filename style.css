@@ -733,7 +733,7 @@ body {
     color: var(--text-secondary);
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .filter-btn:hover {
@@ -1336,16 +1336,15 @@ body {
         font-size: 20px;
     }
 }
-/* ========== 作品卡片悬停效果 ========== */
+/* ========== 作品卡片悬停效果（优化响应速度） ========== */
 .work-card {
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.15s ease, 
+                box-shadow 0.15s ease;
 }
 
 .work-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3),
-                0 8px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .work-card .work-info {

@@ -498,33 +498,27 @@ function populateFooter(footerText) {
     if (footer) footer.textContent = footerText;
 }
 
-// ========== 作品筛选功能 ==========
-document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const worksGrid = document.getElementById('worksGrid');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const filter = this.dataset.filter;
-            const workCards = worksGrid.querySelectorAll('.work-card');
-
-            workCards.forEach(card => {
-                if (filter === 'all') {
-                    card.style.display = '';
-                } else {
-                    const tags = card.dataset.tags || '';
-                    if (tags.includes(filter)) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
+// ========== 作品筛选功能（事件委托，立即响应） ==========
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('filter-btn')) {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        const filter = e.target.dataset.filter;
+        const worksGrid = document.getElementById('worksGrid');
+        if (!worksGrid) return;
+        
+        const workCards = worksGrid.querySelectorAll('.work-card');
+        workCards.forEach(card => {
+            if (filter === 'all') {
+                card.style.display = '';
+            } else {
+                const tags = card.dataset.tags || '';
+                card.style.display = tags.includes(filter) ? '' : 'none';
+            }
         });
-    });
+    }
 });
 
 // ========== 主题切换功能 ==========
