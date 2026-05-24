@@ -118,6 +118,16 @@
                      "url":  "https://www.residentevil.com/"
                  }
              ],
+    "finance": [
+        {"symbol": "0700.HK", "name": "腾讯控股", "change": "+1.23%", "dir": "up"},
+        {"symbol": "9999.HK", "name": "网易-S", "change": "-0.87%", "dir": "down"},
+        {"symbol": "NTDOY", "name": "任天堂", "change": "+2.15%", "dir": "up"},
+        {"symbol": "SONY", "name": "索尼集团", "change": "+0.64%", "dir": "up"},
+        {"symbol": "EA", "name": "艺电 EA", "change": "-0.32%", "dir": "down"},
+        {"symbol": "RDDD", "name": "Reddit", "change": "+3.41%", "dir": "up"},
+        {"symbol": "NVDA", "name": "英伟达", "change": "+1.78%", "dir": "up"},
+        {"symbol": "KFTON", "name": "Krafton", "change": "+4.20%", "dir": "up"}
+    ],
     "gaming_news": [
                  {
                      "date": "2026-05-24",

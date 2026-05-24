@@ -1102,6 +1102,95 @@ body {
     color: rgba(255, 255, 255, 0.3);
 }
 
+/* 游戏科技财经 */
+.finance-block {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.finance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.finance-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.finance-badge {
+    font-size: 0.62rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+    font-weight: 600;
+}
+
+.finance-ticker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.finance-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    transition: background 0.2s;
+}
+
+.finance-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.finance-symbol {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: rgba(16, 185, 129, 0.9);
+    min-width: 56px;
+}
+
+.finance-symbol.down {
+    color: #f87171;
+}
+
+.finance-name {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.finance-change {
+    font-weight: 600;
+    font-size: 0.75rem;
+    min-width: 52px;
+    text-align: right;
+}
+
+.finance-change.up { color: #6ee7b7; }
+.finance-change.down { color: #f87171; }
+
+.finance-footer {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.62rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
 /* ========== 骨架屏加载动画 ========== */
 .skeleton-container {
     display: grid;

@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             populateWorks(data.works);
             populateNews(data.news);
             populateGamingNews(data.gaming_news || data.news);
+            populateFinance(data.finance);
             populateContact(data.contact);
             populateFooter(data.footer);
             
@@ -373,6 +374,42 @@ function populateGamingNews(news) {
     const lastUpdate = document.getElementById('newsLastUpdate');
     if (lastUpdate && sorted.length > 0) {
         lastUpdate.textContent = new Date(sorted[0].date).toLocaleDateString('zh-CN');
+    }
+}
+
+// 填充游戏科技财经
+function populateFinance(items) {
+    const ticker = document.getElementById('financeTicker');
+    const lastUpdate = document.getElementById('financeLastUpdate');
+    if (!ticker) return;
+
+    // 工作日才显示（周六=6, 周日=0）
+    const day = new Date().getDay();
+    if (day === 0 || day === 6) {
+        ticker.innerHTML = '<div class="finance-item" style="justify-content:center;color:rgba(255,255,255,0.3)">周末休市 🏖️</div>';
+        if (lastUpdate) lastUpdate.textContent = '休市中';
+        return;
+    }
+
+    if (!items || items.length === 0) {
+        ticker.innerHTML = '<div class="finance-item" style="justify-content:center;color:rgba(255,255,255,0.3)">暂无数据</div>';
+        return;
+    }
+
+    ticker.innerHTML = items.map(item => {
+        const dirClass = item.dir === 'down' ? 'down' : '';
+        const changeClass = item.dir === 'down' ? 'down' : 'up';
+        return `<div class="finance-item">
+            <span class="finance-symbol ${dirClass}">${item.symbol}</span>
+            <span class="finance-name">${item.name}</span>
+            <span class="finance-change ${changeClass}">${item.change}</span>
+        </div>`;
+    }).join('');
+
+    if (lastUpdate) {
+        const now = new Date();
+        lastUpdate.textContent = now.toLocaleDateString('zh-CN') + ' ' + 
+            now.toLocaleTimeString('zh-CN', {hour:'2-digit', minute:'2-digit'});
     }
 }
 
