@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -364,7 +364,7 @@
     (function() {
         const images = [];
         for (let i = 1; i <= 60; i++) {
-            images.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
+            images.push('images/illustrations-webp/illust-' + String(i).padStart(2, '0') + '.webp');
         }
         const today = new Date();
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
@@ -404,7 +404,7 @@
     (function() {
         const IMAGES = [];
         for (let i = 1; i <= 60; i++) {
-            IMAGES.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
+            IMAGES.push('images/illustrations-webp/illust-' + String(i).padStart(2, '0') + '.webp');
         }
 
         // 当前在卡片上显示的两张图索引（关键状态变量）
@@ -498,3 +498,4 @@
     </script>
 </body>
 </html>
+
