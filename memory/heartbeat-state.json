@@ -1,0 +1,16 @@
+{
+  "lastChecks": {
+    "email": null,
+    "calendar": null,
+    "weather": null,
+    "triggers": {
+      "flag_daily_news": null,
+      "flag_fin_am": null,
+      "flag_fin_pm": null,
+      "flag_ecom": null,
+      "flag_video_done": null
+    }
+  },
+  "lastFullCheck": "2026-05-25T16:01:00+08:00",
+  "version": "2.0"
+}
