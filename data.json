@@ -110,47 +110,47 @@
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "+0.96%",
+            "change": "+96.00%",
             "dir": "up",
             "value": "4152.57"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "+2.10%",
+            "change": "+210.00%",
             "dir": "up",
-            "value": "3910.28"
+            "value": "4021.16"
         },
         {
             "symbol": "0700.HK",
             "name": "腾讯控股",
-            "change": "+0.85%",
+            "change": "--",
             "dir": "up"
         },
         {
             "symbol": "9999.HK",
             "name": "网易-S",
-            "change": "+1.12%",
+            "change": "--",
             "dir": "up"
         },
         {
             "symbol": "NTDOY",
             "name": "任天堂",
-            "change": "+2.34%",
+            "change": "+0.00%",
             "dir": "up"
         },
         {
             "symbol": "NVDA",
             "name": "英伟达",
-            "change": "+1.92%",
+            "change": "+0.00%",
             "dir": "up"
         },
         {
             "symbol": "GOLD",
             "name": "国际黄金",
-            "change": "+1.19%",
+            "change": "+0.00%",
             "dir": "up",
-            "value": "4560.50"
+            "value": "--"
         }
     ],
     "gaming_news": [
