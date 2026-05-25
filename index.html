@@ -399,102 +399,101 @@
             <div class="gallery-counter" id="galleryCounter">1 / 60</div>
         </div>
     </div>
-    <!-- ✅ 插画换一批按钮脚本 -->
+    <!-- ✅ 插画图画廊（Lightbox + 换一批） -->
     <script>
     (function() {
-        const images = [];
+        const IMAGES = [];
         for (let i = 1; i <= 60; i++) {
-            images.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
+            IMAGES.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
         }
-        let currentIndex = 0;
-        let displayIndices = [];
+
+        // 当前在卡片上显示的两张图索引（关键状态变量）
+        let leftIdx  = -1;
+        let rightIdx = -1;
+        let galleryIdx = 0;
+
+        // ---- 画廊 ----
         function openGallery(idx) {
-            currentIndex = idx;
-            updateGallery();
+            galleryIdx = idx;
+            document.getElementById('galleryImg').src = IMAGES[galleryIdx];
+            document.getElementById('galleryCounter').textContent = (galleryIdx + 1) + ' / ' + IMAGES.length;
             document.getElementById('galleryModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-        }
-        function updateGallery() {
-            const img = document.getElementById('galleryImg');
-            img.src = images[currentIndex];
-            document.getElementById('galleryCounter').textContent = (currentIndex + 1) + ' / ' + images.length;
         }
         function closeGallery() {
             document.getElementById('galleryModal').classList.remove('active');
             document.body.style.overflow = '';
         }
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateGallery();
-        }
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateGallery();
-        }
-        // 暴露到全局
-        window._gallery = { openGallery, closeGallery, prevImage, nextImage, images };
-        // 绑定按钮
+        function prevImage() { openGallery((galleryIdx - 1 + IMAGES.length) % IMAGES.length); }
+        function nextImage() { openGallery((galleryIdx + 1) % IMAGES.length); }
+
         document.getElementById('galleryClose').addEventListener('click', closeGallery);
         document.getElementById('galleryPrev').addEventListener('click', prevImage);
         document.getElementById('galleryNext').addEventListener('click', nextImage);
         document.querySelector('.gallery-overlay').addEventListener('click', closeGallery);
-        // 键盘导航
         document.addEventListener('keydown', function(e) {
-            if (!document.getElementById('galleryModal').classList.contains('active')) return;
+            const modal = document.getElementById('galleryModal');
+            if (!modal.classList.contains('active')) return;
             if (e.key === 'Escape') closeGallery();
-            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowLeft')  prevImage();
             if (e.key === 'ArrowRight') nextImage();
         });
-        // 让插画图片可点击
-        function bindIllustClicks() {
+
+        // ---- 卡片图片点击 → 打开画廊 ----
+        function bindCardClicks() {
             const imgL = document.getElementById('illustLeft');
             const imgR = document.getElementById('illustRight');
-            if (imgL && imgL.src) {
+            if (imgL) {
                 imgL.style.cursor = 'pointer';
-                imgL.addEventListener('click', function() {
-                    // 找到当前显示的图片在 images 数组中的索引
-                    const idx = images.indexOf(imgL.src.split('?')[0]);
-                    openGallery(idx >= 0 ? idx : 0);
-                });
+                // 用 onclick 覆盖，避免重复绑定
+                imgL.onclick = function() { openGallery(leftIdx); };
             }
-            if (imgR && imgR.src) {
+            if (imgR) {
                 imgR.style.cursor = 'pointer';
-                imgR.addEventListener('click', function() {
-                    const idx = images.indexOf(imgR.src.split('?')[0]);
-                    openGallery(idx >= 0 ? idx : 0);
-                });
+                imgR.onclick = function() { openGallery(rightIdx); };
             }
         }
-        // 等图片加载完再绑定
-        setTimeout(bindIllustClicks, 500);
-        // 每天换一批按钮
+
+        // ---- 换一批 ----
+        function shufflePair() {
+            let a = Math.floor(Math.random() * IMAGES.length);
+            let b = Math.floor(Math.random() * IMAGES.length);
+            while (b === a) b = Math.floor(Math.random() * IMAGES.length);
+            leftIdx  = a;
+            rightIdx = b;
+            document.getElementById('illustLeft').src  = IMAGES[a] + '?t=' + Date.now();
+            document.getElementById('illustRight').src = IMAGES[b] + '?t=' + Date.now();
+            bindCardClicks();
+        }
+
+        // 按钮直接 append 到 illustCard（不依赖 DOMContentLoaded）
         const btn = document.createElement('button');
         btn.className = 'btn-change-batch';
         btn.textContent = '换一批';
-        btn.addEventListener('click', function() {
-            const illustSection = document.getElementById('illustrations');
-            if (illustSection) {
-                let wrap = illustSection.querySelector('.illust-change-wrap');
-                if (!wrap) {
-                    wrap = document.createElement('div');
-                    wrap.className = 'illust-change-wrap';
-                    illustSection.querySelector('.illust-card').appendChild(wrap);
-                }
-                // 随机选两张
-                const i1 = Math.floor(Math.random() * images.length);
-                let i2 = Math.floor(Math.random() * images.length);
-                while (i2 === i1) i2 = Math.floor(Math.random() * images.length);
-                document.getElementById('illustLeft').src = images[i1];
-                document.getElementById('illustRight').src = images[i2];
-                // 重新绑定点击
-                setTimeout(bindIllustClicks, 100);
-            }
-        });
-        // 把按钮加到插画卡片下方
-        document.addEventListener('DOMContentLoaded', function() {
+        btn.addEventListener('click', shufflePair);
+
+        function attachBtn() {
             const card = document.getElementById('illustCard');
-            if (card) card.appendChild(btn);
-        });
+            if (card && !card.contains(btn)) card.appendChild(btn);
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachBtn);
+        } else {
+            attachBtn();
+        }
+
+        // ---- 初始化：用 daily seed 选两张 ----
+        const seed = new Date().getFullYear()*10000 + (new Date().getMonth()+1)*100 + new Date().getDate();
+        function pick(offset) {
+            const x = Math.sin(seed + offset * 9973) * 43758.5453;
+            return Math.floor((x - Math.floor(x)) * IMAGES.length);
+        }
+        leftIdx  = pick(2);
+        rightIdx = pick(3);
+        if (rightIdx === leftIdx) rightIdx = (rightIdx + 1) % IMAGES.length;
+        document.getElementById('illustLeft').src  = IMAGES[leftIdx];
+        document.getElementById('illustRight').src = IMAGES[rightIdx];
+        bindCardClicks();
     })();
     </script>
 </body>
