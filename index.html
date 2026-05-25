@@ -76,10 +76,10 @@
         
         <!-- ✅ 银河系斜对角动画 + 太阳系 + 星光 -->
         <video class="hero-anim hero-anim-left" autoplay loop muted playsinline>
-            <source src="videos/cyber-left.mp4" type="video/mp4">
+            <source type="video/mp4">
         </video>
         <video class="hero-anim hero-anim-right" autoplay loop muted playsinline>
-            <source src="videos/cyber-right.mp4" type="video/mp4">
+            <source type="video/mp4">
         </video>
         
         <div class="hero-content">
@@ -292,5 +292,40 @@
     <script src="starlight.js?v=20260523"></script>
     <script src="scroll-control.js?v=20260523"></script>
     <script src="script.js?v=20260523"></script>
+    <!-- ✅ 每日随机 Hero 动画 -->
+    <script>
+    (function() {
+        // 28 个动画视频
+        const videos = [];
+        for (let i = 1; i <= 28; i++) {
+            videos.push('videos/hero-anim-' + String(i).padStart(2, '0') + '.mp4');
+        }
+        // 基于日期的确定性选择（每天相同）
+        const today = new Date();
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        function pick(offset) {
+            const x = Math.sin(seed + offset * 9973) * 43758.5453;
+            return Math.floor((x - Math.floor(x)) * 28);
+        }
+        let i1 = pick(0);
+        let i2 = pick(1);
+        if (i2 === i1) i2 = (i2 + 1) % 28;
+        function setVideos() {
+            const s1 = document.querySelector('.hero-anim-left source');
+            const s2 = document.querySelector('.hero-anim-right source');
+            if (s1) s1.src = videos[i1];
+            if (s2) s2.src = videos[i2];
+            const v1 = document.querySelector('.hero-anim-left');
+            const v2 = document.querySelector('.hero-anim-right');
+            if (v1) { v1.load(); v1.play().catch(()=>{}); }
+            if (v2) { v2.load(); v2.play().catch(()=>{}); }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setVideos);
+        } else {
+            setVideos();
+        }
+    })();
+    </script>
 </body>
 </html>
