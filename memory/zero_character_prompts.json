@@ -1,0 +1,70 @@
+{
+  "角色_零": {
+    "基础描述": "22岁女性，东方人特征，大眼长睫毛，代码虹膜（瞳孔有电路图案和二进制代码，蓝色发光），瓜子脸，超模身材",
+    "发型": "深色短发/中短发，微卷",
+    "服装": "赛博朋克风格亮片天空蓝紧身衣，袖子有网格/亮片装饰",
+    "特殊标记": {
+      "后颈烙印": "卢恩符文与机械电路结合的烙印，紫色非光谱色微光",
+      "眼睛": "虹膜有电路图案和二进制代码，蓝色发光",
+      "手部": "触碰虚拟界面时投射绿色代码流"
+    },
+    "表情基调": "凝重、若有所思、略带忧郁",
+    "姿态风格": "侧身站立、面对屏幕、剪影逆光"
+  },
+  
+  "场景_零的房间": {
+    "类型": "室内，工作室/服务器机房",
+    "氛围": "暗色调，压抑，科技感，赛博朋克",
+    "主要元素": [
+      "满墙的蓝色屏幕/显示器",
+      "服务器机架",
+      "线缆和科技设备",
+      "虚拟界面投影"
+    ],
+    "灯光": "冷色调蓝色光，屏幕光照明，逆光剪影",
+    "色调": "深蓝、黑、青色"
+  },
+  
+  "场景_城市外观": {
+    "类型": "室外，未来城市",
+    "氛围": "压抑，末日感，数字异常",
+    "主要元素": [
+      "高楼大厦",
+      "全息广告牌",
+      "雨夜街道",
+      "天空中的数字裂缝"
+    ],
+    "灯光": "霓虹灯光，冷色调",
+    "色调": "青色、紫色、橙色夕阳"
+  },
+
+  "FLUX提示词模板": {
+    "角色_全身": "22-year-old Asian woman, short dark hair, oval face, large eyes with long eyelashes, circuit-pattern iris with binary code glow blue, slender model figure, wearing cyberpunk-style sky-blue sequined bodysuit with mesh sleeves, purple glowing circuit-rune tattoo on back of neck, serious contemplative expression, standing sideways, cinematic lighting",
+    
+    "角色_特写_眼睛": "close-up of Asian woman's eye, circuit-pattern iris with binary code, glowing blue, long eyelashes, contemplative expression, cinematic lighting, cyberpunk aesthetic, 4k detailed",
+    
+    "角色_特写_后颈": "close-up of back of neck, purple glowing circuit-rune tattoo, non-spectral color glow, cyberpunk aesthetic, detailed skin texture, cinematic lighting",
+    
+    "角色_手部": "Asian woman's hand reaching toward virtual interface, green code stream projecting from fingertips, sky-blue sequined sleeve with mesh pattern, cyberpunk aesthetic, cinematic lighting",
+    
+    "场景_房间": "dark cyberpunk server room, walls covered with blue glowing screens and monitors, server racks with cables, one figure sitting at desk back to camera, cold blue screen lighting, oppressive atmosphere, cinematic composition, 16:9 aspect ratio",
+    
+    "场景_房间_背影": "dark cyberpunk room, Asian woman with short dark hair in sky-blue bodysuit sitting at desk back to camera, multiple blue screens on wall, server equipment, purple glowing tattoo on back of neck, cinematic lighting, 16:9 aspect ratio",
+    
+    "场景_城市": "futuristic cyberpunk city skyline at dusk, tall buildings with neon signs, sky showing digital anomalies and fissures, orange sunset blending into purple and blue, light rain, oppressive atmosphere, cinematic composition, 16:9 aspect ratio"
+  },
+
+  "生成参数建议": {
+    "分辨率": "1344x768 (16:9) 或 1920x1080",
+    "采样器": "FLUX.1-dev fp8",
+    "步数": "20-28",
+    "引导系数": "3.5-5.0",
+    "负面提示词": "blurry, low quality, distorted, deformed, bad anatomy, extra limbs, watermark, signature"
+  },
+
+  "备注": {
+    "第一集参考": "第一集已完成10个镜头，可在 F:\\AI短片素材\\零\\场景v2\\ 查看关键帧参考",
+    "角色一致性": "建议使用IP-Adapter或InstantID保持角色外观一致",
+    "视频规格": "第二集改为16:9画幅，1080p 30fps（区别于第一集的2.39:1宽银幕）"
+  }
+}

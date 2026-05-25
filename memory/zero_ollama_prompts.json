@@ -1,0 +1,66 @@
+[
+  {
+    "file": "20260512233354115.JPEG",
+    "prompt": "female",
+    "scene": "cyberpunk cityscape",
+    "lighting": "Directional, primarily from neon signs and city lights. Color: predominantly blue and pink. Intensity: High, creating strong highlights and shadows.",
+    "effects": "Glowing neon signs, rain reflections, subtle digital distortion/glitch effects, possibly code overlay.",
+    "style": "Cyberpunk, Sci-Fi, Digital Art"
+  },
+  {
+    "file": "IMG_20260508_112121.jpg",
+    "prompt": "20-30, female, short, sleek, youthful, slightly angular features, defined cheekbones, form-fitting, dark grey/black bodysuit, none",
+    "scene": "futuristic interior",
+    "lighting": "diffused, cool white, emanating from unseen sources",
+    "effects": "subtle glowing highlights on the bodysuit, suggesting advanced materials or technology",
+    "style": "cyberpunk, sci-fi, minimalist"
+  },
+  {
+    "file": "IMG_20260508_113751.png",
+    "prompt": "20-30, female, short, sleek, youthful, slightly angular features, prominent cheekbones, minimalist, dark grey or black bodysuit",
+    "scene": "digital interface",
+    "lighting": "diffused, cool, emanating from the digital interface",
+    "effects": "glowing lines and patterns, digital code overlay, subtle chromatic aberration",
+    "style": "cyberpunk, digital art, futuristic"
+  },
+  {
+    "file": "IMG_20260508_222040.jpg",
+    "prompt": "female, short, dark hair, dark, futuristic clothing",
+    "scene": "futuristic interior",
+    "lighting": "diffuse, cool, emanating from digital displays and glowing elements",
+    "effects": "glowing digital displays, subtle particle effects, code snippets, reflections",
+    "style": "cyberpunk, sci-fi"
+  },
+  {
+    "file": "IMG_20260508_232751.jpg",
+    "prompt": "20-30, female, long, flowing hair, youthful, slightly ethereal, flowing, dark garment",
+    "scene": "abstract space",
+    "lighting": "soft, diffused glow, emanating from the particles and code",
+    "effects": "glowing particles, digital code, subtle volumetric lighting",
+    "style": "cyberpunk, sci-fi, ethereal"
+  },
+  {
+    "file": "IMG_20260508_232808.jpg",
+    "prompt": "25-35, female, long, flowing, dark hair, pale skin, angular features, prominent cheekbones, dark eyes, black, form-fitting bodysuit, none",
+    "scene": "urban setting, futuristic cityscape",
+    "lighting": "artificial, predominantly blue and purple, directional from neon signs and distant lights, high intensity",
+    "effects": "glowing elements - subtle neon reflections on the bodysuit, particles - rain droplets, code - faint digital patterns in the background",
+    "style": "cyberpunk, sci-fi"
+  },
+  {
+    "file": "IMG_20260508_234619.jpg",
+    "prompt": "20-30, female, long, flowing hair, youthful, slightly melancholic expression, dark, flowing garment, none",
+    "scene": "urban cityscape",
+    "lighting": "primarily neon, directional from signs and streetlights, cool color temperature",
+    "effects": "glowing neon signs, rain particles, subtle digital glitch effects, code overlay",
+    "style": "cyberpunk, sci-fi, atmospheric"
+  },
+  {
+    "file": "IMG_20260508_235417.jpg",
+    "prompt": "20-30, female, long, straight, oval, symmetrical, youthful, white, flowing dress, none",
+    "scene": "urban street",
+    "lighting": "soft, diffused, ambient",
+    "effects": "glow, subtle light refraction, volumetric lighting",
+    "style": "surrealism, dreamy, possibly cyberpunk-influenced"
+  }
+]
