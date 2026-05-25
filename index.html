@@ -64,6 +64,8 @@
         <div class="nav-links">
             <a href="#about">关于</a>
             <a href="#works">作品</a>
+            <a href="#illustrations">插画</a>
+            <a href="#journey">创作历程</a>
             <a href="#news">动态/新闻</a>
             <a href="#contact">联系</a>
             <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
@@ -224,6 +226,39 @@
         </div>
     </section>
 
+    <!-- 创作历程 -->
+    <section class="section" id="journey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">JOURNEY</span>
+                <h2 class="section-title">创作历程</h2>
+            </div>
+            <div class="journey-timeline">
+                <div class="journey-item">
+                    <div class="journey-date">2026.05</div>
+                    <div class="journey-card">
+                        <h3>《零》第一集发布</h3>
+                        <p>从 ComfyUI 生图到 LiblibAI 图生视频，从 AI 配音到 ffmpeg 混音——第一集每一步都是新坑。角色一致性是最大难题，FLF 逐帧控制是救命稻草。</p>
+                    </div>
+                </div>
+                <div class="journey-item">
+                    <div class="journey-date">2026.04</div>
+                    <div class="journey-card">
+                        <h3>AI 视频工作流搭建</h3>
+                        <p>ComfyUI 本地 FLF 工作流验证通过（720×1280，81帧/镜头）。Wan2.1 i2v 14B fp8 成为主力视频模型。Boss 战解说词引擎 smart_commentary.py 三层架构上线。</p>
+                    </div>
+                </div>
+                <div class="journey-item">
+                    <div class="journey-date">2026.03</div>
+                    <div class="journey-card">
+                        <h3>网站诞生</h3>
+                        <p>pengworks.com 上线。从零开始学 HTML/CSS/JS，一个人把作品集、插画、动态全部集成到一个页面。部署在 GitHub Pages，每次更新自动触发 Actions。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 游戏科技动态 -->
     <section class="section" id="news">
         <div class="container">
@@ -366,6 +401,18 @@
         for (let i = 1; i <= 60; i++) {
             images.push('images/illustrations-webp/illust-' + String(i).padStart(2, '0') + '.webp');
         }
+        // 静默预加载所有插画到浏览器缓存（不阻塞页面）
+        (function preload() {
+            let i = 0;
+            function next() {
+                if (i >= images.length) return;
+                var img = new Image();
+                img.src = images[i++];
+                setTimeout(next, 80);
+            }
+            if (window.requestIdleCallback) requestIdleCallback(next);
+            else setTimeout(next, 1000);
+        })();
         const today = new Date();
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
         function pick(offset) {
@@ -406,6 +453,17 @@
         for (let i = 1; i <= 60; i++) {
             IMAGES.push('images/illustrations-webp/illust-' + String(i).padStart(2, '0') + '.webp');
         }
+        // 静默预加载画廊所有图片
+        (function preloadGallery() {
+            let i = 0;
+            function next() {
+                if (i >= IMAGES.length) return;
+                var img = new Image();
+                img.src = IMAGES[i++];
+                setTimeout(next, 80);
+            }
+            setTimeout(next, 2000);
+        })();
 
         // 当前在卡片上显示的两张图索引（关键状态变量）
         let leftIdx  = -1;

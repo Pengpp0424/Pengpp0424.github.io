@@ -206,7 +206,7 @@ body {
     font-size: 1.125rem;
     color: var(--text-secondary);
     max-width: 500px;
-    margin: 0 auto 40px;
+    margin: 0 auto 56px;
     font-weight: 400;
 }
 
@@ -221,7 +221,7 @@ body {
     display: flex;
     gap: 12px;
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 48px;
     flex-wrap: wrap;
 }
 
@@ -1590,4 +1590,66 @@ body {
     background: rgba(255,255,255,0.15);
     color: var(--text-primary);
     border-color: rgba(255,255,255,0.3);
+}
+
+
+/* ===== 创作历程 ===== */
+.journey-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding-left: 40px;
+}
+.journey-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #6366f1, #06b6d4);
+}
+.journey-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.journey-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #6366f1;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 8px rgba(99,102,241,0.6);
+}
+.journey-date {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.journey-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all 0.3s;
+}
+.journey-card:hover {
+    border-color: rgba(99,102,241,0.3);
+    box-shadow: 0 0 20px rgba(99,102,241,0.1);
+}
+.journey-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+.journey-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
 }
