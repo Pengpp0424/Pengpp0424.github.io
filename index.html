@@ -192,6 +192,28 @@
         </div>
     </section>
 
+    <!-- 插画展示 -->
+    <section class="section" id="illustrations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ILLUSTRATIONS</span>
+                <h2 class="section-title">AI 插画</h2>
+            </div>
+            <div class="illust-grid" id="illustGrid">
+                <div class="illust-card">
+                    <div class="illust-img-wrapper">
+                        <img class="illust-img" id="illustLeft" src="" alt="AI插画作品">
+                    </div>
+                </div>
+                <div class="illust-card">
+                    <div class="illust-img-wrapper">
+                        <img class="illust-img" id="illustRight" src="" alt="AI插画作品">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 游戏科技动态 -->
     <section class="section" id="news">
         <div class="container">
@@ -324,6 +346,35 @@
             document.addEventListener('DOMContentLoaded', setVideos);
         } else {
             setVideos();
+        }
+    })();
+    </script>
+    <!-- ✅ 每日随机插画 -->
+    <script>
+    (function() {
+        const images = [];
+        for (let i = 1; i <= 60; i++) {
+            images.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
+        }
+        const today = new Date();
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        function pick(offset) {
+            const x = Math.sin(seed + offset * 9973) * 43758.5453;
+            return Math.floor((x - Math.floor(x)) * images.length);
+        }
+        let i1 = pick(2);
+        let i2 = pick(3);
+        if (i2 === i1) i2 = (i2 + 1) % images.length;
+        function setIllustrations() {
+            const img1 = document.getElementById('illustLeft');
+            const img2 = document.getElementById('illustRight');
+            if (img1) img1.src = images[i1];
+            if (img2) img2.src = images[i2];
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setIllustrations);
+        } else {
+            setIllustrations();
         }
     })();
     </script>
