@@ -89,6 +89,11 @@
                 <span class="hero-line gradient-text">讲述故事</span>
             </h1>
             <p class="hero-desc" id="heroDesc">专注于游戏视频创作 · 剪辑 · AI视频制作</p>
+            <div class="hero-tags">
+                <span class="hero-tag-item">🎬 用镜头讲故事</span>
+                <span class="hero-tag-item">🤖 用 AI 造世界</span>
+                <span class="hero-tag-item">🎮 用游戏过人生</span>
+            </div>
             <div class="hero-actions">
                 <a href="#works" class="btn btn-primary">浏览作品</a>
                 <a href="#contact" class="btn btn-secondary">联系我</a>
@@ -129,6 +134,7 @@
                         <img src="images/avatar.png" class="profile-avatar" alt="蓬碰鹏">
                         <h3 id="profileName">蓬碰鹏</h3>
                         <p class="profile-title" id="profileTitle">老鹏 · 视频创作者 / AI探索者</p>
+                        <div class="profile-status" id="profileStatus"><span class="status-dot"></span>《零》第二集制作中</div>
                         <div class="profile-details">
                             <div class="profile-item">
                                 <span class="profile-label">🎮 主力游戏</span>
@@ -380,6 +386,115 @@
         } else {
             setIllustrations();
         }
+    })();
+    </script>
+    <!-- ✅ 插画图画廊（Lightbox） -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-content">
+            <img class="gallery-img" id="galleryImg" src="" alt="AI插画作品">
+            <button class="gallery-close" id="galleryClose">×</button>
+            <button class="gallery-prev" id="galleryPrev">‹</button>
+            <button class="gallery-next" id="galleryNext">›</button>
+            <div class="gallery-counter" id="galleryCounter">1 / 60</div>
+        </div>
+    </div>
+    <!-- ✅ 插画换一批按钮脚本 -->
+    <script>
+    (function() {
+        const images = [];
+        for (let i = 1; i <= 60; i++) {
+            images.push('images/illustrations/illust-' + String(i).padStart(2, '0') + '.png');
+        }
+        let currentIndex = 0;
+        let displayIndices = [];
+        function openGallery(idx) {
+            currentIndex = idx;
+            updateGallery();
+            document.getElementById('galleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function updateGallery() {
+            const img = document.getElementById('galleryImg');
+            img.src = images[currentIndex];
+            document.getElementById('galleryCounter').textContent = (currentIndex + 1) + ' / ' + images.length;
+        }
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateGallery();
+        }
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateGallery();
+        }
+        // 暴露到全局
+        window._gallery = { openGallery, closeGallery, prevImage, nextImage, images };
+        // 绑定按钮
+        document.getElementById('galleryClose').addEventListener('click', closeGallery);
+        document.getElementById('galleryPrev').addEventListener('click', prevImage);
+        document.getElementById('galleryNext').addEventListener('click', nextImage);
+        document.querySelector('.gallery-overlay').addEventListener('click', closeGallery);
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('galleryModal').classList.contains('active')) return;
+            if (e.key === 'Escape') closeGallery();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+        // 让插画图片可点击
+        function bindIllustClicks() {
+            const imgL = document.getElementById('illustLeft');
+            const imgR = document.getElementById('illustRight');
+            if (imgL && imgL.src) {
+                imgL.style.cursor = 'pointer';
+                imgL.addEventListener('click', function() {
+                    // 找到当前显示的图片在 images 数组中的索引
+                    const idx = images.indexOf(imgL.src.split('?')[0]);
+                    openGallery(idx >= 0 ? idx : 0);
+                });
+            }
+            if (imgR && imgR.src) {
+                imgR.style.cursor = 'pointer';
+                imgR.addEventListener('click', function() {
+                    const idx = images.indexOf(imgR.src.split('?')[0]);
+                    openGallery(idx >= 0 ? idx : 0);
+                });
+            }
+        }
+        // 等图片加载完再绑定
+        setTimeout(bindIllustClicks, 500);
+        // 每天换一批按钮
+        const btn = document.createElement('button');
+        btn.className = 'btn-change-batch';
+        btn.textContent = '换一批';
+        btn.addEventListener('click', function() {
+            const illustSection = document.getElementById('illustrations');
+            if (illustSection) {
+                let wrap = illustSection.querySelector('.illust-change-wrap');
+                if (!wrap) {
+                    wrap = document.createElement('div');
+                    wrap.className = 'illust-change-wrap';
+                    illustSection.querySelector('.illust-card').appendChild(wrap);
+                }
+                // 随机选两张
+                const i1 = Math.floor(Math.random() * images.length);
+                let i2 = Math.floor(Math.random() * images.length);
+                while (i2 === i1) i2 = Math.floor(Math.random() * images.length);
+                document.getElementById('illustLeft').src = images[i1];
+                document.getElementById('illustRight').src = images[i2];
+                // 重新绑定点击
+                setTimeout(bindIllustClicks, 100);
+            }
+        });
+        // 把按钮加到插画卡片下方
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.getElementById('illustCard');
+            if (card) card.appendChild(btn);
+        });
     })();
     </script>
 </body>

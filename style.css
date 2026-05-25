@@ -214,6 +214,32 @@ body {
     display: flex;
     gap: 16px;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-tags {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-tag-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.hero-tag-item:hover {
+    background: rgba(255,255,255,0.15);
+    color: var(--text-primary);
+    border-color: rgba(255,255,255,0.3);
 }
 
 .btn {
@@ -392,7 +418,34 @@ body {
 .profile-title {
     font-size: 0.85rem;
     color: var(--text-tertiary);
+    margin-bottom: 12px;
+}
+
+.profile-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.82rem;
+    color: #818cf8;
     margin-bottom: 28px;
+    width: fit-content;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #818cf8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
 
 .profile-details {
@@ -1469,4 +1522,72 @@ body {
 .work-card:hover .work-tag {
     background: #6366f1;
     color: #fff;
+}
+
+/* ========== 插画图廊灯箱 ========== */
+.gallery-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-modal.active { display: flex; }
+.gallery-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(20px);
+}
+.gallery-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw; max-height: 90vh;
+    display: flex; align-items: center; justify-content: center;
+}
+.gallery-img {
+    max-width: 90vw; max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.gallery-close {
+    position: absolute; top: -40px; right: -10px;
+    background: none; border: none;
+    color: white; font-size: 2.5rem;
+    cursor: pointer; transition: transform 0.2s; line-height: 1;
+}
+.gallery-close:hover { transform: scale(1.2); }
+.gallery-prev, .gallery-next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-size: 2.5rem;
+    width: 50px; height: 50px; border-radius: 50%;
+    cursor: pointer; transition: var(--transition);
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+}
+.gallery-prev { left: -70px; }
+.gallery-next { right: -70px; }
+.gallery-prev:hover, .gallery-next:hover { background: rgba(255,255,255,0.25); }
+.gallery-counter {
+    position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.6); font-size: 0.85rem;
+}
+.btn-change-batch {
+    display: block; margin: 20px auto 0;
+    padding: 8px 24px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; color: var(--text-secondary);
+    font-size: 0.85rem; cursor: pointer;
+    transition: var(--transition); font-family: inherit;
+}
+.btn-change-batch:hover {
+    background: rgba(255,255,255,0.15);
+    color: var(--text-primary);
+    border-color: rgba(255,255,255,0.3);
 }
