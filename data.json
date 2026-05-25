@@ -78,6 +78,26 @@
             "size": "normal",
             "gradient": "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
             "icon": "🕹️"
+        },
+        {
+            "id": 6,
+            "title": "Boss战专区",
+            "tag": "Boss攻略、高光操作",
+            "description": "精选各游戏Boss战高光时刻，从初次接遇到熟练讨伐，每一场战斗都是技术与耐心的较量。",
+            "bvid": "BV14yJtzREQx",
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #2e0a0a 0%, #3e1a0a 50%, #2e0a0a 100%)",
+            "icon": "⚔️"
+        },
+        {
+            "id": 7,
+            "title": "魂系列专区",
+            "tag": "魂类游戏、硬核挑战",
+            "description": "魂系列游戏精选剪辑，从黑暗之魂到艾尔登法环，每一帧都是受苦与荣耀的见证。",
+            "bvid": "BV12QwuzxEKG",
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)",
+            "icon": "💀"
         }
     ],
     "news": [
