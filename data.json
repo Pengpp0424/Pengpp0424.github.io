@@ -102,44 +102,49 @@
     ],
     "news": [
         {
-            "date": "2026-05-25",
-            "title": "神舟二十三号今晨对接天宫，首次有香港航天员进驻",
-            "excerpt": "今晨5:13成功对接，完成中国航天史上第8次太空会师。",
-            "url": "https://www.cnsa.gov.cn"
+            "date": "2026-05-27",
+            "title": "男子跳河救3名少年 公司奖15万元SUV",
+            "excerpt": "男子跳河救3名少年 公司奖15万元SUV...",
+            "url": "https://www.toutiao.com/trending/7643064822931800105/"
         },
         {
-            "date": "2026-05-25",
-            "title": "Anthropic估值或破9000亿美元，最快下周完成超300亿融资",
-            "excerpt": "Anthropic已开始赚钱，OpenAI仍赚一块亏一块二。",
-            "url": "https://www.anthropic.com"
+            "date": "2026-05-27",
+            "title": "武契奇夫人在上海买3套西服1条旗袍",
+            "excerpt": "武契奇夫人在上海买3套西服1条旗袍...",
+            "url": "https://www.toutiao.com/trending/7643376700663857194/"
         },
         {
-            "date": "2026-05-25",
-            "title": "证监会等八部门：全面取缔境外证券期货基金非法跨境经营",
-            "excerpt": "设两年集中整治期，富途拟被罚18.5亿元。",
-            "url": "https://www.csrc.gov.cn"
+            "date": "2026-05-27",
+            "title": "各地各部门全力做好防汛抗洪工作",
+            "excerpt": "各地各部门全力做好防汛抗洪工作...",
+            "url": "https://www.toutiao.com/trending/7643657038731447851/"
         },
         {
-            "date": "2026-05-25",
-            "title": "A股今日大涨：上证+0.96%收复4152点，芯片板块+2.19%",
-            "excerpt": "创业板指+2.10%，沪深300估值百分位99.46%接近高估。",
-            "url": "https://www.eastmoney.com"
+            "date": "2026-05-27",
+            "title": "王毅在联合国点名：不能动辄毁约退群",
+            "excerpt": "王毅在联合国点名：不能动辄毁约退群...",
+            "url": "https://www.toutiao.com/trending/7644249472662781995/"
+        },
+        {
+            "date": "2026-05-27",
+            "title": "NBA西决G5现争议判罚",
+            "excerpt": "NBA西决G5现争议判罚...",
+            "url": "https://www.toutiao.com/trending/7643541000904278022/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "+96.00%",
-            "dir": "up",
-            "value": "4152.57"
+            "change": "-121.00%",
+            "dir": "down",
+            "value": "4095.39"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "+210.00%",
-            "dir": "up",
-            "value": "4021.16"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
@@ -227,5 +232,5 @@
         }
     },
     "footer": "© 2026 pengworks.com · 用心创作每一帧",
-    "lastUpdated": "2026-05-25"
+    "lastUpdated": "2026-05-27"
 }
