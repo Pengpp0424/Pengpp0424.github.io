@@ -310,9 +310,13 @@ function populateWorks(works) {
 
             if (isPlaylist) {
                 // 播放列表：视频 + 切换按钮
-                const tabsHtml = bvids.map((bvid, i) =>
-                    `<button class="pl-tab ${i === 0 ? 'active' : ''}" data-bvid="${bvid}" data-index="${i}">${i + 1}</button>`
-                ).join('');
+                // 用 videoTitles 显示标题，超出显示部分
+                const tabsHtml = bvids.map((bvid, i) => {
+                    const fullTitle = (data.videoTitles && data.videoTitles[bvid]) || bvid;
+                    // 显示前8个字 + ...
+                    const shortTitle = fullTitle.length > 8 ? fullTitle.slice(0, 8) + '...' : fullTitle;
+                    return `<button class="pl-tab ${i === 0 ? 'active' : ''}" data-bvid="${bvid}" data-index="${i}" title="${fullTitle}">${shortTitle}</button>`;
+                }).join('');
 
                 mediaContent = `
                     <div class="work-embed" data-workid="${work.id}">
