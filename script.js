@@ -1,20 +1,11 @@
-﻿// 动态更新资源版本号（根据 data.json 的 lastUpdated）
+﻿// 动态更新 style.css 版本号（根据 data.json 的 lastUpdated）
+// 注意：不修改 script.js 自身的 src（会导致脚本重新执行，引发重复 fetch）
 function updateResourceVersions(lastUpdated) {
     if (!lastUpdated) return;
     
-    const version = 'v=' + lastUpdated.replace(/-/g, '');  // "2026-05-23" → "v=20260523"
+    const version = 'v=' + lastUpdated.replace(/-/g, '');
     
-    // 更新 script.js
-    const scriptTag = document.querySelector('script[src*="script.js"]');
-    if (scriptTag) {
-        const newSrc = 'script.js?' + version;
-        if (!scriptTag.src.includes(version)) {
-            scriptTag.src = newSrc;
-            console.log('[Debug] script.js 版本更新为:', version);
-        }
-    }
-    
-    // 更新 style.css
+    // 仅更新 style.css（改 href 不会触发 JS 重执行）
     const styleTag = document.querySelector('link[href*="style.css"]');
     if (styleTag) {
         const newHref = 'style.css?' + version;
