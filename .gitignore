@@ -21,7 +21,6 @@ tmp_*/
 logs/
 sessions/
 triggers/
-workflows/
 scans/
 debug_*/
 boss_*/
