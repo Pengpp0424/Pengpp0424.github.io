@@ -315,7 +315,7 @@
         </div>
     </section>
 
-    <!-- 观众留言板 (Gitalk) -->
+    <!-- 观众留言板 (Giscus) -->
     <section class="section" id="comments">
         <div class="container">
             <div class="section-header">
@@ -323,8 +323,8 @@
                 <h2 class="section-title">观众留言板</h2>
                 <p class="section-desc">有任何想法、建议、吐槽，欢迎在此留言 🎉</p>
             </div>
-            <div class="gitalk-container">
-                <div id="gitalk-container"></div>
+            <div class="giscus-container">
+                <div class="giscus"></div>
             </div>
         </div>
     </section>
@@ -569,22 +569,20 @@
     })();
     </script>
 
-    <!-- Gitalk 留言板 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script>
-    (function() {
-        const gitalk = new Gitalk({
-            clientID: 'Ov23liBZ2OWD6JcusXtn',
-            clientSecret: '0f07acb48e3d0d8fc9b8a807d16c4b320dfcbadc',
-            repo: 'Pengpp0424.github.io',  // 仓库名
-            owner: 'Pengpp0424',            // 你的 GitHub 用户名
-            admin: ['Pengpp0424'],           // 管理员（能删评论）
-            id: location.pathname,            // 页面唯一标识（用 URL 路径）
-            distractionFreeMode: false         // 是否启用无干扰模式
-        });
-        gitalk.render('gitalk-container');
-    })();
+    <!-- Giscus 留言板 -->
+    <script src="https://giscus.app/client.js"
+        data-repo="Pengpp0424/Pengpp0424.github.io"
+        data-repo-id="R_kgDOSlFGEQ"
+        data-category-id="DIC_kwDOSlFGEc4C99_G"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
     </script>
 </body>
 </html>
