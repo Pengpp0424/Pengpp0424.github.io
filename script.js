@@ -86,14 +86,42 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log('[Debug] 数据加载成功:', Object.keys(data));
             
-            // 填充数据
-            populateProfile(data.profile);
-            populateWorks(data.works);
-            populateNews(data.news);
-            populateGamingNews(data.gaming_news || data.news);
-            populateFinance(data.finance);
-            populateContact(data.contact);
-            populateFooter(data.footer);
+            // 填充数据（每个函数独立 try-catch，避免一个报错导致全部停止）
+            try {
+                populateProfile(data.profile);
+            } catch(e) {
+                console.error('[Debug] populateProfile 失败:', e);
+            }
+            try {
+                populateWorks(data.works);
+            } catch(e) {
+                console.error('[Debug] populateWorks 失败:', e);
+            }
+            try {
+                populateNews(data.news);
+            } catch(e) {
+                console.error('[Debug] populateNews 失败:', e);
+            }
+            try {
+                populateGamingNews(data.gaming_news || data.news);
+            } catch(e) {
+                console.error('[Debug] populateGamingNews 失败:', e);
+            }
+            try {
+                populateFinance(data.finance);
+            } catch(e) {
+                console.error('[Debug] populateFinance 失败:', e);
+            }
+            try {
+                populateContact(data.contact);
+            } catch(e) {
+                console.error('[Debug] populateContact 失败:', e);
+            }
+            try {
+                populateFooter(data.footer);
+            } catch(e) {
+                console.error('[Debug] populateFooter 失败:', e);
+            }
             
             // 更新资源版本号（根据 lastUpdated）
             if (data.lastUpdated) {
@@ -105,13 +133,28 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('[Debug] 加载数据失败，使用默认数据:', error);
-            // 加载失败时使用默认数据
-            populateProfile(fallbackData.profile);
-            populateWorks(fallbackData.works);
-            populateNews(fallbackData.news);
-            populateGamingNews(fallbackData.news);
-            populateContact(fallbackData.contact);
-            populateFooter(fallbackData.footer);
+            // 加载失败时使用默认数据（每个函数独立 try-catch）
+            try {
+                populateProfile(fallbackData.profile);
+            } catch(e) {}
+            try {
+                populateWorks(fallbackData.works);
+            } catch(e) {}
+            try {
+                populateNews(fallbackData.news);
+            } catch(e) {}
+            try {
+                populateGamingNews(fallbackData.gaming_news || fallbackData.news);
+            } catch(e) {}
+            try {
+                populateFinance(fallbackData.finance);
+            } catch(e) {}
+            try {
+                populateContact(fallbackData.contact);
+            } catch(e) {}
+            try {
+                populateFooter(fallbackData.footer);
+            } catch(e) {}
             
             // 更新资源版本号（降级方案）
             if (fallbackData.lastUpdated) {
