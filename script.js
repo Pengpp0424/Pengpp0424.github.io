@@ -290,6 +290,7 @@ function populateWorks(works) {
     const worksContainer = document.getElementById('worksGrid');
     if (!worksContainer) return;
 
+
     worksContainer.innerHTML = '';
 
     works.forEach(work => {
@@ -297,24 +298,53 @@ function populateWorks(works) {
         workCard.className = `work-card ${work.size === 'large' ? 'work-card-large' : ''}`;
         workCard.dataset.tags = work.tag;  // 用于筛选
 
+        const bvids = Array.isArray(work.bvid) ? work.bvid : (work.bvid ? [work.bvid] : []);
+        const isPlaylist = bvids.length > 1;
+        const isSingleVideo = bvids.length === 1;
+        const isZero = work.id === 1;  // 《零》自动播放
+
         let mediaContent = '';
-        if (work.bvid) {
-            // 嵌入 B 站播放器
-            // 只有《零》(id=1) 自动播放（有声音），其他作品不自动播放
-            const autoplayParam = (work.id === 1) ? '&autoplay=1' : '&autoplay=0';
-            mediaContent = `
-                <div class="work-embed">
-                    <iframe src="//player.bilibili.com/player.html?bvid=${work.bvid}&page=1${autoplayParam}"
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true"
-                            width="100%"
-                            height="300">
-                    </iframe>
-                </div>
-            `;
+        if (bvids.length > 0) {
+            const autoplayParam = isZero ? '&autoplay=1' : '&autoplay=0';
+            const defaultBvid = bvids[0];
+
+            if (isPlaylist) {
+                // 播放列表：视频 + 切换按钮
+                const tabsHtml = bvids.map((bvid, i) =>
+                    `<button class="pl-tab ${i === 0 ? 'active' : ''}" data-bvid="${bvid}" data-index="${i}">${i + 1}</button>`
+                ).join('');
+
+                mediaContent = `
+                    <div class="work-embed" data-workid="${work.id}">
+                        <iframe id="pl-iframe-${work.id}"
+                                src="//player.bilibili.com/player.html?bvid=${defaultBvid}&page=1${autoplayParam}"
+                                scrolling="no"
+                                border="0"
+                                frameborder="no"
+                                framespacing="0"
+                                allowfullscreen="true"
+                                width="100%"
+                                height="300">
+                        </iframe>
+                        <div class="pl-tabs">${tabsHtml}</div>
+                    </div>
+                `;
+            } else {
+                // 单视频
+                mediaContent = `
+                    <div class="work-embed">
+                        <iframe src="//player.bilibili.com/player.html?bvid=${defaultBvid}&page=1${autoplayParam}"
+                                scrolling="no"
+                                border="0"
+                                frameborder="no"
+                                framespacing="0"
+                                allowfullscreen="true"
+                                width="100%"
+                                height="300">
+                        </iframe>
+                    </div>
+                `;
+            }
         } else if (work.link) {
             // 外部链接（如快手）
             mediaContent = `
@@ -357,6 +387,26 @@ function populateWorks(works) {
         });
         
         worksContainer.appendChild(workCard);
+    });
+
+    // ===== 播放列表 Tab 点击切换 =====
+    document.querySelectorAll('.pl-tabs').forEach(tabBar => {
+        tabBar.addEventListener('click', (e) => {
+            const btn = e.target.closest('.pl-tab');
+            if (!btn) return;
+
+            const embed = btn.closest('.work-embed');
+            const iframe = embed.querySelector('iframe');
+            const bvid = btn.dataset.bvid;
+            const workId = embed.dataset.workid;
+
+            // 切换按钮高亮
+            embed.querySelectorAll('.pl-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 更新播放器
+            iframe.src = `//player.bilibili.com/player.html?bvid=${bvid}&page=1&autoplay=1`;
+        });
     });
 }
 

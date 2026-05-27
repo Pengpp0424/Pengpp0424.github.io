@@ -911,6 +911,43 @@ body {
     }
 }
 
+/* ========== 播放列表 Tab ========== */
+.pl-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 6px 8px;
+    background: rgba(0,0,0,0.6);
+}
+
+.pl-tab {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 28px;
+}
+
+.pl-tab:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.pl-tab.active {
+    background: rgba(99,102,241,0.7);
+    border-color: rgba(99,102,241,0.8);
+    color: #fff;
+}
+
+/* 播放列表 iframe 高度调小 */
+.work-embed[data-workid] iframe {
+    height: 220px;
+}
+
 /* ========== Profile Avatar ========== */
 .profile-avatar {
     width: 120px;
