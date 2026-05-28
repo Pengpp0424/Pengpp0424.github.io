@@ -267,49 +267,47 @@
     "news": [
         {
             "date": "2026-05-28",
-            "title": "河南高速客车与货车追尾致13死3伤",
-            "excerpt": "河南高速客车与货车追尾致13死3伤...",
-            "url": "https://www.toutiao.com/trending/7644742557263465990/"
+            "title": "双汇为抗生素超标37倍致歉",
+            "excerpt": "双汇为抗生素超标37倍致歉...",
+            "url": "https://www.toutiao.com/trending/7643693855003033643/"
         },
         {
             "date": "2026-05-28",
-            "title": "专家称解放军处置荷兰舰机相当克制",
-            "excerpt": "专家称解放军处置荷兰舰机相当克制...",
-            "url": "https://www.toutiao.com/trending/7644554250860871716/"
+            "title": "西班牙街头现三蹦子每小时236元",
+            "excerpt": "西班牙街头现三蹦子每小时236元...",
+            "url": "https://www.toutiao.com/trending/7644387519907237419/"
         },
         {
             "date": "2026-05-28",
-            "title": "印度到底有多热",
-            "excerpt": "印度到底有多热...",
-            "url": "https://www.toutiao.com/trending/7644612126278946323/"
+            "title": "我国渤海一亿吨级油田全面投产",
+            "excerpt": "我国渤海一亿吨级油田全面投产...",
+            "url": "https://www.toutiao.com/trending/7644558764439486500/"
         },
         {
             "date": "2026-05-28",
-            "title": "小伙与大7岁女老板因88万彩礼分手",
-            "excerpt": "小伙与大7岁女老板因88万彩礼分手...",
-            "url": "https://www.toutiao.com/trending/7644308454953435142/"
+            "title": "高速追尾事故客车事发时拉人去干活",
+            "excerpt": "高速追尾事故客车事发时拉人去干活...",
+            "url": "https://www.toutiao.com/trending/7644742033613291574/"
         },
         {
             "date": "2026-05-28",
-            "title": "山东三地6月1日儿童节放假",
-            "excerpt": "山东三地6月1日儿童节放假...",
-            "url": "https://www.toutiao.com/trending/7644395291676262409/"
+            "title": "国际油价大跳水",
+            "excerpt": "国际油价大跳水...",
+            "url": "https://www.toutiao.com/trending/7644016903216545828/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "-14.00%",
-            "dir": "down",
-            "value": "4087.86"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "+21.00%",
-            "dir": "up",
-            "value": "4054.21"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
