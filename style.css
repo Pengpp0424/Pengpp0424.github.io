@@ -1110,6 +1110,17 @@ body {
     flex-direction: column;
 }
 
+/* 移动端优化：集数显示下移，避免被播放框下沿遮挡 */
+@media (max-width: 768px) {
+    .pl-tabs {
+        margin-top: 10px;
+        padding: 8px 8px;
+    }
+    .work-info {
+        padding-top: 28px !important;
+    }
+}
+
 /* ========== 插画展示 ========== */
 #illustrations {
     background: var(--bg-primary);
