@@ -267,47 +267,49 @@
     "news": [
         {
             "date": "2026-05-28",
+            "title": "河南高速客车与货车追尾致13死3伤",
+            "excerpt": "河南高速客车与货车追尾致13死3伤...",
+            "url": "https://www.toutiao.com/trending/7644742557263465990/"
+        },
+        {
+            "date": "2026-05-28",
             "title": "专家称解放军处置荷兰舰机相当克制",
             "excerpt": "专家称解放军处置荷兰舰机相当克制...",
             "url": "https://www.toutiao.com/trending/7644554250860871716/"
         },
         {
             "date": "2026-05-28",
-            "title": "莫迪就印极端高温发声：务必多喝水",
-            "excerpt": "莫迪就印极端高温发声：务必多喝水...",
-            "url": "https://www.toutiao.com/trending/7643657038731628075/"
+            "title": "印度到底有多热",
+            "excerpt": "印度到底有多热...",
+            "url": "https://www.toutiao.com/trending/7644612126278946323/"
         },
         {
             "date": "2026-05-28",
-            "title": "前四月高技术制造业利润增44.8%",
-            "excerpt": "前四月高技术制造业利润增44.8%...",
-            "url": "https://www.toutiao.com/trending/7644378477298270271/"
+            "title": "小伙与大7岁女老板因88万彩礼分手",
+            "excerpt": "小伙与大7岁女老板因88万彩礼分手...",
+            "url": "https://www.toutiao.com/trending/7644308454953435142/"
         },
         {
             "date": "2026-05-28",
-            "title": "女教师打伞事件双方并非父女",
-            "excerpt": "女教师打伞事件双方并非父女...",
-            "url": "https://www.toutiao.com/trending/7643754468198350890/"
-        },
-        {
-            "date": "2026-05-28",
-            "title": "4人出海吸花甲失联 2人遗体被找到",
-            "excerpt": "4人出海吸花甲失联 2人遗体被找到...",
-            "url": "https://www.toutiao.com/trending/7644243036859580425/"
+            "title": "山东三地6月1日儿童节放假",
+            "excerpt": "山东三地6月1日儿童节放假...",
+            "url": "https://www.toutiao.com/trending/7644395291676262409/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "-14.00%",
+            "dir": "down",
+            "value": "4087.86"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "+21.00%",
+            "dir": "up",
+            "value": "4054.21"
         },
         {
             "symbol": "0700.HK",
