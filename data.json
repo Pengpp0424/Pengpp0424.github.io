@@ -1,405 +1,401 @@
 {
-  "profile": {
-    "name": "蓬碰鹏",
-    "nickname": "老鹏",
-    "title": "老鹏 · 视频创作者 / AI探索者",
-    "tagline": "专注于游戏视频创作 · 剪辑 · AI视频制作",
-    "bio": [
-      "游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。",
-      "游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。",
-      "目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作个人原创作品–科幻故事集《觉醒》三部曲系列。"
+    "profile": {
+        "name": "蓬碰鹏",
+        "nickname": "老鹏",
+        "title": "老鹏 · 视频创作者 / AI探索者",
+        "tagline": "专注于游戏视频创作 · 剪辑 · AI视频制作",
+        "bio": [
+            "游戏视频创作者，热爱用剪辑赋予游戏画面新的生命。",
+            "游戏骨灰级玩家，从单机大作到独立佳作都有涉猎。擅长将数十小时的游戏实况浓缩成几分钟的高光时刻，让观众感受到游戏最精彩的瞬间。",
+            "目前正在探索 AI 辅助视频制作的前沿技术，尝试将 Stable Diffusion、ComfyUI、LoRA 等 AI 工具融入创作流程，制作个人原创作品–科幻故事集《觉醒》三部曲系列。"
+        ],
+        "stats": [
+            {
+                "number": "100+",
+                "label": "视频作品"
+            },
+            {
+                "number": "50w+",
+                "label": "总播放量"
+            },
+            {
+                "number": "3年+",
+                "label": "创作经验"
+            }
+        ],
+        "games": "Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传",
+        "tools": "FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计",
+        "ai_skills": "图生视频 · LoRA训练 · TTS配音 · AI编剧",
+        "principles": "实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印"
+    },
+    "works": [
+        {
+            "id": 1,
+            "title": "《零》–原创AI硬核科幻剧集",
+            "tag": "AI短片",
+            "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。硬核科幻长篇故事，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
+            "bvid": "BV17j536wEvy",
+            "size": "large",
+            "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
+            "icon": "《零》"
+        },
+        {
+            "id": 2,
+            "title": "故事短剧",
+            "tag": "情感故事、悬疑短剧",
+            "description": "原创短剧系列，涵盖情感、悬疑、反转等多种题材。用游戏引擎录制实机画面，结合AI配音与后期剪辑，打造沉浸式互动体验。",
+            "bvid": [
+                "BV1haJZzLEnx",
+                "BV1J998YoEVd",
+                "BV1sB9jY8EPU",
+                "BV1WARVYDETe",
+                "BV1oaQAYuEdq",
+                "BV1xAXxYHEwU",
+                "BV1JUovYjEwm",
+                "BV1hH5azbEf2",
+                "BV12JJVz1EKd",
+                "BV1sMjXz1Eer"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #1a0a2e 0%, #2e0a3e 50%, #1a0a2e 100%)",
+            "icon": "🎬"
+        },
+        {
+            "id": 3,
+            "title": "体验经典",
+            "tag": "大作体验、经典回顾",
+            "description": "重温游戏史上的经典大作，从画面、剧情、玩法多维度解析。带你看尽那些年我们一起追过的神作，找回最初的感动。",
+            "bvid": [
+                "BV1ccUxBbEvH",
+                "BV1va4y1y7X9",
+                "BV1Yx4y1y7Kc",
+                "BV1ZF4m1j7Np",
+                "BV1XF4m1j7vp",
+                "BV1Xz421D75m",
+                "BV1ow4m1o7Yx",
+                "BV1Bt421F7eb",
+                "BV1vD421K76z",
+                "BV1SXsVe3EMx",
+                "BV12CUYYYEHZ",
+                "BV1Z3U6YqEva",
+                "BV1WNUkYnEwa",
+                "BV19dzGYhEud",
+                "BV1FpiBYuEoS",
+                "BV15rBuYnEsX",
+                "BV1hK6dYmEiB",
+                "BV1Yb6iYcEsW",
+                "BV1h6r5YTEQo",
+                "BV18YcaeeEu2",
+                "BV1F9F5ePEf1",
+                "BV1dMZtYWErU",
+                "BV1TdLXzSE4Q",
+                "BV1cpJnzoEkC",
+                "BV1KhjGzBEX4",
+                "BV15tWuzbEX4",
+                "BV1ssJmzgEKM",
+                "BV19AUMBAE9W",
+                "BV1w1mcBtEX6",
+                "BV12DB4B2EwL",
+                "BV1GSvvBzEwA",
+                "BV12yvBBzEEp",
+                "BV16kvrBBErG",
+                "BV18ezQBbEZB",
+                "BV1CT62BvEaa",
+                "BV1ZB61BsEgP",
+                "BV15TFqzVE8d",
+                "BV1zmPVzaEyj",
+                "BV1U4P1zKE9j",
+                "BV199PazgExC",
+                "BV15CAgzyEUy",
+                "BV1uw9WBmEsY",
+                "BV1iYDDB8EAW",
+                "BV1WfDDBkE5P",
+                "BV1JJ9yBdECV",
+                "BV1uHRMBkEUi",
+                "BV1pdRTB8EQd",
+                "BV1gmReBDE6Q",
+                "BV1f8dKBHEnC"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #0a1a2e 0%, #0a2e3e 50%, #0a1a2e 100%)",
+            "icon": "🎮"
+        },
+        {
+            "id": 4,
+            "title": "硬件评测",
+            "tag": "硬件开箱、设备评测",
+            "description": "游戏硬件深度评测，涵盖显卡、CPU、外设等。真实游戏场景测试，用数据说话，帮你选出最适合自己的装备。",
+            "bvid": [
+                "BV1BCPuzUEYZ",
+                "BV1bH4y1j7qC",
+                "BV1USNheBE8o",
+                "BV1fSxLzsEMz",
+                "BV1WERRBcE6L"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 50%, #1a1a0a 100%)",
+            "icon": "🔧"
+        },
+        {
+            "id": 5,
+            "title": "怀旧专区",
+            "tag": "怀旧品味、情怀专区",
+            "description": "那些年我们玩过的老游戏，承载了无数回忆。从像素画面到现代重置，一起回味黄金时代的游戏魅力。",
+            "bvid": [
+                "BV1WERRBcE6L",
+                "BV1Ma4y177gj",
+                "BV1YA411K751",
+                "BV16y4y187pw",
+                "BV14m4y1X7La",
+                "BV1Tt421p7TT",
+                "BV1gC411s7Cs",
+                "BV1V2421K72s",
+                "BV1UD421E7Mk",
+                "BV1UJ4m177cr",
+                "BV1Gx4y1z7Yp",
+                "BV1vwUuYVEYL",
+                "BV1ovUXYzErG",
+                "BV1K9BDYWEM3",
+                "BV1Gr6hYmEGo",
+                "BV1yTw6e7EQi",
+                "BV1j69JYdEWH",
+                "BV1dopJzsEDW",
+                "BV1Na1jBvE4z",
+                "BV1Bp2YBzEDx",
+                "BV1GmmVByEZ4",
+                "BV1XyvYBNEym",
+                "BV1ZGk3BwEsP",
+                "BV12QwuzxEKG",
+                "BV1rKdrBREvK",
+                "BV1Vkd6BGETw",
+                "BV1Tdd6BYEi7",
+                "BV1TBo4BhEwk",
+                "BV1qFotBjEpG",
+                "BV1FQo4BQEZ8",
+                "BV1xLovBEEqn",
+                "BV1jdRYBxEn7",
+                "BV1AERCBaEQP"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
+            "icon": "🕹️"
+        },
+        {
+            "id": 6,
+            "title": "Boss战专区",
+            "tag": "Boss攻略、高光操作",
+            "description": "精选各游戏Boss战高光时刻，从初次接遇到熟练讨伐，每一场战斗都是技术与耐心的较量。",
+            "bvid": [
+                "BV14yJtzREQx",
+                "BV1nf4y147iN",
+                "BV1uG4y1E7M8",
+                "BV11F4m1L7qW",
+                "BV1QF4m157VC",
+                "BV1DzsueeEdP",
+                "BV1MUHVePEBB",
+                "BV1LQHdeAEQZ",
+                "BV143pJe2EAq",
+                "BV1rf4JeEEJE",
+                "BV1BStQeBE7Z",
+                "BV19TxgeuEXV",
+                "BV1JgB9YnE7D",
+                "BV1eNqDYAE2K",
+                "BV1EW67YQEMm",
+                "BV1ZWrvYzEmg",
+                "BV1L7wme9Eaq",
+                "BV17sNKeUE6Z",
+                "BV1uoPMerEHS",
+                "BV1L3VZzMECJ",
+                "BV1aEEozGED1",
+                "BV1aMjbztEXu",
+                "BV1cGMyzaEv4",
+                "BV1ynM8zfENK",
+                "BV1hwNEzaEeA",
+                "BV1qBN1zQEXj",
+                "BV1DNKSz9Evz",
+                "BV1ZdgCzFEi9",
+                "BV1NZ3xzfEop",
+                "BV1pc3mz7E4h",
+                "BV1ZiGVzEEQj",
+                "BV1courzZEGn",
+                "BV1Djg5zPEHz",
+                "BV1RJhtzwERZ",
+                "BV13KeVzxE8z",
+                "BV12We6zZEJA",
+                "BV12WajzXEq7",
+                "BV1d7HfzhE1d",
+                "BV1JEpxz1Eqt",
+                "BV1DjpizoEH5",
+                "BV1gB1fBhEYU",
+                "BV19a1fBvEJ5",
+                "BV1WhyMBgEf5",
+                "BV1G4SiBLEAN",
+                "BV1ycSiBwELi",
+                "BV1FB6mBPEWf",
+                "BV1PU6ZBTEHf",
+                "BV1RJPmzUEA2",
+                "BV1j7ofBNEDW",
+                "BV1NmRjBoEBS"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #2e0a0a 0%, #3e1a0a 50%, #2e0a0a 100%)",
+            "icon": "⚔️"
+        },
+        {
+            "id": 7,
+            "title": "魂系列专区",
+            "tag": "魂类游戏、硬核挑战",
+            "description": "魂系列游戏精选剪辑，从黑暗之魂到艾尔登法环，每一帧都是受苦与荣耀的见证。",
+            "bvid": [
+                "BV12QwuzxEKG",
+                "BV151vme3EXa",
+                "BV1unvSeKEvb",
+                "BV1axiTedEt4",
+                "BV1gLigecEw4",
+                "BV1bNCBYKEqw",
+                "BV1vKCWYuEKD",
+                "BV1iT6tYVEFu",
+                "BV1oXAQeuECz",
+                "BV1JzTjzjExs",
+                "BV1crRMBfEcG"
+            ],
+            "size": "normal",
+            "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)",
+            "icon": "💀"
+        }
     ],
-    "stats": [
-      {
-        "number": "100+",
-        "label": "视频作品"
-      },
-      {
-        "number": "50w+",
-        "label": "总播放量"
-      },
-      {
-        "number": "3年+",
-        "label": "创作经验"
-      }
+    "news": [
+        {
+            "date": "2026-05-30",
+            "title": "航天员回地球后最想洗头",
+            "excerpt": "航天员回地球后最想洗头...",
+            "url": "https://www.toutiao.com/trending/7644785242368835590/"
+        },
+        {
+            "date": "2026-05-30",
+            "title": "435万法拉利电车撞脸13万蔚来萤火虫",
+            "excerpt": "435万法拉利电车撞脸13万蔚来萤火虫...",
+            "url": "https://www.toutiao.com/trending/7644397891674619931/"
+        },
+        {
+            "date": "2026-05-30",
+            "title": "省级“十五五”规划纲要看点之一",
+            "excerpt": "省级“十五五”规划纲要看点之一...",
+            "url": "https://www.toutiao.com/trending/7644946487860232219/"
+        },
+        {
+            "date": "2026-05-30",
+            "title": "2岁男童公园误食滴水观音叶中毒",
+            "excerpt": "2岁男童公园误食滴水观音叶中毒...",
+            "url": "https://www.toutiao.com/trending/7645152856706351130/"
+        },
+        {
+            "date": "2026-05-30",
+            "title": "航天员张陆从太空带回一个苹果",
+            "excerpt": "航天员张陆从太空带回一个苹果...",
+            "url": "https://www.toutiao.com/trending/7645299648730746418/"
+        }
     ],
-    "games": "Elden Ring · GoW · Spider-Man · RE · 忍者龙剑传",
-    "tools": "FFmpeg · ComfyUI · Stable Diffusion · Movavi · 风格化设计",
-    "ai_skills": "图生视频 · LoRA训练 · TTS配音 · AI编剧",
-    "principles": "实机优先 · 解说贴合 · BGM场景匹配 · 风格化设计 · 零水印"
-  },
-  "works": [
-    {
-      "id": 1,
-      "title": "《零》–原创AI硬核科幻剧集",
-      "tag": "AI短片",
-      "description": "个人原创硬核科幻作品《觉醒：三部曲》之一，后续作品会陆续更新、推出。硬核科幻长篇故事，探索人工智能与人类意识的边界。创意生图＋AI配音＋素材合成。",
-      "bvid": "BV17j536wEvy",
-      "size": "large",
-      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 50%, #0a1a2e 100%)",
-      "icon": "《零》"
+    "finance": [
+        {
+            "symbol": "000001.SH",
+            "name": "上证指数",
+            "change": "-73.00%",
+            "dir": "down",
+            "value": "4068.57"
+        },
+        {
+            "symbol": "399006.SZ",
+            "name": "创业板指",
+            "change": "-211.00%",
+            "dir": "down",
+            "value": "4037.95"
+        },
+        {
+            "symbol": "0700.HK",
+            "name": "腾讯控股",
+            "change": "--",
+            "dir": "up"
+        },
+        {
+            "symbol": "9999.HK",
+            "name": "网易-S",
+            "change": "--",
+            "dir": "up"
+        },
+        {
+            "symbol": "NTDOY",
+            "name": "任天堂",
+            "change": "+0.00%",
+            "dir": "up"
+        },
+        {
+            "symbol": "NVDA",
+            "name": "英伟达",
+            "change": "+0.00%",
+            "dir": "up"
+        },
+        {
+            "symbol": "GOLD",
+            "name": "国际黄金",
+            "change": "+0.00%",
+            "dir": "up",
+            "value": "--"
+        }
+    ],
+    "gaming_news": [
+        {
+            "date": "2026-05-25",
+            "category": "tech",
+            "title": "Anthropic估值或破9000亿美元，超越OpenAI",
+            "url": "https://www.anthropic.com",
+            "source": "Anthropic"
+        },
+        {
+            "date": "2026-05-25",
+            "category": "tech",
+            "title": "微软取消内部对Claude Code授权，因token计费成本过高",
+            "url": "https://www.microsoft.com",
+            "source": "Microsoft"
+        },
+        {
+            "date": "2026-05-25",
+            "category": "tech",
+            "title": "AI新逻辑引发MLCC缺货潮，三环集团涨超16%",
+            "url": "https://www.eastmoney.com",
+            "source": "东方财富"
+        },
+        {
+            "date": "2026-05-25",
+            "category": "finance",
+            "title": "A股今日大涨：上证+0.96%，芯片概念+2.19%",
+            "url": "https://www.eastmoney.com",
+            "source": "东方财富"
+        }
+    ],
+    "contact": {
+        "email": "105945357@qq.com",
+        "group": {
+            "name": "游戏群",
+            "desc": "NS2 · PS5 · Steam · XGP 全平台讨论群",
+            "id": "798760241"
+        },
+        "douyin": {
+            "name": "抖音",
+            "username": "66883111674",
+            "url": "https://www.douyin.com/user/66883111674"
+        },
+        "xiaohongshu": {
+            "name": "小红书",
+            "stats": "232赞藏",
+            "url": "https://xhslink.com/m/4wqivNR4SSB"
+        },
+        "kuaishou": {
+            "name": "快手",
+            "username": "子弹傀儡",
+            "url": "https://v.kuaishou.com/JaY1qv62"
+        }
     },
-    {
-      "id": 2,
-      "title": "故事短剧",
-      "tag": "情感故事、悬疑短剧",
-      "description": "原创短剧系列，涵盖情感、悬疑、反转等多种题材。用游戏引擎录制实机画面，结合AI配音与后期剪辑，打造沉浸式互动体验。",
-      "bvid": [
-        "BV1haJZzLEnx",
-        "BV1J998YoEVd",
-        "BV1sB9jY8EPU",
-        "BV1WARVYDETe",
-        "BV1oaQAYuEdq",
-        "BV1xAXxYHEwU",
-        "BV1JUovYjEwm",
-        "BV1hH5azbEf2",
-        "BV12JJVz1EKd",
-        "BV1sMjXz1Eer"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #2e0a3e 50%, #1a0a2e 100%)",
-      "icon": "🎬"
-    },
-    {
-      "id": 3,
-      "title": "体验经典",
-      "tag": "大作体验、经典回顾",
-      "description": "重温游戏史上的经典大作，从画面、剧情、玩法多维度解析。带你看尽那些年我们一起追过的神作，找回最初的感动。",
-      "bvid": [
-        "BV1ccUxBbEvH",
-        "BV1va4y1y7X9",
-        "BV1Yx4y1y7Kc",
-        "BV1ZF4m1j7Np",
-        "BV1XF4m1j7vp",
-        "BV1Xz421D75m",
-        "BV1ow4m1o7Yx",
-        "BV1Bt421F7eb",
-        "BV1vD421K76z",
-        "BV1SXsVe3EMx",
-        "BV12CUYYYEHZ",
-        "BV1Z3U6YqEva",
-        "BV1WNUkYnEwa",
-        "BV19dzGYhEud",
-        "BV1FpiBYuEoS",
-        "BV15rBuYnEsX",
-        "BV1hK6dYmEiB",
-        "BV1Yb6iYcEsW",
-        "BV1h6r5YTEQo",
-        "BV18YcaeeEu2",
-        "BV1F9F5ePEf1",
-        "BV1dMZtYWErU",
-        "BV1TdLXzSE4Q",
-        "BV1cpJnzoEkC",
-        "BV1KhjGzBEX4",
-        "BV15tWuzbEX4",
-        "BV1ssJmzgEKM",
-        "BV19AUMBAE9W",
-        "BV1w1mcBtEX6",
-        "BV12DB4B2EwL",
-        "BV1GSvvBzEwA",
-        "BV12yvBBzEEp",
-        "BV16kvrBBErG",
-        "BV18ezQBbEZB",
-        "BV1CT62BvEaa",
-        "BV1ZB61BsEgP",
-        "BV15TFqzVE8d",
-        "BV1zmPVzaEyj",
-        "BV1U4P1zKE9j",
-        "BV199PazgExC",
-        "BV15CAgzyEUy",
-        "BV1uw9WBmEsY",
-        "BV1iYDDB8EAW",
-        "BV1WfDDBkE5P",
-        "BV1JJ9yBdECV",
-        "BV1uHRMBkEUi",
-        "BV1pdRTB8EQd",
-        "BV1gmReBDE6Q",
-        "BV1f8dKBHEnC"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #0a1a2e 0%, #0a2e3e 50%, #0a1a2e 100%)",
-      "icon": "🎮"
-    },
-    {
-      "id": 4,
-      "title": "硬件评测",
-      "tag": "硬件开箱、设备评测",
-      "description": "游戏硬件深度评测，涵盖显卡、CPU、外设等。真实游戏场景测试，用数据说话，帮你选出最适合自己的装备。",
-      "bvid": [
-        "BV1BCPuzUEYZ",
-        "BV1bH4y1j7qC",
-        "BV1USNheBE8o",
-        "BV1fSxLzsEMz",
-        "BV1WERRBcE6L"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 50%, #1a1a0a 100%)",
-      "icon": "🔧"
-    },
-    {
-      "id": 5,
-      "title": "怀旧专区",
-      "tag": "怀旧品味、情怀专区",
-      "description": "那些年我们玩过的老游戏，承载了无数回忆。从像素画面到现代重置，一起回味黄金时代的游戏魅力。",
-      "bvid": [
-        "BV1WERRBcE6L",
-        "BV1Ma4y177gj",
-        "BV1YA411K751",
-        "BV16y4y187pw",
-        "BV14m4y1X7La",
-        "BV1Tt421p7TT",
-        "BV1gC411s7Cs",
-        "BV1V2421K72s",
-        "BV1UD421E7Mk",
-        "BV1UJ4m177cr",
-        "BV1Gx4y1z7Yp",
-        "BV1vwUuYVEYL",
-        "BV1ovUXYzErG",
-        "BV1K9BDYWEM3",
-        "BV1Gr6hYmEGo",
-        "BV1yTw6e7EQi",
-        "BV1j69JYdEWH",
-        "BV1dopJzsEDW",
-        "BV1Na1jBvE4z",
-        "BV1Bp2YBzEDx",
-        "BV1GmmVByEZ4",
-        "BV1XyvYBNEym",
-        "BV1ZGk3BwEsP",
-        "BV12QwuzxEKG",
-        "BV1rKdrBREvK",
-        "BV1Vkd6BGETw",
-        "BV1Tdd6BYEi7",
-        "BV1TBo4BhEwk",
-        "BV1qFotBjEpG",
-        "BV1FQo4BQEZ8",
-        "BV1xLovBEEqn",
-        "BV1jdRYBxEn7",
-        "BV1AERCBaEQP"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #2e1a0a 0%, #3e2a1a 50%, #2e1a0a 100%)",
-      "icon": "🕹️"
-    },
-    {
-      "id": 6,
-      "title": "Boss战专区",
-      "tag": "Boss攻略、高光操作",
-      "description": "精选各游戏Boss战高光时刻，从初次接遇到熟练讨伐，每一场战斗都是技术与耐心的较量。",
-      "bvid": [
-        "BV14yJtzREQx",
-        "BV1nf4y147iN",
-        "BV1uG4y1E7M8",
-        "BV11F4m1L7qW",
-        "BV1QF4m157VC",
-        "BV1DzsueeEdP",
-        "BV1MUHVePEBB",
-        "BV1LQHdeAEQZ",
-        "BV143pJe2EAq",
-        "BV1rf4JeEEJE",
-        "BV1BStQeBE7Z",
-        "BV19TxgeuEXV",
-        "BV1JgB9YnE7D",
-        "BV1eNqDYAE2K",
-        "BV1EW67YQEMm",
-        "BV1ZWrvYzEmg",
-        "BV1L7wme9Eaq",
-        "BV17sNKeUE6Z",
-        "BV1uoPMerEHS",
-        "BV1L3VZzMECJ",
-        "BV1aEEozGED1",
-        "BV1aMjbztEXu",
-        "BV1cGMyzaEv4",
-        "BV1ynM8zfENK",
-        "BV1hwNEzaEeA",
-        "BV1qBN1zQEXj",
-        "BV1DNKSz9Evz",
-        "BV1ZdgCzFEi9",
-        "BV1NZ3xzfEop",
-        "BV1pc3mz7E4h",
-        "BV1ZiGVzEEQj",
-        "BV1courzZEGn",
-        "BV1Djg5zPEHz",
-        "BV1RJhtzwERZ",
-        "BV13KeVzxE8z",
-        "BV12We6zZEJA",
-        "BV12WajzXEq7",
-        "BV1d7HfzhE1d",
-        "BV1JEpxz1Eqt",
-        "BV1DjpizoEH5",
-        "BV1gB1fBhEYU",
-        "BV19a1fBvEJ5",
-        "BV1WhyMBgEf5",
-        "BV1G4SiBLEAN",
-        "BV1ycSiBwELi",
-        "BV1FB6mBPEWf",
-        "BV1PU6ZBTEHf",
-        "BV1RJPmzUEA2",
-        "BV1j7ofBNEDW",
-        "BV1NmRjBoEBS"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #2e0a0a 0%, #3e1a0a 50%, #2e0a0a 100%)",
-      "icon": "⚔️"
-    },
-    {
-      "id": 7,
-      "title": "魂系列专区",
-      "tag": "魂类游戏、硬核挑战",
-      "description": "魂系列游戏精选剪辑，从黑暗之魂到艾尔登法环，每一帧都是受苦与荣耀的见证。",
-      "bvid": [
-        "BV12QwuzxEKG",
-        "BV151vme3EXa",
-        "BV1unvSeKEvb",
-        "BV1axiTedEt4",
-        "BV1gLigecEw4",
-        "BV1bNCBYKEqw",
-        "BV1vKCWYuEKD",
-        "BV1iT6tYVEFu",
-        "BV1oXAQeuECz",
-        "BV1JzTjzjExs",
-        "BV1crRMBfEcG"
-      ],
-      "size": "normal",
-      "gradient": "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)",
-      "icon": "💀"
-    }
-  ],
-  "news": [
-    {
-      "date": "2026-05-29",
-      "title": "印度政府警告宝莱坞不得阴阳中国",
-      "excerpt": "印度政府警告宝莱坞不得阴阳中国...",
-      "url": "https://www.toutiao.com/trending/7645233974461169683/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227645233974461169683%22%2C%22hot_board_impr_id%22%3A%22202605300339030925825559F62138CCA0%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%8D%B0%E5%BA%A6%E6%94%BF%E5%BA%9C%E8%AD%A6%E5%91%8A%E5%AE%9D%E8%8E%B1%E5%9D%9E%E4%B8%8D%E5%BE%97%E9%98%B4%E9%98%B3%E4%B8%AD%E5%9B%BD%22%7D&rank=&style_id=40132&topic_id=7645233974461169683"
-    },
-    {
-      "date": "2026-05-29",
-      "title": "33岁环卫女工回应考上硕士研究生",
-      "excerpt": "33岁环卫女工回应考上硕士研究生...",
-      "url": "https://www.toutiao.com/trending/7644919647942217258/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227644919647942217258%22%2C%22hot_board_impr_id%22%3A%22202605300339030925825559F62138CCA0%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%2233%E5%B2%81%E7%8E%AF%E5%8D%AB%E5%A5%B3%E5%B7%A5%E5%9B%9E%E5%BA%94%E8%80%83%E4%B8%8A%E7%A1%95%E5%A3%AB%E7%A0%94%E7%A9%B6%E7%94%9F%22%7D&rank=&style_id=40132&topic_id=7644919647942217258"
-    },
-    {
-      "date": "2026-05-29",
-      "title": "省级“十五五”规划纲要看点之一",
-      "excerpt": "省级“十五五”规划纲要看点之一...",
-      "url": "https://www.toutiao.com/article/7644964702665114164"
-    },
-    {
-      "date": "2026-05-29",
-      "title": "老人与邻居互殴次日自缢身亡法院判了",
-      "excerpt": "老人与邻居互殴次日自缢身亡法院判了...",
-      "url": "https://www.toutiao.com/trending/7645270300799565887/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227645270300799565887%22%2C%22hot_board_impr_id%22%3A%22202605300339030925825559F62138CCA0%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%80%81%E4%BA%BA%E4%B8%8E%E9%82%BB%E5%B1%85%E4%BA%92%E6%AE%B4%E6%AC%A1%E6%97%A5%E8%87%AA%E7%BC%A2%E8%BA%AB%E4%BA%A1%E6%B3%95%E9%99%A2%E5%88%A4%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7645270300799565887"
-    },
-    {
-      "date": "2026-05-29",
-      "title": "航天员张陆从太空带回一个苹果",
-      "excerpt": "航天员张陆从太空带回一个苹果...",
-      "url": "https://www.toutiao.com/trending/7645299648730746418/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227645299648730746418%22%2C%22hot_board_impr_id%22%3A%22202605300339030925825559F62138CCA0%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%88%AA%E5%A4%A9%E5%91%98%E5%BC%A0%E9%99%86%E4%BB%8E%E5%A4%AA%E7%A9%BA%E5%B8%A6%E5%9B%9E%E4%B8%80%E4%B8%AA%E8%8B%B9%E6%9E%9C%22%7D&rank=&style_id=40132&topic_id=7645299648730746418"
-    }
-  ],
-  "finance": [
-    {
-      "symbol": "000001.SH",
-      "name": "上证指数",
-      "value": "--",
-      "change": "+0.00%",
-      "dir": "up"
-    },
-    {
-      "symbol": "399006.SZ",
-      "name": "创业板指",
-      "value": "--",
-      "change": "+0.00%",
-      "dir": "up"
-    },
-    {
-      "symbol": "00700.HK",
-      "name": "腾讯控股",
-      "value": "--",
-      "change": "+0.00%",
-      "dir": "up"
-    },
-    {
-      "symbol": "09999.HK",
-      "name": "网易-S",
-      "value": "--",
-      "change": "+0.00%",
-      "dir": "up"
-    },
-    {
-      "symbol": "7974.T",
-      "name": "任天堂",
-      "value": "--",
-      "change": "+0.00%",
-      "dir": "up"
-    },
-    {
-      "symbol": "NVDA",
-      "name": "英伟达",
-      "value": "2026-05-30 03:39:05",
-      "change": "2.8900%",
-      "dir": "up"
-    },
-    {
-      "symbol": "GOLD",
-      "name": "国际黄金",
-      "value": "2026-05-30 03:39:03",
-      "change": "-0.0800%",
-      "dir": "down"
-    }
-  ],
-  "gaming_news": [
-    {
-      "date": "2026-05-25",
-      "category": "tech",
-      "title": "Anthropic估值或破9000亿美元，超越OpenAI",
-      "url": "https://www.anthropic.com",
-      "source": "Anthropic"
-    },
-    {
-      "date": "2026-05-25",
-      "category": "tech",
-      "title": "微软取消内部对Claude Code授权，因token计费成本过高",
-      "url": "https://www.microsoft.com",
-      "source": "Microsoft"
-    },
-    {
-      "date": "2026-05-25",
-      "category": "tech",
-      "title": "AI新逻辑引发MLCC缺货潮，三环集团涨超16%",
-      "url": "https://www.eastmoney.com",
-      "source": "东方财富"
-    },
-    {
-      "date": "2026-05-25",
-      "category": "finance",
-      "title": "A股今日大涨：上证+0.96%，芯片概念+2.19%",
-      "url": "https://www.eastmoney.com",
-      "source": "东方财富"
-    }
-  ],
-  "contact": {
-    "email": "105945357@qq.com",
-    "group": {
-      "name": "游戏群",
-      "desc": "NS2 · PS5 · Steam · XGP 全平台讨论群",
-      "id": "798760241"
-    },
-    "douyin": {
-      "name": "抖音",
-      "username": "66883111674",
-      "url": "https://www.douyin.com/user/66883111674"
-    },
-    "xiaohongshu": {
-      "name": "小红书",
-      "stats": "232赞藏",
-      "url": "https://xhslink.com/m/4wqivNR4SSB"
-    },
-    "kuaishou": {
-      "name": "快手",
-      "username": "子弹傀儡",
-      "url": "https://v.kuaishou.com/JaY1qv62"
-    }
-  },
-  "footer": "© 2026 pengworks.com · 用心创作每一帧",
-  "lastUpdated": "202605291939"
+    "footer": "© 2026 pengworks.com · 用心创作每一帧",
+    "lastUpdated": "2026-05-30"
 }
