@@ -267,49 +267,47 @@
     "news": [
         {
             "date": "2026-05-30",
-            "title": "航天员回地球后最想洗头",
-            "excerpt": "航天员回地球后最想洗头...",
-            "url": "https://www.toutiao.com/trending/7644785242368835590/"
+            "title": "集采百元一盒药 药店竟卖3960元",
+            "excerpt": "集采百元一盒药 药店竟卖3960元...",
+            "url": "https://www.toutiao.com/trending/7645193705930067498/"
         },
         {
             "date": "2026-05-30",
-            "title": "435万法拉利电车撞脸13万蔚来萤火虫",
-            "excerpt": "435万法拉利电车撞脸13万蔚来萤火虫...",
-            "url": "https://www.toutiao.com/trending/7644397891674619931/"
+            "title": "普京：已将无人机残骸交美国鉴定",
+            "excerpt": "普京：已将无人机残骸交美国鉴定...",
+            "url": "https://www.toutiao.com/trending/7645534642226774057/"
         },
         {
             "date": "2026-05-30",
-            "title": "省级“十五五”规划纲要看点之一",
-            "excerpt": "省级“十五五”规划纲要看点之一...",
-            "url": "https://www.toutiao.com/trending/7644946487860232219/"
+            "title": "走近“最美科技工作者”",
+            "excerpt": "走近“最美科技工作者”...",
+            "url": "https://www.toutiao.com/trending/7645505278301113866/"
         },
         {
             "date": "2026-05-30",
-            "title": "2岁男童公园误食滴水观音叶中毒",
-            "excerpt": "2岁男童公园误食滴水观音叶中毒...",
-            "url": "https://www.toutiao.com/trending/7645152856706351130/"
+            "title": "准女婿涉嫌诈骗7亿 丈母娘拒腾房被拘",
+            "excerpt": "准女婿涉嫌诈骗7亿 丈母娘拒腾房被拘...",
+            "url": "https://www.toutiao.com/trending/7644822302210965523/"
         },
         {
             "date": "2026-05-30",
-            "title": "航天员张陆从太空带回一个苹果",
-            "excerpt": "航天员张陆从太空带回一个苹果...",
-            "url": "https://www.toutiao.com/trending/7645299648730746418/"
+            "title": "崔天凯送给日本一句孔子的话",
+            "excerpt": "崔天凯送给日本一句孔子的话...",
+            "url": "https://www.toutiao.com/trending/7645539795791334958/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "-73.00%",
-            "dir": "down",
-            "value": "4068.57"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "-211.00%",
-            "dir": "down",
-            "value": "4037.95"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
