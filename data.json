@@ -267,49 +267,47 @@
     "news": [
         {
             "date": "2026-05-31",
-            "title": "巴黎卫冕欧冠冠军",
-            "excerpt": "巴黎卫冕欧冠冠军...",
-            "url": "https://www.toutiao.com/trending/7645825658467143211/"
+            "title": "北方局地地表温度超60℃",
+            "excerpt": "北方局地地表温度超60℃...",
+            "url": "https://www.toutiao.com/trending/7645308489967747082/"
         },
         {
             "date": "2026-05-31",
-            "title": "中荷代表畅谈完巴方代表紧接上前握手",
-            "excerpt": "中荷代表畅谈完巴方代表紧接上前握手...",
-            "url": "https://www.toutiao.com/trending/7645820160862998067/"
+            "title": "马刺抢七大战力克雷霆闯进总决赛",
+            "excerpt": "马刺抢七大战力克雷霆闯进总决赛...",
+            "url": "https://www.toutiao.com/trending/7644849706073636906/"
         },
         {
             "date": "2026-05-31",
-            "title": "丹心如炬 勇攀高峰",
-            "excerpt": "丹心如炬 勇攀高峰...",
-            "url": "https://www.toutiao.com/trending/7645127121179099172/"
+            "title": "本周我国多领域硬核成果刷屏",
+            "excerpt": "本周我国多领域硬核成果刷屏...",
+            "url": "https://www.toutiao.com/trending/7645865837227904550/"
         },
         {
             "date": "2026-05-31",
-            "title": "黄仁勋发出“抛物线式”警告",
-            "excerpt": "黄仁勋发出“抛物线式”警告...",
-            "url": "https://www.toutiao.com/trending/7645055854131298367/"
+            "title": "智利一缉毒犬咬住海军将领裤子不放",
+            "excerpt": "智利一缉毒犬咬住海军将领裤子不放...",
+            "url": "https://www.toutiao.com/trending/7645627483165458438/"
         },
         {
             "date": "2026-05-31",
-            "title": "百元集采药在药店卖3960元",
-            "excerpt": "百元集采药在药店卖3960元...",
-            "url": "https://www.toutiao.com/trending/7645193705930067498/"
+            "title": "日防相避答中国代表质问日本何时道歉",
+            "excerpt": "日防相避答中国代表质问日本何时道歉...",
+            "url": "https://www.toutiao.com/trending/7645476236138971177/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "-73.00%",
-            "dir": "down",
-            "value": "4068.57"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "-211.00%",
-            "dir": "down",
-            "value": "4037.95"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
