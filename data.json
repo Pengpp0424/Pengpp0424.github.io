@@ -267,15 +267,15 @@
     "news": [
         {
             "date": "2026-06-02",
-            "title": "综艺一车安全带全是P的 交管局发声",
-            "excerpt": "综艺一车安全带全是P的 交管局发声...",
-            "url": "https://www.toutiao.com/trending/7646418279677824548/"
+            "title": "财政部下达999亿育儿补贴补助资金",
+            "excerpt": "财政部下达999亿育儿补贴补助资金...",
+            "url": "https://www.toutiao.com/trending/7646642311929007679/"
         },
         {
             "date": "2026-06-02",
-            "title": "网暴救灾村支书戴“金耳环”者被处罚",
-            "excerpt": "网暴救灾村支书戴“金耳环”者被处罚...",
-            "url": "https://www.toutiao.com/trending/7646583306229648939/"
+            "title": "挪威深海发现载有中国瓷器18世纪沉船",
+            "excerpt": "挪威深海发现载有中国瓷器18世纪沉船...",
+            "url": "https://www.toutiao.com/trending/7646230295008051241/"
         },
         {
             "date": "2026-06-02",
@@ -285,31 +285,29 @@
         },
         {
             "date": "2026-06-02",
-            "title": "学者：中国大陆绝不承诺放弃使用武力",
-            "excerpt": "学者：中国大陆绝不承诺放弃使用武力...",
-            "url": "https://www.toutiao.com/trending/7645860642063499300/"
-        },
-        {
-            "date": "2026-06-02",
             "title": "于东来：胖东来与山姆比还差很远",
             "excerpt": "于东来：胖东来与山姆比还差很远...",
             "url": "https://www.toutiao.com/trending/7645191183748173331/"
+        },
+        {
+            "date": "2026-06-02",
+            "title": "王楚钦任国乒男队队长",
+            "excerpt": "王楚钦任国乒男队队长...",
+            "url": "https://www.toutiao.com/trending/7646679883828956678/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "-4.00%",
-            "dir": "down",
-            "value": "4056.24"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "+215.00%",
-            "dir": "up",
-            "value": "4035.93"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
