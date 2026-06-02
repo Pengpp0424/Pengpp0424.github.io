@@ -987,9 +987,40 @@ body {
     color: #fff;
 }
 
-/* 播放列表 iframe 高度调小 */
+.work-embed[data-workid] {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    height: auto;
+    overflow: hidden;
+}
+
+/* 播放列表 iframe：覆盖 absolute 定位，改为正常文档流 */
 .work-embed[data-workid] iframe {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
     height: 220px;
+    border: none;
+    flex-shrink: 0;
+}
+
+/* 大卡片里的播放列表 iframe 高一点 */
+.work-card-large .work-embed[data-workid] iframe {
+    height: 315px;
+}
+
+/* 手机端播放列表 iframe 高度 */
+@media (max-width: 768px) {
+    .work-embed[data-workid] iframe {
+        height: 56.25vw;
+        max-height: 220px;
+    }
+    
+    .work-card-large .work-embed[data-workid] iframe {
+        max-height: 260px;
+    }
 }
 
 /* ========== Profile Avatar ========== */
