@@ -278,9 +278,9 @@
         },
         {
             "date": "2026-06-03",
-            "title": "两种国家一级保护动物打起来了",
-            "excerpt": "两种国家一级保护动物打起来了...",
-            "url": "https://www.toutiao.com/trending/7646262219957305380/"
+            "title": "男子买34层住宅收房时发现只建到32层",
+            "excerpt": "男子买34层住宅收房时发现只建到32层...",
+            "url": "https://www.toutiao.com/trending/7646942010062307371/"
         },
         {
             "date": "2026-06-03",
@@ -290,29 +290,31 @@
         },
         {
             "date": "2026-06-03",
-            "title": "“女老虎”王莉霞被提起公诉",
-            "excerpt": "“女老虎”王莉霞被提起公诉...",
-            "url": "https://www.toutiao.com/trending/7646982867964444678/"
+            "title": "两种国家一级保护动物打起来了",
+            "excerpt": "两种国家一级保护动物打起来了...",
+            "url": "https://www.toutiao.com/trending/7646262219957305380/"
         },
         {
             "date": "2026-06-03",
-            "title": "男子买34层住宅收房时发现只建到32层",
-            "excerpt": "男子买34层住宅收房时发现只建到32层...",
-            "url": "https://www.toutiao.com/trending/7646942010062307371/"
+            "title": "中美两军夏威夷会晤中方划“红线”",
+            "excerpt": "中美两军夏威夷会晤中方划“红线”...",
+            "url": "https://www.toutiao.com/trending/7647007930449120814/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "+30.00%",
+            "dir": "up",
+            "value": "4087.51"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "+175.00%",
+            "dir": "up",
+            "value": "4126.92"
         },
         {
             "symbol": "0700.HK",
