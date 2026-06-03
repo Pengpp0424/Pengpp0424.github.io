@@ -272,15 +272,15 @@
     "news": [
         {
             "date": "2026-06-03",
-            "title": "彩民15元中6022万多月后才敢晒奖",
-            "excerpt": "彩民15元中6022万多月后才敢晒奖...",
-            "url": "https://www.toutiao.com/trending/7645918947590062116/"
+            "title": "18岁农机手为残障夫妻免费收小麦",
+            "excerpt": "18岁农机手为残障夫妻免费收小麦...",
+            "url": "https://www.toutiao.com/trending/7645870308834443290/"
         },
         {
             "date": "2026-06-03",
-            "title": "全球首款全尺寸超仿生人形机器人预售",
-            "excerpt": "全球首款全尺寸超仿生人形机器人预售...",
-            "url": "https://www.toutiao.com/trending/7646707443086446143/"
+            "title": "“女老虎”王莉霞被提起公诉",
+            "excerpt": "“女老虎”王莉霞被提起公诉...",
+            "url": "https://www.toutiao.com/trending/7646982867964444678/"
         },
         {
             "date": "2026-06-03",
@@ -290,29 +290,31 @@
         },
         {
             "date": "2026-06-03",
-            "title": "微软发布全新量子芯片",
-            "excerpt": "微软发布全新量子芯片...",
-            "url": "https://www.toutiao.com/trending/7646945546279603755/"
-        },
-        {
-            "date": "2026-06-03",
             "title": "矿难致82死后当地县委书记落马",
             "excerpt": "矿难致82死后当地县委书记落马...",
             "url": "https://www.toutiao.com/trending/7646785410631352356/"
+        },
+        {
+            "date": "2026-06-03",
+            "title": "日菲炒作海域“划界谈判”目的何在",
+            "excerpt": "日菲炒作海域“划界谈判”目的何在...",
+            "url": "https://www.toutiao.com/trending/7646801817989726254/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "+56.00%",
+            "dir": "up",
+            "value": "4097.94"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "+397.00%",
+            "dir": "up",
+            "value": "4216.74"
         },
         {
             "symbol": "0700.HK",
