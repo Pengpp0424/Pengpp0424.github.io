@@ -79,10 +79,10 @@
         
         <!-- ✅ 银河系斜对角动画 + 太阳系 + 星光 -->
         <video class="hero-anim hero-anim-left" autoplay loop muted playsinline>
-            <source type="video/mp4">
+            <source src="videos/hero-anim-01.mp4" type="video/mp4">
         </video>
         <video class="hero-anim hero-anim-right" autoplay loop muted playsinline>
-            <source type="video/mp4">
+            <source src="videos/hero-anim-02.mp4" type="video/mp4">
         </video>
         
         <div class="hero-content">
@@ -459,18 +459,6 @@
         for (let i = 1; i <= 60; i++) {
             images.push('images/illustrations-webp/illust-' + String(i).padStart(2, '0') + '.webp');
         }
-        // 静默预加载所有插画到浏览器缓存（不阻塞页面）
-        (function preload() {
-            let i = 0;
-            function next() {
-                if (i >= images.length) return;
-                var img = new Image();
-                img.src = images[i++];
-                setTimeout(next, 80);
-            }
-            if (window.requestIdleCallback) requestIdleCallback(next);
-            else setTimeout(next, 1000);
-        })();
         const today = new Date();
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
         function pick(offset) {
@@ -483,8 +471,14 @@
         function setIllustrations() {
             const img1 = document.getElementById('illustLeft');
             const img2 = document.getElementById('illustRight');
-            if (img1) img1.src = images[i1];
-            if (img2) img2.src = images[i2];
+            if (img1) {
+                img1.src = images[i1];
+                img1.onerror = () => console.warn('插画加载失败:', images[i1]);
+            }
+            if (img2) {
+                img2.src = images[i2];
+                img2.onerror = () => console.warn('插画加载失败:', images[i2]);
+            }
         }
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', setIllustrations);
