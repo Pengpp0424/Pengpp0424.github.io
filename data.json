@@ -272,15 +272,15 @@
     "news": [
         {
             "date": "2026-06-04",
-            "title": "中方反对美方拟征收12.5%额外关税",
-            "excerpt": "中方反对美方拟征收12.5%额外关税...",
-            "url": "https://www.toutiao.com/trending/7647343770765118986/"
+            "title": "菲律宾落选安理会非常任理事国",
+            "excerpt": "菲律宾落选安理会非常任理事国...",
+            "url": "https://www.toutiao.com/trending/7646455956210008073/"
         },
         {
             "date": "2026-06-04",
-            "title": "萧华：感受到波波带给马刺深远影响",
-            "excerpt": "萧华：感受到波波带给马刺深远影响...",
-            "url": "https://www.toutiao.com/trending/7646222234403930158/"
+            "title": "巴西总统称美国不买就卖给别国",
+            "excerpt": "巴西总统称美国不买就卖给别国...",
+            "url": "https://www.toutiao.com/trending/7647392687661927982/"
         },
         {
             "date": "2026-06-04",
@@ -290,29 +290,31 @@
         },
         {
             "date": "2026-06-04",
-            "title": "A股再登新闻联播释放何种信息",
-            "excerpt": "A股再登新闻联播释放何种信息...",
-            "url": "https://www.toutiao.com/trending/7647311695521549870/"
+            "title": "宁波姑娘一口气买5部新手机 店员报警",
+            "excerpt": "宁波姑娘一口气买5部新手机 店员报警...",
+            "url": "https://www.toutiao.com/trending/7647325675623350281/"
         },
         {
             "date": "2026-06-04",
-            "title": "总决赛G1：尼克斯1-0马刺",
-            "excerpt": "总决赛G1：尼克斯1-0马刺...",
-            "url": "https://www.toutiao.com/trending/7646959751435747355/"
+            "title": "马刺首输总决赛G1 文班：我打太烂了",
+            "excerpt": "马刺首输总决赛G1 文班：我打太烂了...",
+            "url": "https://www.toutiao.com/trending/7647325441597967915/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "-74.00%",
+            "dir": "down",
+            "value": "4053.62"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "-103.00%",
+            "dir": "down",
+            "value": "4080.55"
         },
         {
             "symbol": "0700.HK",
