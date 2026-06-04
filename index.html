@@ -442,8 +442,13 @@
             if (s2) s2.src = videos[i2];
             const v1 = document.querySelector('.hero-anim-left');
             const v2 = document.querySelector('.hero-anim-right');
-            if (v1) { v1.load(); v1.play().catch(()=>{}); }
-            if (v2) { v2.load(); v2.play().catch(()=>{}); }
+            [v1, v2].forEach(v => {
+                if (!v) return;
+                v.load();
+                v.play().catch(e => console.warn('视频自动播放失败:', e.message));
+                v.onloadeddata = () => console.log('视频加载成功:', v.currentSrc);
+                v.onerror = () => console.error('视频加载失败:', v.currentSrc);
+            });
         }
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', setVideos);

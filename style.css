@@ -1134,9 +1134,12 @@ body {
     width: 300px;
     height: 300px;
     z-index: 5;
-    opacity: 0.6;
+    opacity: 1;
     pointer-events: none;
     object-fit: cover;
+    border: 2px solid rgba(99,102,241,0.6);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(99,102,241,0.3);
 }
 
 .hero-anim-left {
