@@ -1914,3 +1914,39 @@ body {
     color: var(--text-secondary);
     line-height: 1.7;
 }
+
+/* ========== 移动端 Hero 视频修复 ========== */
+@media (max-width: 768px) {
+    .hero {
+        position: relative;
+        overflow: hidden;
+    }
+    .hero-anim {
+        width: 100px;
+        height: 100px;
+        opacity: 0.5;
+        border-width: 1px;
+        box-shadow: 0 0 10px rgba(99,102,241,0.2);
+    }
+    .hero-anim-left {
+        left: 2%;
+        bottom: auto;
+        top: 80px;
+    }
+    .hero-anim-right {
+        right: 2%;
+        top: 200px;
+    }
+}
+@media (max-width: 375px) {
+    .hero-anim {
+        width: 70px;
+        height: 70px;
+    }
+    .hero-anim-left {
+        top: 70px;
+    }
+    .hero-anim-right {
+        top: 160px;
+    }
+}
