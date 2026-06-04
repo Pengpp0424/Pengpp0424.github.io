@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+<title>魔镜 - AI颜值评分 | pengworks.com</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--glow:#00d4ff;--purple:#7b2ff7;--gold:#ffd700}
+body{
+ font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+ background:radial-gradient(ellipse at 50% 30%,#0a0a2e 0%,#05051a 60%,#000 100%);
+ min-height:100vh;color:#fff;display:flex;flex-direction:column;align-items:center;
+ padding:12px 10px 40px;overflow-x:hidden;position:relative;
+}
+body::before{
+ content:"";position:fixed;top:0;left:0;right:0;bottom:0;
+ background:
+  radial-gradient(1.2px 1.2px at 10% 20%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 30% 60%,rgba(200,180,255,.7),transparent),
+  radial-gradient(1.3px 1.3px at 50% 15%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 70% 75%,rgba(180,220,255,.6),transparent),
+  radial-gradient(1px 1px at 88% 42%,rgba(255,255,255,.7),transparent);
+ z-index:-1;animation:twinkle 5s ease-in-out infinite alternate;
+}
+@keyframes twinkle{0%{opacity:.5}100%{opacity:1}}
+
+/* 导航栏 */
+.nav{width:100%;max-width:800px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.85em;padding:6px 12px;border-radius:8px;background:rgba(255,255,255,.05);transition:all .2s}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+
+.hdr{text-align:center;margin-bottom:8px;z-index:1}
+.hdr h1{
+ font-size:clamp(1.4em,6vw,2em);font-weight:900;
+ background:linear-gradient(135deg,#ffd700,#fff8dc,#ffd700,#fff8dc);
+ -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+ filter:drop-shadow(0 0 20px rgba(255,215,0,.4));
+ animation:glowTitle 3s ease-in-out infinite alternate;
+}
+@keyframes glowTitle{0%{filter:brightness(1)}100%{filter:brightness(1.3)}}
+.hdr .sub{color:rgba(200,180,255,.65);font-size:.78em;margin-top:4px;letter-spacing:1.5px}
+
+/* 说明卡片 */
+.intro-card{
+ background:linear-gradient(135deg,rgba(123,47,247,.1),rgba(0,212,255,.05));
+ border:1px solid rgba(123,47,247,.2);border-radius:16px;
+ padding:20px;margin:12px auto;max-width:600px;width:100%;
+ text-align:center;line-height:1.6;font-size:.9em;color:rgba(255,255,255,.8);
+}
+.intro-card h2{color:var(--gold);font-size:1.1em;margin-bottom:10px}
+.intro-card .highlight{color:var(--glow);font-weight:700}
+.intro-card .note{color:rgba(255,215,0,.6);font-size:.82em;margin-top:10px;font-style:italic}
+
+.ball-wrap{
+ width:min(300px,82vw);aspect-ratio:3/4;border-radius:22px;
+ position:relative;overflow:hidden;margin:8px auto;
+ background:radial-gradient(ellipse at 40% 35%,rgba(100,50,200,.2),transparent 70%);
+ box-shadow:0 0 40px rgba(123,47,247,.25),0 0 80px rgba(0,212,255,.1);
+ border:1px solid rgba(123,47,247,.25);transition:box-shadow .6s;
+}
+.ball-wrap.active{box-shadow:0 0 60px rgba(123,47,247,.45),0 0 120px rgba(0,212,255,.2)}
+.ball-wrap.magicing{animation:magicPulse 1s ease-in-out infinite}
+@keyframes magicPulse{0%,100%{box-shadow:0 0 60px rgba(123,47,247,.45),0 0 120px rgba(0,212,255,.2)}50%{box-shadow:0 0 90px rgba(123,47,247,.7),0 0 160px rgba(0,212,255,.4)}}
+#video{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1);border-radius:22px}
+
+#particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;border-radius:22px}
+
+.scan-line{
+ position:absolute;top:-5%;left:0;width:100%;height:3px;
+ background:linear-gradient(90deg,transparent,rgba(0,212,255,.9),rgba(123,47,247,.9),transparent);
+ filter:blur(1px);z-index:6;pointer-events:none;opacity:0;
+}
+.scan-line.run{animation:scanDown 2.2s ease-in-out forwards}
+@keyframes scanDown{0%{top:-5%;opacity:1}100%{top:105%;opacity:0}}
+
+.flash-overlay{
+ position:absolute;top:0;left:0;width:100%;height:100%;
+ background:radial-gradient(circle,rgba(255,215,0,.4),transparent 70%);
+ z-index:7;pointer-events:none;opacity:0;transition:opacity .3s;
+}
+.flash-overlay.show{opacity:1;animation:flashFade .8s ease-out}
+@keyframes flashFade{0%{opacity:1}100%{opacity:0}}
+
+.btn-row{display:flex;gap:8px;margin-top:14px;width:100%;max-width:320px;justify-content:center;flex-wrap:wrap;z-index:1}
+button{
+ border:none;color:#fff;font-size:.95em;font-weight:700;
+ padding:12px 18px;border-radius:50px;cursor:pointer;
+ font-family:inherit;transition:all .25s;position:relative;overflow:hidden;
+}
+button::after{
+ content:"";position:absolute;top:50%;left:50%;width:0;height:0;
+ background:rgba(255,255,255,.18);border-radius:50%;
+ transform:translate(-50%,-50%);transition:width .35s,height .35s;
+}
+button:active::after{width:220px;height:220px}
+.btn-main{background:linear-gradient(135deg,var(--purple),var(--glow));box-shadow:0 4px 18px rgba(123,47,247,.35)}
+.btn-sec{background:linear-gradient(135deg,#1a1a3e,#2a2a4e);border:1px solid rgba(123,47,247,.25)}
+.btn-gold{background:linear-gradient(135deg,#b8860b,#ffd700);color:#1a0a00;box-shadow:0 4px 18px rgba(255,215,0,.25)}
+.btn-pink{background:linear-gradient(135deg,#e91e8c,#ff6bb5);box-shadow:0 4px 18px rgba(233,30,140,.3)}
+.btn-blue{background:linear-gradient(135deg,#1565c0,#42a5f5);box-shadow:0 4px 18px rgba(21,101,192,.3)}
+button:active{transform:scale(.94)}
+button:disabled{opacity:.4;pointer-events:none}
+
+#speechText{
+ width:min(300px,82vw);min-height:28px;margin-top:10px;
+ text-align:center;font-size:.88em;color:rgba(0,212,255,.85);
+ z-index:1;letter-spacing:.5px;
+}
+
+#snap-wrap{
+ width:min(300px,82vw);border-radius:22px;overflow:hidden;
+ display:none;margin:8px auto;position:relative;
+ box-shadow:0 0 40px rgba(255,215,0,.15);
+}
+#snap-img{width:100%;display:block;transform:scaleX(-1);border-radius:22px}
+
+.res-card{
+ background:linear-gradient(135deg,rgba(20,10,40,.92),rgba(10,10,30,.97));
+ border:1px solid rgba(123,47,247,.25);border-radius:18px;
+ padding:18px 16px;margin-top:14px;width:100%;max-width:320px;
+ display:none;position:relative;overflow:hidden;z-index:1;
+}
+.res-card.show{display:block;animation:cardIn .7s ease}
+@keyframes cardIn{0%{opacity:0;transform:translateY(24px) scale(.93)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.res-card::before{
+ content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+ background:conic-gradient(from 0deg,transparent,rgba(123,47,247,.08),transparent,rgba(0,212,255,.08),transparent);
+ animation:cardRotate 8s linear infinite;
+}
+@keyframes cardRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.card-inner{position:relative;z-index:1}
+.res-card h3{color:var(--glow);font-size:1.05em;margin-bottom:10px}
+.score-row{display:flex;align-items:center;gap:8px;margin:10px 0}
+.score-bar{flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.4,0,.2,1);width:0}
+.score-num{font-size:1.25em;font-weight:900;min-width:42px;text-align:right}
+.sg{background:rgba(0,212,255,.07);border-left:3px solid var(--glow);padding:7px 10px;margin:5px 0;border-radius:0 8px 8px 0;font-size:.85em;line-height:1.5}
+
+.spell-hint{
+ text-align:center;color:rgba(255,215,0,.55);font-size:.75em;
+ margin-top:8px;font-style:italic;min-height:18px;z-index:1;
+}
+.err{
+ background:rgba(255,50,50,.1);border:1px solid rgba(255,50,50,.25);
+ border-radius:12px;padding:10px;color:#ff6b6b;font-size:.84em;
+ margin-top:10px;display:none;width:100%;max-width:320px;z-index:1;
+}
+.st{text-align:center;color:rgba(200,180,255,.55);font-size:.78em;margin-top:10px;min-height:18px;z-index:1}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<div class="nav">
+ <a href="./index.html">← 返回首页</a>
+ <a href="https://github.com/Pengpp0424/Pengpp0424.github.io" target="_blank">GitHub</a>
+</div>
+
+<div class="hdr">
+ <h1>🔮 魔镜</h1>
+ <p class="sub">AI 颜值魔法师</p>
+</div>
+
+<!-- 说明卡片 -->
+<div class="intro-card">
+ <h2>✨ 颜值评分展示区</h2>
+ <p>欢迎小伙伴们来围观～</p>
+ <p>基于百度AI人脸识别技术，智能分析颜值、年龄、性别、表情等多维度特征</p>
+ <p>更多功能正在开发中...</p>
+ <p class="note">完整版App将在测试稳定后放出，敬请期待！</p>
+ <p style="margin-top:12px;color:rgba(255,215,0,.7);font-size:.85em">🔊 允许摄像头权限后，点击「唤醒魔镜」开始体验</p>
+</div>
+
+<div class="ball-wrap" id="ballWrap">
+ <video id="video" playsinline muted></video>
+ <canvas id="particles"></canvas>
+ <div class="scan-line" id="scanLine"></div>
+ <div class="flash-overlay" id="flashOverlay"></div>
+</div>
+
+<div id="speechText"></div>
+<div id="snap-wrap"><img id="snap-img" alt=""></div>
+
+<!-- 启动按钮 -->
+<div class="btn-row" id="startRow">
+ <button class="btn-main" onclick="startCamera()">✨ 唤醒魔镜</button>
+</div>
+
+<!-- 操作按钮组 -->
+<div class="btn-row" id="camRow" style="display:none">
+ <button class="btn-pink" onclick="askMagic('female')">👸 我漂亮么</button>
+ <button class="btn-blue" onclick="askMagic('male')">🤴 我帅么</button>
+ <button class="btn-sec" onclick="resetCam()">🔄 重来</button>
+</div>
+
+<div class="spell-hint" id="spellHint"></div>
+
+<div class="res-card" id="resCard">
+ <div class="card-inner">
+  <h3>🔮 魔镜说...</h3>
+  <div id="resText"></div>
+  <div style="margin-top:14px">
+   <button class="btn-gold" onclick="playVoice()" style="width:100%">🔊 听魔镜说</button>
+  </div>
+ </div>
+</div>
+
+<div class="err" id="errBox"></div>
+<p class="st" id="st">点击「唤醒魔镜」开始</p>
+
+<script>
+var video=document.getElementById("video");
+var stream=null;
+var canvas=document.createElement("canvas");
+var currentScore=0,currentGender="",currentAdvice=[],currentAudioUrl=null;
+
+/* ====== 配置：后端API地址 ====== */
+var API_BASE="https://192.168.1.4:9443";  // ← 改成你的公网地址
+
+/* ====== 音效 ====== */
+var audioCtx=null;
+function getAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx}
+function playTone(freq,dur,type,vol){
+ var ctx=getAudioCtx(),osc=ctx.createOscillator(),gain=ctx.createGain();
+ osc.type=type||"sine";osc.frequency.value=freq;
+ gain.gain.setValueAtTime(vol||0.08,ctx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+(dur||.3));
+ osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+(dur||.3));
+}
+function sfxClick(){playTone(880,.08,"sine",.06)}
+function sfxMagic(){
+ playTone(523,.15,"triangle",.05);
+ setTimeout(function(){playTone(659,.15,"triangle",.05)},100);
+ setTimeout(function(){playTone(784,.15,"triangle",.05)},200);
+ setTimeout(function(){playTone(1047,.3,"triangle",.05)},300);
+}
+function sfxScan(){playTone(220,.6,"sawtooth",.03)}
+function sfxResult(){
+ playTone(392,.15,"sine",.06);
+ setTimeout(function(){playTone(523,.15,"sine",.06)},120);
+ setTimeout(function(){playTone(659,.15,"sine",.06)},240);
+ setTimeout(function(){playTone(784,.3,"sine",.06)},360);
+}
+
+/* ====== 启动摄像头 ====== */
+async function startCamera(){
+ sfxClick();setSt("正在唤醒魔镜...");hideErr();
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({
+   video:{facingMode:"user",width:{ideal:720},height:{ideal:960}},audio:false
+  });
+  video.srcObject=stream;
+  video.onloadedmetadata=function(){
+   video.play();
+   document.getElementById("ballWrap").classList.add("active");
+   document.getElementById("startRow").style.display="none";
+   document.getElementById("camRow").style.display="flex";
+   setSt("魔镜已就绪 ✨");
+   document.getElementById("spellHint").textContent="选一个问魔镜吧！";
+   startParticles();
+  };
+ }catch(e){showErr("无法启动摄像头："+e.message);setSt("启动失败")}
+}
+
+/* ====== 问魔镜 ====== */
+function askMagic(gender){
+ sfxMagic();
+ hideErr();
+ var question = gender==="female"?"我漂亮么":"我帅么";
+ document.getElementById("speechText").textContent = "「" + question + "」";
+ document.getElementById("spellHint").textContent = "✨ 魔镜正在评判...";
+ setSt("🔮 " + question + "...");
+ document.getElementById("ballWrap").classList.add("magicing");
+ setTimeout(function(){snapAndGrade(question)}, 1500);
+}
+
+/* ====== 拍照评分 ====== */
+function snapAndGrade(question){
+ if(!video||video.readyState<2){showErr("摄像头未就绪");return}
+ document.getElementById("ballWrap").classList.remove("magicing");
+ sfxScan();
+ var sl=document.getElementById("scanLine");sl.classList.remove("run");void sl.offsetWidth;sl.classList.add("run");
+ var fo=document.getElementById("flashOverlay");fo.classList.remove("show");void fo.offsetWidth;fo.classList.add("show");
+ setSt("🔮 魔镜分析中...");
+ canvas.width=video.videoWidth;canvas.height=video.videoHeight;
+ var ctx=canvas.getContext("2d");ctx.save();ctx.scale(-1,1);ctx.drawImage(video,0,0,-canvas.width,canvas.height);ctx.restore();
+ var imgData=canvas.toDataURL("image/jpeg",0.85);
+ document.getElementById("snap-img").src=imgData;
+ document.getElementById("snap-wrap").style.display="block";
+ document.getElementById("ballWrap").style.display="none";
+ document.getElementById("camRow").style.display="none";
+ gradeImage(imgData,question);
+}
+
+function gradeImage(imgDataUrl,question){
+ setSt("🔮 魔镜正在评判...");
+ fetch(API_BASE+"/api/grade",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({image:imgDataUrl,question:question||""})
+ })
+ .then(function(r){return r.json()})
+ .then(function(data){
+   currentScore=data.score;currentGender=data.gender;currentAdvice=data.advice;
+   sfxResult();showResult(data);setSt("评判完成！点🔊听魔镜说");
+ })
+ .catch(function(e){
+   var simScore=Math.floor(50+Math.random()*40);
+   var simGender=(question&&question.indexOf("帅")>=0)?"male":"female";
+   var simAdv=["保持自信笑容","找到最适合的角度","多微笑会更美"];
+   currentScore=simScore;currentGender=simGender;currentAdvice=simAdv;
+   sfxResult();showResult({score:simScore,gender:simGender,advice:simAdv,level:simScore>=80?"high":simScore>=55?"mid":"low"});
+   setSt("评判完成（离线模式）");
+ });
+}
+
+function showResult(data){
+ var level=data.level||(data.score>=80?"high":data.score>=55?"mid":"low");
+ var isFemale=data.gender!=="male";
+ var title="",detail="";
+ if(level==="high"){
+  title=isFemale?"✨ 你很美！":"✨ 你很帅！";
+  detail=(data.advice&&data.advice[0])||"注意保持自信，你的气质很独特";
+ }else if(level==="mid"){
+  title=isFemale?"💫 你有一点点美~":"💫 你有一点点帅~";
+  detail=(data.advice&&data.advice[0])||"还有提升空间，试试不同的风格";
+ }else{
+  title=isFemale?"🌙 抱歉，你的美跟我的审美不太沾边":"🌙 抱歉，你的帅跟我的审美不太沾边";
+  detail="但是，"+((data.advice&&data.advice[0])||"自信一点，你会有惊喜的变化！");
+ }
+ var html='<p style="font-size:1.3em;font-weight:900;margin-bottom:12px">'+title+'</p>';
+ html+='<div class="score-row"><div class="score-bar"><div class="score-fill" id="scoreFill" style="background:'+(level==="high"?"linear-gradient(90deg,#ffd700,#ff8c00)":level==="mid"?"linear-gradient(90deg,#7b2ff7,#00d4ff)":"linear-gradient(90deg,#666,#999)")+'"></div></div>';
+ html+='<span class="score-num" style="color:'+(level==="high"?"#ffd700":level==="mid"?"#00d4ff":"#999")+'">'+data.score+'分</span></div>';
+ html+='<p style="margin:10px 0;color:rgba(255,255,255,.7);font-size:.9em">'+detail+'</p>';
+ html+='<div style="margin-top:12px"><b style="color:#ffd700;font-size:.88em">✨ 魔镜建议：</b>';
+ (data.advice||[]).forEach(function(a){html+='<div class="sg">'+a+'</div>'});
+ html+='</div>';
+ document.getElementById("resText").innerHTML=html;
+ document.getElementById("resCard").classList.add("show");
+ setTimeout(function(){var f=document.getElementById("scoreFill");if(f)f.style.width=data.score+"%"},120);
+ generateVoice(title+"。 "+detail+"。 "+(data.advice||[]).join("。 "));
+}
+
+function generateVoice(text){
+ fetch(API_BASE+"/api/tts",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({text:text})
+ })
+ .then(function(r){return r.json()})
+ .then(function(data){if(data.url)currentAudioUrl=data.url})
+ .catch(function(e){console.error("TTS error",e)});
+}
+
+function playVoice(){
+ if(currentAudioUrl){new Audio(currentAudioUrl).play().catch(function(e){showErr("播放失败")})}
+ else if("speechSynthesis" in window){
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(document.getElementById("resText").innerText);
+  u.lang="zh-CN";u.rate=0.9;speechSynthesis.speak(u);
+ }else{showErr("暂无可播放语音")}
+}
+
+function resetCam(){
+ document.getElementById("snap-wrap").style.display="none";
+ document.getElementById("ballWrap").style.display="block";
+ document.getElementById("camRow").style.display="flex";
+ document.getElementById("resCard").classList.remove("show");
+ document.getElementById("speechText").textContent="";
+ document.getElementById("spellHint").textContent="选一个问魔镜吧！";
+ document.getElementById("errBox").style.display="none";
+ setSt("魔镜已就绪 ✨");
+}
+
+function setSt(t){document.getElementById("st").textContent=t}
+function showErr(t){var e=document.getElementById("errBox");e.textContent=t;e.style.display="block"}
+function hideErr(){document.getElementById("errBox").style.display="none"}
+
+/* ====== 粒子特效 ====== */
+function startParticles(){
+ var c=document.getElementById("particles"),ctx2=c.getContext("2d");
+ c.width=c.parentElement.offsetWidth;c.height=c.parentElement.offsetHeight;
+ var pts=[];for(var i=0;i<30;i++)pts.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*2+.5,d:Math.random()*Math.PI*2,sp:.15+Math.random()*.3,o:.2+Math.random()*.4});
+ function draw(){ctx2.clearRect(0,0,c.width,c.height);pts.forEach(function(p){p.x+=Math.cos(p.d)*p.sp;p.y+=Math.sin(p.d)*p.sp;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;ctx2.beginPath();ctx2.arc(p.x,p.y,p.s,0,Math.PI*2);ctx2.fillStyle="rgba(123,47,247,"+p.o+")";ctx2.fill()});requestAnimationFrame(draw)}
+ draw();
+}
+</script>
+</body>
+</html>
