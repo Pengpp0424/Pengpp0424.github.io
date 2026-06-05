@@ -272,9 +272,9 @@
     "news": [
         {
             "date": "2026-06-05",
-            "title": "习近平将访问朝鲜",
-            "excerpt": "习近平将访问朝鲜...",
-            "url": "https://www.toutiao.com/trending/7647725254445858822/"
+            "title": "高考出题人什么时候才能“放”出来",
+            "excerpt": "高考出题人什么时候才能“放”出来...",
+            "url": "https://www.toutiao.com/trending/7647325441598098987/"
         },
         {
             "date": "2026-06-05",
@@ -296,23 +296,25 @@
         },
         {
             "date": "2026-06-05",
-            "title": "直击各地高考送考现场",
-            "excerpt": "直击各地高考送考现场...",
-            "url": "https://www.toutiao.com/trending/7646622464425066532/"
+            "title": "普京称不反对乌克兰加入欧盟",
+            "excerpt": "普京称不反对乌克兰加入欧盟...",
+            "url": "https://www.toutiao.com/trending/7647384709797773358/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "-97.00%",
+            "dir": "down",
+            "value": "4018.51"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "-357.00%",
+            "dir": "down",
+            "value": "3942.85"
         },
         {
             "symbol": "0700.HK",
