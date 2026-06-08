@@ -278,9 +278,9 @@
         },
         {
             "date": "2026-06-08",
-            "title": "市委书记送考被喊学霸",
-            "excerpt": "市委书记送考被喊学霸...",
-            "url": "https://www.toutiao.com/trending/7648869758804282907/"
+            "title": "菲律宾多个机构进入红色警戒状态",
+            "excerpt": "菲律宾多个机构进入红色警戒状态...",
+            "url": "https://www.toutiao.com/trending/7648472781831602226/"
         },
         {
             "date": "2026-06-08",
@@ -305,8 +305,9 @@
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "-170.00%",
+            "dir": "down",
+            "value": "3959.30"
         },
         {
             "symbol": "399006.SZ",
