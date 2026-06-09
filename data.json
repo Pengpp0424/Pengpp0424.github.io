@@ -272,15 +272,15 @@
     "news": [
         {
             "date": "2026-06-09",
-            "title": "总决赛G3尼克斯vs马刺",
-            "excerpt": "总决赛G3尼克斯vs马刺...",
-            "url": "https://www.toutiao.com/trending/7648939445655260735/"
+            "title": "阿里百度被美国列入“中国军工企业”",
+            "excerpt": "阿里百度被美国列入“中国军工企业”...",
+            "url": "https://www.toutiao.com/trending/7649254320709307945/"
         },
         {
             "date": "2026-06-09",
-            "title": "提前被单招录取考生双手插兜出考场",
-            "excerpt": "提前被单招录取考生双手插兜出考场...",
-            "url": "https://www.toutiao.com/trending/7648598799442673714/"
+            "title": "王传福：今年销量将取决于电池产量",
+            "excerpt": "王传福：今年销量将取决于电池产量...",
+            "url": "https://www.toutiao.com/trending/7648300748061720617/"
         },
         {
             "date": "2026-06-09",
@@ -290,31 +290,29 @@
         },
         {
             "date": "2026-06-09",
-            "title": "藏马熊当牧民面捕食牦牛 当地回应",
-            "excerpt": "藏马熊当牧民面捕食牦牛 当地回应...",
-            "url": "https://www.toutiao.com/trending/7649051372633620506/"
+            "title": "文班苦战39分钟砍下32分",
+            "excerpt": "文班苦战39分钟砍下32分...",
+            "url": "https://www.toutiao.com/trending/7648788445330358308/"
         },
         {
             "date": "2026-06-09",
-            "title": "菲律宾为何会发生强震",
-            "excerpt": "菲律宾为何会发生强震...",
-            "url": "https://www.toutiao.com/trending/7648823764209729563/"
+            "title": "创始人去世 24岁女儿拟继承近5亿家产",
+            "excerpt": "创始人去世 24岁女儿拟继承近5亿家产...",
+            "url": "https://www.toutiao.com/trending/7649232589122928681/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "+51.00%",
-            "dir": "up",
-            "value": "3979.60"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "+191.00%",
-            "dir": "up",
-            "value": "3884.53"
+            "change": "--",
+            "dir": "up"
         },
         {
             "symbol": "0700.HK",
