@@ -296,23 +296,25 @@
         },
         {
             "date": "2026-06-09",
-            "title": "创始人去世 24岁女儿拟继承近5亿家产",
-            "excerpt": "创始人去世 24岁女儿拟继承近5亿家产...",
-            "url": "https://www.toutiao.com/trending/7649232589122928681/"
+            "title": "考生家长称高中三年花二三十万补课",
+            "excerpt": "考生家长称高中三年花二三十万补课...",
+            "url": "https://www.toutiao.com/trending/7648558780410134591/"
         }
     ],
     "finance": [
         {
             "symbol": "000001.SH",
             "name": "上证指数",
-            "change": "--",
-            "dir": "up"
+            "change": "+129.00%",
+            "dir": "up",
+            "value": "4010.34"
         },
         {
             "symbol": "399006.SZ",
             "name": "创业板指",
-            "change": "--",
-            "dir": "up"
+            "change": "+393.00%",
+            "dir": "up",
+            "value": "3961.75"
         },
         {
             "symbol": "0700.HK",
