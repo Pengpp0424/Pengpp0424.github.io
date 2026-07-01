@@ -34,31 +34,45 @@ def fetch_toutiao_news():
         return []
 
 def fetch_gaming_news():
-    """抓取游戏/科技动态（36Kr/虎嗅 RSS）"""
+    """抓取游戏/科技动态（36Kr RSS）"""
     try:
-        # 使用 36Kr RSS（科技新闻）
+        import urllib.request
         url = "https://36kr.com/feed"
         req = urllib.request.Request(url, headers={
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         })
         with urllib.request.urlopen(req, timeout=10) as resp:
             xml = resp.read().decode('utf-8')
-            # 简单解析 XML（不需要额外依赖）
+            # 修复：正则匹配 <![CDATA[...]]> 格式（无反斜杠）
             titles = re.findall(r'<title><!\[CDATA\[(.*?)\]\]></title>', xml)
-            links = re.findall(r'<link>(.*?)</link>', xml)
+            links = re.findall(r'<link><!\[CDATA\[(.*?)\]\]></link>', xml)
             dates = re.findall(r'<pubDate>(.*?)</pubDate>', xml)
-            
+
             results = []
-            for i in range(min(4, len(titles))):
+            for i in range(min(5, len(titles))):
                 if i == 0: continue  # 第一个是站点标题
                 results.append({
                     "date": datetime.now().strftime('%Y-%m-%d'),
                     "category": "tech",
                     "title": titles[i],
-                    "url": links[i] if i < len(links) else "#",
+                    "url": links[i - 1] if (i - 1) < len(links) else "#",
                     "source": "36Kr"
                 })
-            return results
+            if not results:
+                # 备选：直接匹配 <title>...</title>（无CDATA）
+                titles2 = re.findall(r'<title>(.*?)</title>', xml)
+                links2 = re.findall(r'<link>(.*?)</link>', xml)
+                for i in range(min(5, len(titles2))):
+                    if i == 0: continue
+                    if titles2[i] not in [r.get('title', '') for r in results]:
+                        results.append({
+                            "date": datetime.now().strftime('%Y-%m-%d'),
+                            "category": "tech",
+                            "title": titles2[i],
+                            "url": links2[i - 1] if (i - 1) < len(links2) else "#",
+                            "source": "36Kr"
+                        })
+            return results[:4]
     except Exception as e:
         print(f"[警告] 游戏科技动态抓取失败: {e}")
         return []
